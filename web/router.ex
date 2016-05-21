@@ -20,7 +20,15 @@ defmodule Store.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Store do
-  #   pipe_through :api
-  # end
+  scope "/api", Store do
+    pipe_through :api
+
+    scope "/v1", V1, as: :v1 do
+
+      resources "/product_categories", ProductCategoryController, except: [:new, :edit]
+      resources "/products", ProductController, except: [:new, :edit]
+      resources "/shipping_categories", ShippingCategoryController, except: [:new, :edit]
+
+    end
+  end
 end
