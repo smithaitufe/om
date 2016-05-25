@@ -3,8 +3,8 @@ defmodule Store.Repo.Migrations.CreateVariant do
 
   def change do
     create table(:variants) do
-      add :sku, :string
-      add :name, :string
+      add :sku, :string, size: 50, null: false
+      add :name, :string, size: 255, null: false
       add :price, :decimal
       add :compare_price, :decimal
       add :master, :boolean, default: false
@@ -16,7 +16,8 @@ defmodule Store.Repo.Migrations.CreateVariant do
 
       timestamps
     end
-    create index(:variants, [:product_id])
+    create index(:variants, [:product_id])    
+    create unique_index(:variants, [:sku])
 
   end
 end

@@ -3,7 +3,7 @@ defmodule Store.Repo.Migrations.CreateVariantProperty do
 
   def change do
     create table(:variant_properties) do
-      add :description, :string
+      add :description, :string, size: 100, null: false
       add :primary, :boolean, default: false
       add :variant_id, references(:variants)
       add :property_id, references(:properties)

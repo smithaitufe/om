@@ -10,7 +10,7 @@ defmodule Store.VariantProperty do
     timestamps
   end
 
-  @required_fields ~w(description primary)
+  @required_fields ~w(variant_id property_id description primary)
   @optional_fields ~w()
 
   @doc """

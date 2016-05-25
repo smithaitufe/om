@@ -3,8 +3,8 @@ defmodule Store.Repo.Migrations.CreateShippingCategory do
 
   def change do
     create table(:shipping_categories) do
-      add :name, :string
-      add :description, :string
+      add :name, :string, null: false
+      add :description, :string, size: 255
 
       timestamps
     end

@@ -3,8 +3,8 @@ defmodule Store.Repo.Migrations.CreateProperty do
 
   def change do
     create table(:properties) do
-      add :display_name, :string
-      add :identifying_name, :string
+      add :display_name, :string, null: false, size: 150
+      add :identifying_name, :string, null: false, size: 150
       add :active, :boolean, default: false
 
       timestamps
