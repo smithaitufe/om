@@ -3,9 +3,9 @@ defmodule Store.Repo.Migrations.CreateSupplier do
 
   def change do
     create table(:suppliers) do
-      add :name, :string
-      add :email, :string
-      add :phone_number, :string
+      add :name, :string, size: 150, null: false
+      add :email, :string, size: 150, null: false
+      add :phone_number, :string, size: 15, null: false
 
       timestamps
     end
