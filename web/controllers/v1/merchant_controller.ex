@@ -1,7 +1,7 @@
 defmodule Store.V1.MerchantController do
   use Store.Web, :controller
 
-  alias Store.V1.Merchant
+  alias Store.Merchant
 
   plug :scrub_params, "merchant" when action in [:create, :update]
 
@@ -17,7 +17,7 @@ defmodule Store.V1.MerchantController do
       {:ok, merchant} ->
         conn
         |> put_status(:created)
-        |> put_resp_header("location", merchant_path(conn, :show, merchant))
+        |> put_resp_header("location", v1_merchant_path(conn, :show, merchant))
         |> render("show.json", merchant: merchant)
       {:error, changeset} ->
         conn
