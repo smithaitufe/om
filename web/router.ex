@@ -24,6 +24,7 @@ defmodule Store.Router do
     pipe_through :api
 
     scope "/v1", V1, as: :v1 do
+      resources "/prototypes", PrototypeController, except: [:new, :edit]
       resources "/properties", PropertyController, except: [:new, :edit]
       resources "/product_categories", ProductCategoryController, except: [:new, :edit]
       resources "/products", ProductController, except: [:new, :edit]
