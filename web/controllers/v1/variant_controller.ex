@@ -1,7 +1,7 @@
 defmodule Store.V1.VariantController do
   use Store.Web, :controller
 
-  alias Store.V1.Variant
+  alias Store.Variant
 
   plug :scrub_params, "variant" when action in [:create, :update]
 
