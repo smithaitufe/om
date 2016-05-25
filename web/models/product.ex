@@ -16,7 +16,7 @@ defmodule Store.Product do
     timestamps
   end
 
-  @required_fields ~w(name short_description long_description available_at deleted_at permalink keywords featured)
+  @required_fields ~w(product_category_id shipping_category_id name short_description long_description available_at deleted_at permalink keywords featured)
   @optional_fields ~w()
 
   @doc """
