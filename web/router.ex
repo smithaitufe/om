@@ -44,10 +44,15 @@ defmodule Store.Router do
 
       resources "merchants", MerchantController, except: [:new, :edit]
       resources "newsletters", NewsletterController, except: [:new,:edit]
-      
+
       resources "users", UserController, except: [:new, :edit]
       resources "roles", RoleController, except: [:new, :edit]
       resources "user_roles", UserRoleController, except: [:new, :edit]
+
+
+      resources "item_types", ItemTypeController, except: [:new, :edit]
+      resources "carts", CartController, except: [:new, :edit]
+      resources "cart_items", CartItemController, except: [:new, :edit]
 
     end
   end
