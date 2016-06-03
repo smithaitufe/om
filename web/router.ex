@@ -24,10 +24,15 @@ defmodule Store.Router do
     pipe_through :api
 
     scope "/v1", V1, as: :v1 do
+      resources "properties", PropertyController, except: [:new, :edit]
+
       resources "prototypes", PrototypeController, except: [:new, :edit]
       resources "prototype_properties", PrototypePropertyController, except: [:new, :edit]
-      resources "properties", PropertyController, except: [:new, :edit]
+
       resources "shipping_categories", ShippingCategoryController, except: [:new, :edit]
+      resources "shipping_zones", ShippingZoneController, except: [:new, :edit]
+      resources "shipping_methods", ShippingMethodController, except: [:new, :edit]
+
       resources "suppliers", SupplierController, except: [:new, :edit]
       resources "variant_suppliers", VariantSupplierController, except: [:new, :edit]
       resources "product_categories", ProductCategoryController, except: [:new, :edit]
@@ -38,6 +43,8 @@ defmodule Store.Router do
 
 
       resources "merchants", MerchantController, except: [:new, :edit]
+      resources "newsletters", NewsletterController, except: [:new,:edit]
+      resources "users", UserController, except: [:new, :edit]
 
     end
   end
