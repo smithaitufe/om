@@ -45,6 +45,7 @@ defmodule Store.Router do
       resources "merchants", MerchantController, except: [:new, :edit]
       resources "newsletters", NewsletterController, except: [:new,:edit]
       resources "users", UserController, except: [:new, :edit]
+      resources "roles", RoleController, except: [:new, :edit]
 
     end
   end
