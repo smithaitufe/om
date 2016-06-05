@@ -14,6 +14,8 @@ defmodule Store.User do
     field :reset_token_expires_at, Ecto.DateTime
     field :login_attempts, :integer
 
+    has_many :shipping_addresses, {"shipping_addresses", Store.Address}, foreign_key: :assoc_id
+
     timestamps
   end
 
