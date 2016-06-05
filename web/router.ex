@@ -57,6 +57,7 @@ defmodule Store.Router do
       resources "user_newsletters", UserNewsletter, except: [:new, :edit]
       resources "user_roles", UserRoleController, except: [:new, :edit]
       resources "user_addresses", UserAddressController, except: [:new, :edit]
+      resources "user_phones", UserPhoneController, except: [:new, :edit]
 
 
       resources "carts", CartController, except: [:new, :edit]

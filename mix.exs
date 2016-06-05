@@ -2,14 +2,17 @@ defmodule Store.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :store,
+    [
+     app: :store,
      version: "0.0.1",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps]
+     deps: deps,
+     aliases: aliases
+   ]
   end
 
   # Configuration for the OTP application
@@ -39,6 +42,13 @@ defmodule Store.Mixfile do
      {:corsica, "~> 0.4"},
      {:comeonin, "~> 2.1"},
      {:guardian, "~> 0.10.0"}
+    ]
+  end
+
+  defp aliases do
+    [
+      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
+     "ecto.reset": ["ecto.drop", "ecto.setup"]
     ]
   end
 end

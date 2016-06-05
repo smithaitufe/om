@@ -1,14 +1,18 @@
-defmodule Store.UserRole do
+defmodule Store.UserPhone do
   use Store.Web, :model
 
-  schema "user_roles" do
+  schema "user_phones" do
+    field :number,:string, virtual: true
+    field :phone_type_id, :integer, virtual: true
+    field :primary, :boolean, virtual: true
+
+    belongs_to :phone, Store.Phone
     belongs_to :user, Store.User
-    belongs_to :role, Store.Role
 
     timestamps
   end
 
-  @required_fields ~w(user_id role_id)
+  @required_fields ~w(user_id phone_id)
   @optional_fields ~w()
 
   @doc """
