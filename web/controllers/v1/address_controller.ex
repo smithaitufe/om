@@ -1,7 +1,7 @@
 defmodule Store.V1.AddressController do
   use Store.Web, :controller
 
-  alias Store.V1.Address
+  alias Store.Address
 
   plug :scrub_params, "address" when action in [:create, :update]
 
@@ -17,7 +17,7 @@ defmodule Store.V1.AddressController do
       {:ok, address} ->
         conn
         |> put_status(:created)
-        |> put_resp_header("location", address_path(conn, :show, address))
+        |> put_resp_header("location", v1_address_path(conn, :show, address))
         |> render("show.json", address: address)
       {:error, changeset} ->
         conn

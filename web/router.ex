@@ -69,9 +69,8 @@ defmodule Store.Router do
       resources "countries", CountryController, except: [:new, :edit]
       resources "states", StateController, except: [:new, :edit]
 
-      
+
 
     end
   end
 end
-x
