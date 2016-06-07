@@ -13,10 +13,12 @@ defmodule Store.Repo.Migrations.CreateVariant do
       add :quantity_pending_from_supplier, :integer
       add :deleted_at, :datetime
       add :product_id, references(:products)
+      add :image_group_id, references(:image_groups)
 
       timestamps
     end
-    create index(:variants, [:product_id])    
+    create index(:variants, [:product_id])
+    create index(:variants, [:image_group_id])
     create unique_index(:variants, [:sku])
 
   end

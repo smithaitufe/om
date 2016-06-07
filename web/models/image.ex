@@ -1,18 +1,19 @@
-defmodule Store.State do
+defmodule Store.Image do
   use Store.Web, :model
 
-  schema "states" do
+  schema "images" do
+    field :url, :string
+    field :height, :integer
+    field :width, :integer
     field :name, :string
-    field :described_as, :string
-    field :abbreviation, :string
-    belongs_to :country, Store.Country
-    belongs_to :shipping_zone, Store.ShippingZone
+    field :position, :integer
+    field :caption, :string
 
     timestamps
   end
 
-  @required_fields ~w(name described_as abbreviation)
-  @optional_fields ~w(country_id shipping_zone_id)
+  @required_fields ~w(url height width name position caption)
+  @optional_fields ~w()
 
   @doc """
   Creates a changeset based on the `model` and `params`.

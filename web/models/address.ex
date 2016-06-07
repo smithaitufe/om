@@ -1,8 +1,7 @@
 defmodule Store.Address do
   use Store.Web, :model
 
-  schema "abstract addresses" do
-    field :assoc_id, :integer
+  schema "addresses" do   
 
     field :address1, :string
     field :address2, :string

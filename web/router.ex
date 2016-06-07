@@ -72,6 +72,9 @@ defmodule Store.Router do
 
       resources "reviews", ReviewController, except: [:new, :edit]
 
+      resources "image_groups", ImageGroupController, except: [:new, :edit]
+      resources "product_images", ProductImageController, except: [:new, :edit]
+
 
     end
   end
