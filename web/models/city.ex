@@ -1,17 +1,14 @@
-defmodule Store.UserAddress do
+defmodule Store.City do
   use Store.Web, :model
 
-  schema "user_addresses" do
-    
-    field :active, :boolean, default: false
-    belongs_to :user, Store.User
-    belongs_to :address, Store.Address
-
+  schema "cities" do
+    field :name, :string
+    belongs_to :state, Store.State
 
     timestamps
   end
 
-  @required_fields ~w(user_id, address_id, active)
+  @required_fields ~w(name state_id)
   @optional_fields ~w()
 
   @doc """

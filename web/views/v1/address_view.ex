@@ -11,11 +11,16 @@ defmodule Store.V1.AddressView do
 
   def render("address.json", %{address: address}) do
     %{id: address.id,
+      last_name: address.last_name,
+      first_name: address.first_name,
+      phone_number: address.phone_number1,
+      alternative_phone_number: address.alternative_phone_number,
       address1: address.address1,
       address2: address.address2,
-      city: address.city,
+      city_id: address.city_id,
       zip_code: address.zip_code,
-      state_id: address.state_id,
-      country_id: address.country_id}
+      default: address.default,
+      address_type_id: address.address_type_id
+      }
   end
 end
