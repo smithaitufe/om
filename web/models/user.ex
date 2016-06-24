@@ -2,6 +2,8 @@ defmodule Store.User do
   use Store.Web, :model
 
   schema "users" do
+
+
     field :last_name, :string
     field :first_name, :string
     field :email, :string
@@ -14,12 +16,13 @@ defmodule Store.User do
     field :reset_token_expires_at, Ecto.DateTime
     field :login_attempts, :integer
 
-    has_many :shipping_addresses, {"shipping_addresses", Store.Address}, foreign_key: :assoc_id
+    belongs_to :user_type, Store.UserType
+    has_many :user_addresses, Store.UserAddress, foreign_key: :user_id
 
     timestamps
   end
 
-  @required_fields ~w(last_name first_name email encrypted_password active locked lock_expires_at reset_token reset_token_created_at reset_token_expires_at login_attempts)
+  @required_fields ~w(user_type_id last_name first_name email encrypted_password active locked lock_expires_at reset_token reset_token_created_at reset_token_expires_at login_attempts)
   @optional_fields ~w()
 
   @doc """

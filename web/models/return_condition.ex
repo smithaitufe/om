@@ -1,18 +1,14 @@
-defmodule Store.CartItem do
+defmodule Store.ReturnCondition do
   use Store.Web, :model
 
-  schema "cart_items" do
-    field :quantity, :integer
-    field :active, :boolean, default: false
-
-    belongs_to :cart, Store.Cart
-    belongs_to :variant, Store.Variant
-    belongs_to :item_type, Store.ItemType
+  schema "return_conditions" do
+    field :label, :string
+    field :description, :string
 
     timestamps
   end
 
-  @required_fields ~w(cart_id variant_id item_type_id quantity active)
+  @required_fields ~w(label description)
   @optional_fields ~w()
 
   @doc """

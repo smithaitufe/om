@@ -10,7 +10,7 @@ defmodule Store.Country do
     timestamps
   end
 
-  @required_fields ~w(name abbreviation active)
+  @required_fields ~w(name abbreviation active shipping_zone_id)
   @optional_fields ~w()
 
   @doc """

@@ -7,7 +7,7 @@ defmodule Store.Cart do
     timestamps
   end
 
-  @required_fields ~w()
+  @required_fields ~w(user_id)
   @optional_fields ~w()
 
   @doc """

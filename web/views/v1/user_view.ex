@@ -11,6 +11,7 @@ defmodule Store.V1.UserView do
 
   def render("user.json", %{user: user}) do
     %{id: user.id,
+      user_type_id: user.user_type_id,
       last_name: user.last_name,
       first_name: user.first_name,
       email: user.email,

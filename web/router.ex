@@ -27,14 +27,25 @@ defmodule Store.Router do
 
       resources "address_types", AddressTypeController, except: [:new, :edit]
       resources "item_types", ItemTypeController, except: [:new, :edit]
-      resources "addresses", AddressController, except: [:new, :edit]
-
-
       resources "properties", PropertyController, except: [:new, :edit]
-
       resources "prototypes", PrototypeController, except: [:new, :edit]
       resources "prototype_properties", PrototypePropertyController, except: [:new, :edit]
       resources "brands", BrandController, except: [:new, :edit]
+
+      resources "users", UserController, except: [:new, :edit]
+      resources "user_newsletters", UserNewsletter, except: [:new, :edit]
+      resources "user_roles", UserRoleController, except: [:new, :edit]
+      resources "user_addresses", UserAddressController, except: [:new, :edit]
+      resources "user_phones", UserPhoneController, except: [:new, :edit]
+
+      resources "merchants", MerchantController, except: [:new, :edit]
+      resources "newsletters", NewsletterController, except: [:new,:edit]
+      
+      resources "return_conditions", ReturnConditionController, except: [:new, :edit]
+      resources "addresses", AddressController, except: [:new, :edit]
+
+
+
       resources "shipping_categories", ShippingCategoryController, except: [:new, :edit]
       resources "shipping_zones", ShippingZoneController, except: [:new, :edit]
       resources "shipping_methods", ShippingMethodController, except: [:new, :edit]
@@ -48,16 +59,11 @@ defmodule Store.Router do
       resources "variant_properties", VariantPropertyController, except: [:new, :edit]
 
 
-      resources "merchants", MerchantController, except: [:new, :edit]
-      resources "newsletters", NewsletterController, except: [:new,:edit]
+
 
       resources "roles", RoleController, except: [:new, :edit]
 
-      resources "users", UserController, except: [:new, :edit]
-      resources "user_newsletters", UserNewsletter, except: [:new, :edit]
-      resources "user_roles", UserRoleController, except: [:new, :edit]
-      resources "user_addresses", UserAddressController, except: [:new, :edit]
-      resources "user_phones", UserPhoneController, except: [:new, :edit]
+
 
 
       resources "carts", CartController, except: [:new, :edit]
