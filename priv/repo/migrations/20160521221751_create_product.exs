@@ -13,11 +13,13 @@ defmodule Store.Repo.Migrations.CreateProduct do
       add :featured, :boolean, default: false
       add :product_category_id, references(:product_categories)
       add :shipping_category_id, references(:shipping_categories)
+      add :brand_id, references(:brands)
 
       timestamps
     end
     create index(:products, [:product_category_id])
     create index(:products, [:shipping_category_id])
+    create index(:products, [:brand_id])
     create unique_index(:products, [:name])
 
   end

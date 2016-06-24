@@ -12,11 +12,12 @@ defmodule Store.Product do
     field :featured, :boolean, default: false
     belongs_to :product_category, Store.ProductCategory
     belongs_to :shipping_category, Store.ShippingCategory
+    belongs_to :brand, Store.Brand
 
     timestamps
   end
 
-  @required_fields ~w(product_category_id shipping_category_id name short_description long_description available_at deleted_at permalink keywords featured)
+  @required_fields ~w(brand_id product_category_id shipping_category_id name short_description long_description available_at deleted_at permalink keywords featured)
   @optional_fields ~w()
 
   @doc """

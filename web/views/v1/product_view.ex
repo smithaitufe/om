@@ -11,6 +11,7 @@ defmodule Store.V1.ProductView do
 
   def render("product.json", %{product: product}) do
     %{id: product.id,
+      brand_id: product.brand_id,
       name: product.name,
       short_description: product.short_description,
       long_description: product.long_description,

@@ -34,7 +34,7 @@ defmodule Store.Router do
 
       resources "prototypes", PrototypeController, except: [:new, :edit]
       resources "prototype_properties", PrototypePropertyController, except: [:new, :edit]
-
+      resources "brands", BrandController, except: [:new, :edit]
       resources "shipping_categories", ShippingCategoryController, except: [:new, :edit]
       resources "shipping_zones", ShippingZoneController, except: [:new, :edit]
       resources "shipping_methods", ShippingMethodController, except: [:new, :edit]
