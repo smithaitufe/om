@@ -31,7 +31,8 @@ defmodule Store.Router do
       resources "prototypes", PrototypeController, except: [:new, :edit]
       resources "prototype_properties", PrototypePropertyController, except: [:new, :edit]
       resources "brands", BrandController, except: [:new, :edit]
-
+      resources "tax_rates", TaxRateController, except: [:new, :edit]
+      
       resources "users", UserController, except: [:new, :edit]
       resources "user_newsletters", UserNewsletter, except: [:new, :edit]
       resources "user_roles", UserRoleController, except: [:new, :edit]
