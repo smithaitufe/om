@@ -5,7 +5,7 @@ defmodule Store.Repo.Migrations.CreateState do
     create table(:states) do
       add :name, :string, limit: 150, null: false, unique: true
       add :described_as, :string
-      add :abbreviation, :string, limit: 5, null: false, unique: true
+      add :abbreviation, :string, limit: 5 #, null: false, unique: true
       add :country_id, references(:countries), null: false
       add :shipping_zone_id, references(:shipping_zones), null: false
 

@@ -1,16 +1,14 @@
-defmodule Store.Country do
+defmodule Store.LocalGovernmentArea do
   use Store.Web, :model
 
-  schema "countries" do
+  schema "local_government_areas" do
     field :name, :string
-    field :abbreviation, :string
-    
-
+    belongs_to :state, Store.State
 
     timestamps
   end
 
-  @required_fields ~w(name abbreviation)
+  @required_fields ~w(name)
   @optional_fields ~w()
 
   @doc """

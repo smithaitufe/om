@@ -77,6 +77,7 @@ defmodule Store.Router do
 
       resources "countries", CountryController, except: [:new, :edit]
       resources "states", StateController, except: [:new, :edit]
+      resources "local_government_areas", LocalGovernmentAreaController, except: [:new, :edit]
       resources "cities", CityController, except: [:new, :edit]
 
       resources "reviews", ReviewController, except: [:new, :edit]

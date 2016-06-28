@@ -1,16 +1,17 @@
-defmodule Store.Country do
+defmodule Store.TaxRate do
   use Store.Web, :model
 
-  schema "countries" do
-    field :name, :string
-    field :abbreviation, :string
-    
-
+  schema "tax_rates" do
+    field :percentage, :integer
+    field :start_date, Timex.Ecto.Date
+    field :end_date, Timex.Ecto.Date
+    field :active, :boolean
+    belongs_to :country, Store.Country
 
     timestamps
   end
 
-  @required_fields ~w(name abbreviation)
+  @required_fields ~w(percentage start_date end_date active)
   @optional_fields ~w()
 
   @doc """

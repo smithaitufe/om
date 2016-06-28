@@ -12,8 +12,7 @@ defmodule Store.V1.CountryView do
   def render("country.json", %{country: country}) do
     %{id: country.id,
       name: country.name,
-      abbreviation: country.abbreviation,
-      shipping_zone_id: country.shipping_zone_id,
-      active: country.active}
+      abbreviation: country.abbreviation
+      }
   end
 end
