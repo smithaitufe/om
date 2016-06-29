@@ -10,14 +10,15 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-alias Store.{Repo, Country, AddressType, TaxRate, OrderStatusType, ShippingZone, State, LocalGovernmentArea}
+rule = "==============================================================================================================================================================================================================="
+alias Store.{Repo, Country, AddressType, ItemType, TaxRate, OrderStatusType, ShippingZone, State, LocalGovernmentArea}
 alias Timex.{Date}
 
 country  = Repo.get_by(Country, [name: "Nigeria"])
 if country == nil do
   Repo.insert!(%Country{name: "Nigeria", abbreviation: "NG"})
 end
-IO.puts "============================================================================================"
+IO.puts rule
 Repo.insert!(%ShippingZone{name: "Nation Wide"})
 Repo.insert!(%ShippingZone{name: "Area Wide"})
 
@@ -25,19 +26,29 @@ country  = Repo.get_by(Country, [name: "Nigeria"])
 changeset = TaxRate.changeset(%TaxRate{}, %{country_id: country.id, percentage: 5, start_date: Date.from({1994, 1,1}) })
 
 Repo.insert!(changeset)
-IO.puts "============================================================================================"
+IO.puts rule
 order_status_types  =  [%{name: "Open"}, %{name: "Processed"}, %{name: "Failed"}, %{name: "Completed"}, %{name: "Cancelled"}, %{name: "Declined"}, %{name: "Backordered"}]
 for ost <- order_status_types do
   changeset = OrderStatusType.changeset(%OrderStatusType{}, ost)
   Repo.insert!(changeset)
 end
-IO.puts "============================================================================================"
+IO.puts rule
 address_types = [%{name: "Billing Address"}, %{name: "Shipping Address"}]
 for at <- address_types do
   changeset = AddressType.changeset(%AddressType{}, at)
   Repo.insert!(changeset)
 end
-IO.puts "============================================================================================"
+IO.puts rule
+
+item_types = [%{name: "shopping_cart"},%{name: "save_for_later"},%{name: "wish_list"}, %{name: "purchased"}]
+for item_type <- item_types do
+  found = Repo.get_by(ItemType, [name: item_type[:name]])
+  if (found == nil) do
+    changeset = ItemType.changeset(%ItemType{}, item_type)
+    Repo.insert!(changeset)
+  end
+end
+
 
 country = Country |> Repo.get_by(name: "Nigeria")
 
