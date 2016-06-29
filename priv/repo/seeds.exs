@@ -10,32 +10,34 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-alias Store.{Repo, Country, TaxRate, OrderStatusType}
-alias Timex.{Date, Time, DateTime}
+alias Store.{Repo, Country, AddressType, TaxRate, OrderStatusType, ShippingZone, State, LocalGovernmentArea}
+alias Timex.{Date}
 
 country  = Repo.get_by(Country, [name: "Nigeria"])
-if country == null do
+if country == nil do
   Repo.insert!(%Country{name: "Nigeria", abbreviation: "NG"})
 end
-
+IO.puts "============================================================================================"
 Repo.insert!(%ShippingZone{name: "Nation Wide"})
 Repo.insert!(%ShippingZone{name: "Area Wide"})
 
 country  = Repo.get_by(Country, [name: "Nigeria"])
-Repo.insert!(%TaxRate{country_id: country.id, percentage: 5, start_date: Date.from({1994, 1,1}) })
+changeset = TaxRate.changeset(%TaxRate{}, %{country_id: country.id, percentage: 5, start_date: Date.from({1994, 1,1}) })
 
+Repo.insert!(changeset)
+IO.puts "============================================================================================"
 order_status_types  =  [%{name: "Open"}, %{name: "Processed"}, %{name: "Failed"}, %{name: "Completed"}, %{name: "Cancelled"}, %{name: "Declined"}, %{name: "Backordered"}]
 for ost <- order_status_types do
-  changeset = OrderStatusType.changeset(ost)
+  changeset = OrderStatusType.changeset(%OrderStatusType{}, ost)
   Repo.insert!(changeset)
 end
-
+IO.puts "============================================================================================"
 address_types = [%{name: "Billing Address"}, %{name: "Shipping Address"}]
 for at <- address_types do
-  changeset = AddressType.changeset(at)
+  changeset = AddressType.changeset(%AddressType{}, at)
   Repo.insert!(changeset)
 end
-
+IO.puts "============================================================================================"
 
 country = Country |> Repo.get_by(name: "Nigeria")
 
@@ -89,7 +91,7 @@ for s <- states do
     end
   end
 end
-
+IO.puts "============================================================================================"
 
 lga_list =[
   %{name: "Aba North", state: "Abia"},

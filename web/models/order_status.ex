@@ -5,11 +5,12 @@ defmodule Store.OrderStatus do
     field :active, :boolean, default: false
     belongs_to :order, Store.Order
     belongs_to :order_status_type, Store.OrderStatusType
+    belongs_to :user, Store.User
 
     timestamps
   end
 
-  @required_fields ~w(active)
+  @required_fields ~w(active order_id order_status_type_id user_id)
   @optional_fields ~w()
 
   @doc """

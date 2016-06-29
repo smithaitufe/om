@@ -3,6 +3,7 @@ defmodule Store.Repo.Migrations.CreateProduct do
 
   def change do
     create table(:products) do
+      add :shop_id, references(:shops)
       add :name, :string, size: 255, null: false
       add :short_description, :string
       add :long_description, :text

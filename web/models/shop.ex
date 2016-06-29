@@ -1,18 +1,17 @@
-defmodule Store.State do
+defmodule Store.Shop do
   use Store.Web, :model
 
-  schema "states" do
+  schema "shops" do
     field :name, :string
-    field :described_as, :string
-    field :abbreviation, :string
-    belongs_to :country, Store.Country
-    belongs_to :shipping_zone, Store.ShippingZone
+    field :phone_number, :string
+    field :email, :string
+    belongs_to :user, Store.User
 
     timestamps
   end
 
-  @required_fields ~w(name country_id shipping_zone_id)
-  @optional_fields ~w(described_as abbreviation)
+  @required_fields ~w(name phone_number email)
+  @optional_fields ~w()
 
   @doc """
   Creates a changeset based on the `model` and `params`.

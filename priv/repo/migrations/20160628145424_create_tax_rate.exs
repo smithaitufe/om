@@ -5,7 +5,7 @@ defmodule Store.Repo.Migrations.CreateTaxRate do
     create table(:tax_rates) do
       add :percentage, :integer, null: false
       add :start_date, :date
-      add :end_date, :date
+      add :end_date, :date, null: true
       add :country_id, references(:countries)
       add :active, :boolean, default: true
 

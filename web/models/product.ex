@@ -12,6 +12,7 @@ defmodule Store.Product do
     field :featured, :boolean, default: false
     belongs_to :product_category, Store.ProductCategory
     belongs_to :shipping_category, Store.ShippingCategory
+    belongs_to :shop, Store.Shop
     belongs_to :brand, Store.Brand
 
     timestamps
