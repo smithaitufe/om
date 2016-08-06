@@ -2,11 +2,11 @@ defmodule Store.V1.VariantPropertyView do
   use Store.Web, :view
 
   def render("index.json", %{variant_properties: variant_properties}) do
-    %{data: render_many(variant_properties, Store.V1.VariantPropertyView, "variant_property.json")}
+    render_many(variant_properties, Store.V1.VariantPropertyView, "variant_property.json")
   end
 
   def render("show.json", %{variant_property: variant_property}) do
-    %{data: render_one(variant_property, Store.V1.VariantPropertyView, "variant_property.json")}
+    render_one(variant_property, Store.V1.VariantPropertyView, "variant_property.json")
   end
 
   def render("variant_property.json", %{variant_property: variant_property}) do

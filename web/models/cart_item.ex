@@ -1,5 +1,5 @@
 defmodule Store.CartItem do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "cart_items" do
     field :quantity, :integer

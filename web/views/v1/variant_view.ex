@@ -2,11 +2,11 @@ defmodule Store.V1.VariantView do
   use Store.Web, :view
 
   def render("index.json", %{variants: variants}) do
-    %{data: render_many(variants, Store.V1.VariantView, "variant.json")}
+    render_many(variants, Store.V1.VariantView, "variant.json")
   end
 
   def render("show.json", %{variant: variant}) do
-    %{data: render_one(variant, Store.V1.VariantView, "variant.json")}
+    render_one(variant, Store.V1.VariantView, "variant.json")
   end
 
   def render("variant.json", %{variant: variant}) do

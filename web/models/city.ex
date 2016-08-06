@@ -1,5 +1,5 @@
 defmodule Store.City do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "cities" do
     field :name, :string

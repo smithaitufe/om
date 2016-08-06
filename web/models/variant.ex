@@ -1,5 +1,5 @@
 defmodule Store.Variant do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "variants" do
     field :sku, :string

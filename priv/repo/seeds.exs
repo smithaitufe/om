@@ -1,4 +1,4 @@
-# Script for populating the database. You can run it as:
+tur# Script for populating the database. You can run it as:
 #
 #     mix run priv/repo/seeds.exs
 #
@@ -24,7 +24,6 @@ Repo.insert!(%ShippingZone{name: "Area Wide"})
 
 country  = Repo.get_by(Country, [name: "Nigeria"])
 changeset = TaxRate.changeset(%TaxRate{}, %{country_id: country.id, percentage: 5, start_date: Date.from({1994, 1,1}) })
-
 Repo.insert!(changeset)
 IO.puts rule
 order_status_types  =  [%{name: "Open"}, %{name: "Processed"}, %{name: "Failed"}, %{name: "Completed"}, %{name: "Cancelled"}, %{name: "Declined"}, %{name: "Backordered"}]
@@ -102,7 +101,7 @@ for s <- states do
     end
   end
 end
-IO.puts "============================================================================================"
+IO.puts rule
 
 lga_list =[
   %{name: "Aba North", state: "Abia"},

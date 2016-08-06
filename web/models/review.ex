@@ -1,5 +1,5 @@
 defmodule Store.Review do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "reviews" do
     field :comment, :string

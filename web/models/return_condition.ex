@@ -1,5 +1,5 @@
 defmodule Store.ReturnCondition do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "return_conditions" do
     field :label, :string

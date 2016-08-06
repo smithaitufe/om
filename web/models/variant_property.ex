@@ -1,5 +1,5 @@
 defmodule Store.VariantProperty do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "variant_properties" do
     field :description, :string

@@ -1,5 +1,5 @@
 defmodule Store.LocalGovernmentArea do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "local_government_areas" do
     field :name, :string

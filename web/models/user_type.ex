@@ -1,5 +1,5 @@
 defmodule Store.UserType do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "user_types" do
     field :name, :string

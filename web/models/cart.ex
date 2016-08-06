@@ -1,5 +1,5 @@
 defmodule Store.Cart do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "carts" do
     belongs_to :user, Store.User

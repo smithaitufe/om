@@ -1,5 +1,5 @@
 defmodule Store.ShippingRateType do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "shipping_rate_types" do
     field :name, :string

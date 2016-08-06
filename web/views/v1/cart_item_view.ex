@@ -2,11 +2,11 @@ defmodule Store.V1.CartItemView do
   use Store.Web, :view
 
   def render("index.json", %{cart_items: cart_items}) do
-    %{data: render_many(cart_items, Store.V1.CartItemView, "cart_item.json")}
+    render_many(cart_items, Store.V1.CartItemView, "cart_item.json")
   end
 
   def render("show.json", %{cart_item: cart_item}) do
-    %{data: render_one(cart_item, Store.V1.CartItemView, "cart_item.json")}
+    render_one(cart_item, Store.V1.CartItemView, "cart_item.json")
   end
 
   def render("cart_item.json", %{cart_item: cart_item}) do

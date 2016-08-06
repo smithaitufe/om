@@ -1,5 +1,5 @@
 defmodule Store.ImageGroup do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "image_groups" do
     field :name, :string

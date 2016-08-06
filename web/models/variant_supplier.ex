@@ -1,5 +1,5 @@
 defmodule Store.VariantSupplier do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "variant_suppliers" do
     field :cost, :decimal

@@ -1,5 +1,5 @@
 defmodule Store.Order do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "orders" do
     field :number, :string

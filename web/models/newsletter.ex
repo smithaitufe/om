@@ -1,5 +1,5 @@
 defmodule Store.Newsletter do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "newsletters" do
     field :name, :string

@@ -1,5 +1,5 @@
 defmodule Store.OrderStatus do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "order_statuses" do
     field :active, :boolean, default: false

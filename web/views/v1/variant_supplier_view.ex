@@ -2,11 +2,11 @@ defmodule Store.V1.VariantSupplierView do
   use Store.Web, :view
 
   def render("index.json", %{variant_suppliers: variant_suppliers}) do
-    %{data: render_many(variant_suppliers, Store.V1.VariantSupplierView, "variant_supplier.json")}
+    render_many(variant_suppliers, Store.V1.VariantSupplierView, "variant_supplier.json")
   end
 
   def render("show.json", %{variant_supplier: variant_supplier}) do
-    %{data: render_one(variant_supplier, Store.V1.VariantSupplierView, "variant_supplier.json")}
+    render_one(variant_supplier, Store.V1.VariantSupplierView, "variant_supplier.json")
   end
 
   def render("variant_supplier.json", %{variant_supplier: variant_supplier}) do

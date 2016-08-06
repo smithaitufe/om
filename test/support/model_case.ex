@@ -24,8 +24,10 @@ defmodule Store.ModelCase do
   end
 
   setup tags do
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Store.Repo)
+
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(Store.Repo, [])
+      Ecto.Adapters.SQL.Sandbox.mode(Store.Repo, {:shared, self()})
     end
 
     :ok
@@ -45,10 +47,10 @@ defmodule Store.ModelCase do
   You could then write your assertion like:
 
       assert {:password, "is unsafe"} in errors_on(%User{}, password: "password")
-  
+
   You can also create the changeset manually and retrieve the errors
   field directly:
-  
+
       iex> changeset = User.changeset(%User{}, password: "password")
       iex> {:password, "is unsafe"} in changeset.errors
       true

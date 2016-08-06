@@ -1,5 +1,5 @@
 defmodule Store.State do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "states" do
     field :name, :string

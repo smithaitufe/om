@@ -1,8 +1,8 @@
 defmodule Store.UserAddress do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "user_addresses" do
-    
+
     field :active, :boolean, default: false
     belongs_to :user, Store.User
     belongs_to :address, Store.Address

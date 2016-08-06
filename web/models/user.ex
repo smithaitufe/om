@@ -1,5 +1,5 @@
 defmodule Store.User do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "users" do
 

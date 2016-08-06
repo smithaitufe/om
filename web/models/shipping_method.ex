@@ -1,5 +1,5 @@
 defmodule Store.ShippingMethod do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "shipping_methods" do
     field :name, :string

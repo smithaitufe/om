@@ -1,5 +1,5 @@
 defmodule Store.Role do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "roles" do
     field :name, :string

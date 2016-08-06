@@ -1,5 +1,5 @@
 defmodule Store.Prototype do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "prototypes" do
     field :name, :string

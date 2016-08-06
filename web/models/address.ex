@@ -1,5 +1,5 @@
 defmodule Store.Address do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "addresses" do
     field :last_name, :string

@@ -1,5 +1,5 @@
 defmodule Store.Brand do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "brands" do
     field :name, :string

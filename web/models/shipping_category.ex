@@ -1,5 +1,5 @@
 defmodule Store.ShippingCategory do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "shipping_categories" do
     field :name, :string

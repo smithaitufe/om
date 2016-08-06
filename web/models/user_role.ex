@@ -1,5 +1,5 @@
 defmodule Store.UserRole do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "user_roles" do
     belongs_to :user, Store.User

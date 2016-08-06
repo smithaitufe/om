@@ -1,5 +1,5 @@
 defmodule Store.ItemType do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "item_types" do
     field :name, :string

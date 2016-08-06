@@ -1,5 +1,5 @@
 defmodule Store.Supplier do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "suppliers" do
     field :name, :string

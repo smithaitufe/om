@@ -1,5 +1,5 @@
 defmodule Store.PaymentMethod do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "payment_methods" do
     field :name, :string

@@ -1,5 +1,5 @@
 defmodule Store.Property do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "properties" do
     field :display_name, :string

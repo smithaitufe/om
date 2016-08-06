@@ -1,5 +1,5 @@
 defmodule Store.ProductImage do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "product_images" do
     belongs_to :product, Store.Product

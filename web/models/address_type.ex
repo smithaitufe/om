@@ -1,5 +1,5 @@
 defmodule Store.AddressType do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "address_types" do
     field :name, :string

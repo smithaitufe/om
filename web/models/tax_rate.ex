@@ -1,5 +1,5 @@
 defmodule Store.TaxRate do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "tax_rates" do
     field :percentage, :integer

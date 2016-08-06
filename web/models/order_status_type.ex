@@ -1,5 +1,5 @@
 defmodule Store.OrderStatusType do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "order_status_types" do
     field :name, :string

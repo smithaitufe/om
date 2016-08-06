@@ -1,5 +1,5 @@
 defmodule Store.Coupon do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "coupons" do
     field :type, :string

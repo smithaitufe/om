@@ -2,11 +2,11 @@ defmodule Store.V1.CouponView do
   use Store.Web, :view
 
   def render("index.json", %{coupons: coupons}) do
-    %{data: render_many(coupons, Store.V1.CouponView, "coupon.json")}
+    render_many(coupons, Store.V1.CouponView, "coupon.json")
   end
 
   def render("show.json", %{coupon: coupon}) do
-    %{data: render_one(coupon, Store.V1.CouponView, "coupon.json")}
+    render_one(coupon, Store.V1.CouponView, "coupon.json")
   end
 
   def render("coupon.json", %{coupon: coupon}) do

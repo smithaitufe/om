@@ -1,5 +1,5 @@
 defmodule Store.UserPhone do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "user_phones" do
     field :number,:string, virtual: true

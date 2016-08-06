@@ -1,5 +1,5 @@
 defmodule Store.PrototypeProperty do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "prototype_properties" do
     belongs_to :prototype, Store.Prototype

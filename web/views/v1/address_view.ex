@@ -2,11 +2,11 @@ defmodule Store.V1.AddressView do
   use Store.Web, :view
 
   def render("index.json", %{addresses: addresses}) do
-    %{data: render_many(addresses, Store.V1.AddressView, "address.json")}
+    render_many(addresses, Store.V1.AddressView, "address.json")
   end
 
   def render("show.json", %{address: address}) do
-    %{data: render_one(address, Store.V1.AddressView, "address.json")}
+    render_one(address, Store.V1.AddressView, "address.json")
   end
 
   def render("address.json", %{address: address}) do

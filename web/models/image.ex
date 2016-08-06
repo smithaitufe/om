@@ -1,5 +1,5 @@
 defmodule Store.Image do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "images" do
     field :url, :string

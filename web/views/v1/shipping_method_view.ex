@@ -2,11 +2,11 @@ defmodule Store.V1.ShippingMethodView do
   use Store.Web, :view
 
   def render("index.json", %{shipping_methods: shipping_methods}) do
-    %{data: render_many(shipping_methods, Store.V1.ShippingMethodView, "shipping_method.json")}
+    render_many(shipping_methods, Store.V1.ShippingMethodView, "shipping_method.json")
   end
 
   def render("show.json", %{shipping_method: shipping_method}) do
-    %{data: render_one(shipping_method, Store.V1.ShippingMethodView, "shipping_method.json")}
+    render_one(shipping_method, Store.V1.ShippingMethodView, "shipping_method.json")
   end
 
   def render("shipping_method.json", %{shipping_method: shipping_method}) do

@@ -2,11 +2,11 @@ defmodule Store.V1.ProductPropertyView do
   use Store.Web, :view
 
   def render("index.json", %{product_properties: product_properties}) do
-    %{data: render_many(product_properties, Store.V1.ProductPropertyView, "product_property.json")}
+    render_many(product_properties, Store.V1.ProductPropertyView, "product_property.json")
   end
 
   def render("show.json", %{product_property: product_property}) do
-    %{data: render_one(product_property, Store.V1.ProductPropertyView, "product_property.json")}
+    render_one(product_property, Store.V1.ProductPropertyView, "product_property.json")
   end
 
   def render("product_property.json", %{product_property: product_property}) do

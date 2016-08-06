@@ -1,10 +1,10 @@
 defmodule Store.Country do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "countries" do
     field :name, :string
     field :abbreviation, :string
-    
+
 
 
     timestamps

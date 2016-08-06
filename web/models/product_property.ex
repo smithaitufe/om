@@ -1,5 +1,5 @@
 defmodule Store.ProductProperty do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "product_properties" do
     field :position, :integer

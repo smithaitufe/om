@@ -34,7 +34,7 @@ defmodule Store.Mixfile do
   defp deps do
     [
      {:phoenix, "~> 1.0.0"},
-     {:phoenix_ecto, "~> 1.1"},
+     {:phoenix_ecto, "~> 3.0.0-rc"},
      {:postgrex, ">= 0.0.0"},
      {:phoenix_html, "~> 2.1"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
@@ -50,7 +50,8 @@ defmodule Store.Mixfile do
   defp aliases do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
-     "ecto.reset": ["ecto.drop", "ecto.setup"]
+      "ecto.reset": ["ecto.drop", "ecto.setup"],
+      "test": ["ecto.create --quiet", "ecto.migrate", "test"]
     ]
   end
 end

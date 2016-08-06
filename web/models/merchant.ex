@@ -1,5 +1,5 @@
 defmodule Store.Merchant do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "merchants" do
     field :name, :string

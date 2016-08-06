@@ -1,5 +1,5 @@
 defmodule Store.UserNewsletter do
-  use Store.Web, :model
+  use Ecto.Schema
 
   schema "user_newsletters" do
     belongs_to :user, Store.User
