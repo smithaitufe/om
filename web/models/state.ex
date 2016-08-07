@@ -11,8 +11,6 @@ defmodule Store.State do
     timestamps
   end
 
-  @required_fields ~w(name country_id shipping_zone_id)
-  @optional_fields ~w(described_as abbreviation)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -20,8 +18,9 @@ defmodule Store.State do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, @required_fields, @optional_fields)
+  def changeset(struct, params \\ :empty) do
+    struct
+    |> cast(params, [:country_id, :shipping_zone_id, :name, :described_as, :abbreviation])
+    |> validate_required([:country_id, :shipping_zone_id, :name, :abbreviation])
   end
 end

@@ -3,7 +3,7 @@ defmodule Store.Review do
 
   schema "reviews" do
     field :comment, :string
-    field :rating, :integer
+    field :rating, :integer, default 0
     belongs_to :user, Store.User
     belongs_to :product, Store.Product
 
@@ -21,6 +21,7 @@ defmodule Store.Review do
   """
   def changeset(model, params \\ :empty) do
     model
-    |> cast(params, @required_fields, @optional_fields)
+    |> cast(params, [:user_id, :product_id, :comment, :rating])
+    |> validate_required([:user_id, :product_id, :comment])
   end
 end

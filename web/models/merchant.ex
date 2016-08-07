@@ -18,8 +18,9 @@ defmodule Store.Merchant do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, @required_fields, @optional_fields)
+  def changeset(struct, params \\ :empty) do
+    struct
+    |> cast(params, [:name, :phone_number, :email])
+    |> validate_required([:name, :phone_number, :email])
   end
 end

@@ -26,8 +26,9 @@ defmodule Store.Variant do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, @required_fields, @optional_fields)
+  def changeset(struct, params \\ :empty) do
+    struct
+    |> cast(params, [:product_id, :sku, :name, :price, :compare_price, :master, :quantity_on_hand, :quantity_pending_to_customer, :quantity_pending_from_supplier, :deleted_at])
+    |> validate_required([:product_id, :sku, :name, :price, :quantity_on_hand, :quantity_pending_to_customer, :quantity_pending_from_supplier])
   end
 end

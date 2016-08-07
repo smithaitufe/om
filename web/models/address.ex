@@ -27,6 +27,7 @@ defmodule Store.Address do
   """
   def changeset(model, params \\ :empty) do
     model
-    |> cast(params, @required_fields, @optional_fields)
+    |> cast(params, [:address_type_id, :last_name, :first_name, :address1, :address2, :city_id, :phone_number, :alternative_phone_number])
+    |> validate_required([:address_type_id, :last_name, :first_name, :address1, :city_id, :phone_number])
   end
 end

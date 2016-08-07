@@ -8,9 +8,6 @@ defmodule Store.PrototypeProperty do
     timestamps
   end
 
-  @required_fields ~w(prototype_id property_id)
-  @optional_fields ~w()
-
   @doc """
   Creates a changeset based on the `model` and `params`.
 
@@ -19,6 +16,7 @@ defmodule Store.PrototypeProperty do
   """
   def changeset(model, params \\ :empty) do
     model
-    |> cast(params, @required_fields, @optional_fields)
+    |> cast(params, [:prototype_id, :property_id])
+    |> validate_required([:prototype_id, :property_id])
   end
 end

@@ -19,6 +19,7 @@ defmodule Store.ShippingMethod do
   """
   def changeset(model, params \\ :empty) do
     model
-    |> cast(params, @required_fields, @optional_fields)
+    |> cast(params, [:shipping_zone_id, :name])
+    |> validate_required([:shipping_zone_id, :name])
   end
 end

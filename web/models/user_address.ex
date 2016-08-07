@@ -20,8 +20,9 @@ defmodule Store.UserAddress do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, @required_fields, @optional_fields)
+  def changeset(struct, params \\ :empty) do
+    struct
+    |> cast(params, [:user_id, :address_id, :active])
+    |> validate_required([:user_id, :address_id, :active])
   end
 end

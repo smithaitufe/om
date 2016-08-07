@@ -20,6 +20,7 @@ defmodule Store.Property do
   """
   def changeset(model, params \\ :empty) do
     model
-    |> cast(params, @required_fields, @optional_fields)
+    |> cast(params, [:display_name, :identifying_name, :active])
+    |> validate_required([:display_name, :identifying_name, :active])
   end
 end

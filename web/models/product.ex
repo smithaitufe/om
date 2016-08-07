@@ -18,8 +18,7 @@ defmodule Store.Product do
     timestamps
   end
 
-  @required_fields ~w(brand_id product_category_id shipping_category_id name short_description long_description available_at deleted_at permalink keywords featured)
-  @optional_fields ~w()
+
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -29,6 +28,7 @@ defmodule Store.Product do
   """
   def changeset(model, params \\ :empty) do
     model
-    |> cast(params, @required_fields, @optional_fields)
+    |> cast(params, [:brand_id, :product_category_id, :shipping_category_id, :name, :short_description, :long_description, :available_at, :deleted_at, :permalink, :keywords, :featured])
+    |> validate_required([:brand_id, :product_category_id, :shipping_category_id, :name, :short_description, :long_description, :available_at, :deleted_at, :permalink, :keywords, :featured])
   end
 end

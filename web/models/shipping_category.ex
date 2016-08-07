@@ -19,6 +19,7 @@ defmodule Store.ShippingCategory do
   """
   def changeset(model, params \\ :empty) do
     model
-    |> cast(params, @required_fields, @optional_fields)
+    |> cast(params, [:name, :description])
+    |> validate_required([:name, :description])
   end
 end

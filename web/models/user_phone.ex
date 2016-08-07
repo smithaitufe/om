@@ -12,9 +12,6 @@ defmodule Store.UserPhone do
     timestamps
   end
 
-  @required_fields ~w(user_id phone_id)
-  @optional_fields ~w()
-
   @doc """
   Creates a changeset based on the `model` and `params`.
 
@@ -23,6 +20,7 @@ defmodule Store.UserPhone do
   """
   def changeset(model, params \\ :empty) do
     model
-    |> cast(params, @required_fields, @optional_fields)
+    |> cast(params, [:user_id, :phone_id, :phone_type_id, :number, :primary])
+    |> validate_required([:user_id, :phone_id, :phone_type_id, :number, :primary])
   end
 end

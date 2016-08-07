@@ -8,8 +8,8 @@ defmodule Store.LocalGovernmentArea do
     timestamps
   end
 
-  @required_fields ~w(name)
-  @optional_fields ~w()
+  @fields ~w(name state_id)
+  @required_fields ~w(name state_id)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -17,8 +17,9 @@ defmodule Store.LocalGovernmentArea do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, @required_fields, @optional_fields)
+  def changeset(struct, params \\ :empty) do
+    struct
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

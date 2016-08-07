@@ -11,17 +11,15 @@ defmodule Store.TaxRate do
     timestamps
   end
 
-  @required_fields ~w(percentage start_date country_id)
-  @optional_fields ~w(active end_date)
-
   @doc """
   Creates a changeset based on the `model` and `params`.
 
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, @required_fields, @optional_fields)
+  def changeset(struct, params \\ :empty) do
+    struct
+    |> cast(params, [:country_id, :percentage, :start_date, :end_date, :active])
+    |> validate_required([:country_id, :percentage, :start_date, :end_date])
   end
 end

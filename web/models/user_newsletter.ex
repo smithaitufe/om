@@ -19,6 +19,7 @@ defmodule Store.UserNewsletter do
   """
   def changeset(model, params \\ :empty) do
     model
-    |> cast(params, @required_fields, @optional_fields)
+    |> cast(params, [:user_id, :newsletter_id])
+    |> validate_required([:user_id, :newsletter_id])
   end
 end

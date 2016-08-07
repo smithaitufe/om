@@ -13,17 +13,15 @@ defmodule Store.VariantSupplier do
     timestamps
   end
 
-  @required_fields ~w(cost total_quantity_supplied min_quantity max_quantity active)
-  @optional_fields ~w()
-
   @doc """
   Creates a changeset based on the `model` and `params`.
 
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, @required_fields, @optional_fields)
+  def changeset(struct, params \\ :empty) do
+    struct
+    |> cast(params, [:supplier_id, :variant_id, :cost, :total_quantity_supplied, :min_quantity, :max_quantity, :active])
+    |> validate_required([:supplier_id, :variant_id, :cost, :total_quantity_supplied, :min_quantity, :max_quantity])
   end
 end

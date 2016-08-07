@@ -21,6 +21,7 @@ defmodule Store.ProductProperty do
   """
   def changeset(model, params \\ :empty) do
     model
-    |> cast(params, @required_fields, @optional_fields)
+    |> cast(params, [:product_id, :property_id, :position, :description])
+    |> validate_required([:product_id, :property_id, :position, :description])
   end
 end

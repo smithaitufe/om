@@ -19,6 +19,7 @@ defmodule Store.ReturnCondition do
   """
   def changeset(model, params \\ :empty) do
     model
-    |> cast(params, @required_fields, @optional_fields)
+    |> cast(params, [:label, :description])
+    |> validate_required([:label, :description])
   end
 end
