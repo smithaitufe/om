@@ -1,5 +1,6 @@
 defmodule Store.VariantProperty do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "variant_properties" do
     field :description, :string

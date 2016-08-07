@@ -1,5 +1,6 @@
 defmodule Store.ReturnCondition do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "return_conditions" do
     field :label, :string

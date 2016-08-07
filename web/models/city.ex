@@ -1,5 +1,6 @@
 defmodule Store.City do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "cities" do
     field :name, :string

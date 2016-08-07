@@ -1,9 +1,10 @@
 defmodule Store.Review do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "reviews" do
     field :comment, :string
-    field :rating, :integer, default 0
+    field :rating, :integer, default: 0
     belongs_to :user, Store.User
     belongs_to :product, Store.Product
 

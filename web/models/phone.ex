@@ -1,5 +1,6 @@
 defmodule Store.Phone do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "phones" do
     field :number, :string

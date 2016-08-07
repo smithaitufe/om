@@ -1,5 +1,6 @@
 defmodule Store.Prototype do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "prototypes" do
     field :name, :string

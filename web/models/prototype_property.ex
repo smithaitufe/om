@@ -1,5 +1,6 @@
 defmodule Store.PrototypeProperty do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "prototype_properties" do
     belongs_to :prototype, Store.Prototype

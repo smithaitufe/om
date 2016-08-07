@@ -1,5 +1,6 @@
 defmodule Store.ShippingZone do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "shipping_zones" do
     field :name, :string

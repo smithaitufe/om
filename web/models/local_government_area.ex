@@ -1,5 +1,6 @@
 defmodule Store.LocalGovernmentArea do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "local_government_areas" do
     field :name, :string

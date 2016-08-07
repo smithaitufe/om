@@ -1,5 +1,6 @@
 defmodule Store.PaymentMethod do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "payment_methods" do
     field :name, :string

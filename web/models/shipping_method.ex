@@ -1,5 +1,6 @@
 defmodule Store.ShippingMethod do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "shipping_methods" do
     field :name, :string

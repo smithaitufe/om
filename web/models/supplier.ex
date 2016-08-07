@@ -1,5 +1,6 @@
 defmodule Store.Supplier do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "suppliers" do
     field :name, :string

@@ -1,5 +1,6 @@
 defmodule Store.ShippingCategory do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "shipping_categories" do
     field :name, :string

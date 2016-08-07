@@ -1,5 +1,6 @@
 defmodule Store.OrderStatus do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "order_statuses" do
     field :active, :boolean, default: false

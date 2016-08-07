@@ -1,5 +1,6 @@
 defmodule Store.ImageGroup do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "image_groups" do
     field :name, :string

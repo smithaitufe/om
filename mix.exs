@@ -34,8 +34,9 @@ defmodule Store.Mixfile do
   defp deps do
     [
      {:phoenix, "~> 1.0.0"},
+     {:ecto, "~> 2.0", override: true},
      {:phoenix_ecto, "~> 3.0.0-rc"},
-     {:postgrex, ">= 0.0.0"},
+     {:postgrex, ">= 0.11.2"},
      {:phoenix_html, "~> 2.1"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"},

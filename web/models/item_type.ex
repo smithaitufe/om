@@ -1,5 +1,6 @@
 defmodule Store.ItemType do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "item_types" do
     field :name, :string

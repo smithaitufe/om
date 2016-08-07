@@ -1,5 +1,6 @@
 defmodule Store.Property do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "properties" do
     field :display_name, :string

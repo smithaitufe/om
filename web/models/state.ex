@@ -1,5 +1,6 @@
 defmodule Store.State do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "states" do
     field :name, :string

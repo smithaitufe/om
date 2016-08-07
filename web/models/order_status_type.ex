@@ -1,6 +1,7 @@
 defmodule Store.OrderStatusType do
   use Ecto.Schema
-
+  import Ecto.Changeset
+  
   schema "order_status_types" do
     field :name, :string
 

@@ -1,5 +1,6 @@
 defmodule Store.Newsletter do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "newsletters" do
     field :name, :string

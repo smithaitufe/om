@@ -1,5 +1,6 @@
 defmodule Store.UserPhone do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "user_phones" do
     field :number,:string, virtual: true

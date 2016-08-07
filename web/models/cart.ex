@@ -1,6 +1,7 @@
 defmodule Store.Cart do
   use Ecto.Schema
-
+  import Ecto.Changeset
+  
   schema "carts" do
     belongs_to :user, Store.User
 

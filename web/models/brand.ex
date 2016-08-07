@@ -1,6 +1,7 @@
 defmodule Store.Brand do
   use Ecto.Schema
-
+  import Ecto.Changeset
+  
   schema "brands" do
     field :name, :string
 
@@ -13,7 +14,7 @@ defmodule Store.Brand do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(struct, params \\ :empty) do
+  def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:name])
     |> validate_required([:name])

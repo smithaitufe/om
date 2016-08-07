@@ -1,5 +1,6 @@
 defmodule Store.Order do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "orders" do
     field :number, :string

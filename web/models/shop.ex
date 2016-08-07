@@ -1,5 +1,6 @@
 defmodule Store.Shop do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "shops" do
     field :name, :string

@@ -1,5 +1,6 @@
 defmodule Store.Coupon do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "coupons" do
     field :type, :string

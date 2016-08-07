@@ -1,5 +1,6 @@
 defmodule Store.VariantSupplier do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "variant_suppliers" do
     field :cost, :decimal

@@ -1,5 +1,6 @@
 defmodule Store.ProductProperty do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "product_properties" do
     field :position, :integer

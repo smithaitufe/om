@@ -1,5 +1,6 @@
 defmodule Store.UserType do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "user_types" do
     field :name, :string

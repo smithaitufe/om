@@ -10,10 +10,10 @@ defmodule Store.V1.SessionController do
 
         {:ok, jwt, _full_claims} = user |> Guardian.encode_and_sign(:token)
 
-        changeset = Session.changeset(%Session{}, %{user_id: user.id, token: jwt})
-        if changeset.valid? do
-          Repo.insert(changeset)
-        end
+        # changeset = Session.changeset(%Session{}, %{user_id: user.id, token: jwt})
+        # if changeset.valid? do
+        #   Repo.insert(changeset)
+        # end
 
         roles = user
         |> assoc(:roles)

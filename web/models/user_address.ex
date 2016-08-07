@@ -1,5 +1,6 @@
 defmodule Store.UserAddress do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "user_addresses" do
 

@@ -1,5 +1,6 @@
 defmodule Store.Variant do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "variants" do
     field :sku, :string

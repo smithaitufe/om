@@ -1,5 +1,6 @@
 defmodule Store.UserNewsletter do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "user_newsletters" do
     belongs_to :user, Store.User

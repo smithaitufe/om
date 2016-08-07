@@ -1,5 +1,6 @@
 defmodule Store.ProductImage do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "product_images" do
     belongs_to :product, Store.Product

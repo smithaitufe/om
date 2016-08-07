@@ -1,5 +1,7 @@
 defmodule Store.Address do
   use Ecto.Schema
+  import Ecto.Changeset
+  
 
   schema "addresses" do
     field :last_name, :string
@@ -16,8 +18,6 @@ defmodule Store.Address do
     timestamps
   end
 
-  @required_fields ~w(address_type_id last_name first_name address1 address2  city_id phone_number alternative_phone_number)
-  @optional_fields ~w(zip_code)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -25,9 +25,9 @@ defmodule Store.Address do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ :empty) do
+  def changeset(model, params \\ %{}) do
     model
-    |> cast(params, [:address_type_id, :last_name, :first_name, :address1, :address2, :city_id, :phone_number, :alternative_phone_number])
+    |> cast(params, [:address_type_id, :last_name, :first_name, :address1, :address2, :city_id, :phone_number, :alternative_phone_number, :zip_code])
     |> validate_required([:address_type_id, :last_name, :first_name, :address1, :city_id, :phone_number])
   end
 end

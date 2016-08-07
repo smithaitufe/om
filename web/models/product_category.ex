@@ -1,5 +1,6 @@
 defmodule Store.ProductCategory do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "product_categories" do
     field :name, :string

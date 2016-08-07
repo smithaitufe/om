@@ -1,5 +1,6 @@
 defmodule Store.Image do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "images" do
     field :url, :string
