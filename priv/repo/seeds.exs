@@ -12,7 +12,7 @@ Repo.insert!(%ShippingZone{name: "Area Wide"})
 country  = Repo.get_by(Country, [name: "Nigeria"])
 # changeset = TaxRate.changeset(%TaxRate{}, %{country_id: country.id, percentage: 5, start_date: Date.from({1994, 1,1}) })
 
-changeset = TaxRate.changeset(%TaxRate{}, %{country_id: country.id, percentage: 5) })
+changeset = TaxRate.changeset(%TaxRate{}, %{country_id: country.id, percentage: 5})
 Repo.insert!(changeset)
 IO.puts rule
 order_status_types  =  [%{name: "Open"}, %{name: "Processed"}, %{name: "Failed"}, %{name: "Completed"}, %{name: "Cancelled"}, %{name: "Declined"}, %{name: "Backordered"}]
