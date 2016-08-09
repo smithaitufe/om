@@ -1,5 +1,6 @@
 defmodule Store.InvoiceType do
-  use Store.Web, :model
+  use Store.Schema
+  import Ecto.Changeset
 
   schema "invoice_types" do
     field :name, :string
@@ -7,9 +8,9 @@ defmodule Store.InvoiceType do
 
     timestamps
   end
+  @fields ~w(name slug)a
+  @required_fields ~w(name slug)a
 
-  @required_fields ~w(name slug)
-  @optional_fields ~w()
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -17,8 +18,9 @@ defmodule Store.InvoiceType do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, @required_fields, @optional_fields)
+  def changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end
