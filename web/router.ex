@@ -27,6 +27,7 @@ defmodule Store.Router do
 
       resources "address_types", AddressTypeController, except: [:new, :edit]
       resources "item_types", ItemTypeController, except: [:new, :edit]
+      resources "invoice_types", InvoiceTypeController, except: [:new, :edit]
       resources "properties", PropertyController, except: [:new, :edit]
       resources "prototypes", PrototypeController, except: [:new, :edit]
       resources "prototype_properties", PrototypePropertyController, except: [:new, :edit]
