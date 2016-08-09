@@ -12,6 +12,9 @@ defmodule Store.TaxRate do
     timestamps
   end
 
+  @fields ~w(country_id percentage start_date end_date active)
+  @required_fields ~w(country_id percentage start_date end_date)
+
   @doc """
   Creates a changeset based on the `model` and `params`.
 
@@ -20,7 +23,7 @@ defmodule Store.TaxRate do
   """
   def changeset(struct, params \\ :empty) do
     struct
-    |> cast(params, [:country_id, :percentage, :start_date, :end_date, :active])
-    |> validate_required([:country_id, :percentage, :start_date, :end_date])
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

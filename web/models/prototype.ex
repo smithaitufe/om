@@ -9,8 +9,9 @@ defmodule Store.Prototype do
     timestamps
   end
 
-  @required_fields ~w(name active)
-  @optional_fields ~w()
+  @fields ~w(name active)
+  @required_fields ~w(name)
+
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -18,9 +19,9 @@ defmodule Store.Prototype do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, [:name, :active])
-    |> validate_required([:name])
+  def changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

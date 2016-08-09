@@ -10,8 +10,9 @@ defmodule Store.UserType do
     timestamps
   end
 
+  @fields ~w(name description code)
   @required_fields ~w(name description code)
-  @optional_fields ~w()
+
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -21,7 +22,7 @@ defmodule Store.UserType do
   """
   def changeset(model, params \\ :empty) do
     model
-    |> cast(params, [:name, :description, :code])
-    |> validate_required([:name, :description, :code])
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

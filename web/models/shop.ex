@@ -7,12 +7,15 @@ defmodule Store.Shop do
     field :phone_number, :string
     field :email, :string
     belongs_to :user, Store.User
-
+    has_many :products, Store.Product
     timestamps
+
+
   end
 
-  @required_fields ~w(name phone_number email)
-  @optional_fields ~w()
+  @fields ~w(user_id name phone_number email)
+  @required_fields ~w(user_id name phone_number email)
+
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -22,7 +25,7 @@ defmodule Store.Shop do
   """
   def changeset(struct, params \\ :empty) do
     struct
-    |> cast(params, [:user_id, :name, :phone_number, :email])
-    |> validate_required([:user_id, :name, :phone_number, :email])
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

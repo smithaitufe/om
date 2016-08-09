@@ -1,17 +1,15 @@
-defmodule Store.Phone do
-  use Ecto.Schema
-  import Ecto.Changeset
+defmodule Store.ProductTag do
+  use Store.Web, :model
 
-  schema "phones" do
-    field :number, :string
-    belongs_to :phone_type, Store.PhoneType
-    field :primary, :boolean, default: false
+  schema "product_tags" do
+    belongs_to :product, Store.Product
+    belongs_to :tag, Store.Tag
 
     timestamps
   end
 
-  @fields ~w(number phone_type_id primary)
-  @required_fields ~w(number phone_type_id)
+  @fields ~w(product_id tag_id)
+  @required_fields ~w(product_id tag_id)
 
 
   @doc """

@@ -1,15 +1,16 @@
-defmodule Store.Brand do
+defmodule Store.Tag do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "brands" do
+  schema "tags" do
     field :name, :string
+    field :slug, :string
+    field :description, :string
 
     timestamps
-
-    has_many :products, Store.Product
   end
-  @fields ~w(name)
+
+  @fields ~w(name slug description)
   @required_fields ~w(name)
 
 
@@ -23,5 +24,17 @@ defmodule Store.Brand do
     struct
     |> cast(params, @fields)
     |> validate_required(@required_fields)
+    |> generate_slug()
+  end
+
+  defp generate_slug(changeset) do
+    if name = get_change(changeset, :name) do
+      slug = name
+      |> String.downcase
+      |> String.replace(~r/[^\w-]+/, "-")
+      put_change(changeset, :slug, slug)
+    else
+      changeset
+    end
   end
 end

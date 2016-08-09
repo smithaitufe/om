@@ -9,8 +9,9 @@ defmodule Store.UserNewsletter do
     timestamps
   end
 
-  @required_fields ~w()
-  @optional_fields ~w()
+  @fields ~w(user_id newsletter_id)
+  @required_fields ~w(user_id newsletter_id)
+
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -18,9 +19,9 @@ defmodule Store.UserNewsletter do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, [:user_id, :newsletter_id])
-    |> validate_required([:user_id, :newsletter_id])
+  def changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

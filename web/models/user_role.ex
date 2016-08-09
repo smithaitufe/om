@@ -9,8 +9,9 @@ defmodule Store.UserRole do
     timestamps
   end
 
+  @fields ~w(user_id role_id)
   @required_fields ~w(user_id role_id)
-  @optional_fields ~w()
+
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -20,7 +21,7 @@ defmodule Store.UserRole do
   """
   def changeset(model, params \\ :empty) do
     model
-    |> cast(params, [:user_id, :role_id])
-    |> validate_required([:user_id, :role_id])
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

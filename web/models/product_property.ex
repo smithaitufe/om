@@ -11,8 +11,9 @@ defmodule Store.ProductProperty do
     timestamps
   end
 
+  @fields ~w(product_id property_id position description)
   @required_fields ~w(product_id property_id position description)
-  @optional_fields ~w()
+
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -20,9 +21,9 @@ defmodule Store.ProductProperty do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ :empty) do
+  def changeset(model, params \\ %{}) do
     model
-    |> cast(params, [:product_id, :property_id, :position, :description])
-    |> validate_required([:product_id, :property_id, :position, :description])
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

@@ -11,8 +11,9 @@ defmodule Store.OrderStatus do
     timestamps
   end
 
+  @fields ~w(active order_id order_status_type_id user_id)
   @required_fields ~w(active order_id order_status_type_id user_id)
-  @optional_fields ~w()
+
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -20,9 +21,9 @@ defmodule Store.OrderStatus do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(struct, params \\ :empty) do
+  def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:active, :order_id, :order_status_type_id, :user_id])
-    |> validate_required([:active, :order_id, :order_status_type_id, :user_id])
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

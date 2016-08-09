@@ -12,6 +12,8 @@ defmodule Store.State do
     timestamps
   end
 
+  @fields ~w(name described_as abbreviation country_id shipping_zone_id)
+  @required_fields ~w(name country_id shipping_zone_id)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -21,7 +23,7 @@ defmodule Store.State do
   """
   def changeset(struct, params \\ :empty) do
     struct
-    |> cast(params, [:country_id, :shipping_zone_id, :name, :described_as, :abbreviation])
-    |> validate_required([:country_id, :shipping_zone_id, :name, :abbreviation])
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

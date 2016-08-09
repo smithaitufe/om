@@ -6,8 +6,13 @@ defmodule Store.City do
     field :name, :string
     belongs_to :state, Store.State
 
+    has_many :addresses, Store.Address
+
     timestamps
   end
+
+  @fields ~w(name state_id)
+  @required_fields ~w(name state_id)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -15,9 +20,9 @@ defmodule Store.City do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(struct, params \\ :empty) do
+  def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :state_id])
-    |> validate_required([:name, :state_id])
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

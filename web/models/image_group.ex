@@ -18,7 +18,7 @@ defmodule Store.ImageGroup do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(struct, params \\ :empty) do
+  def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, @fields)
     |> validate_required(@required_fields)

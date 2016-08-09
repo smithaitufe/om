@@ -9,8 +9,8 @@ defmodule Store.ShippingMethod do
     timestamps
   end
 
-  @required_fields ~w(name)
-  @optional_fields ~w()
+  @fields ~w(shipping_zone_id name)
+  @required_fields ~w(shipping_zone_id name)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -20,7 +20,7 @@ defmodule Store.ShippingMethod do
   """
   def changeset(model, params \\ :empty) do
     model
-    |> cast(params, [:shipping_zone_id, :name])
-    |> validate_required([:shipping_zone_id, :name])
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

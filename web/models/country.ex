@@ -10,7 +10,8 @@ defmodule Store.Country do
 
     timestamps
   end
-
+  @fields ~w(name abbreviation)
+  @required_fields ~w(name abbreviation)
   @doc """
   Creates a changeset based on the `model` and `params`.
 
@@ -19,7 +20,7 @@ defmodule Store.Country do
   """
   def changeset(struct, params \\ :empty) do
     struct
-    |> cast(params, [:name, :abbreviation])
-    |> validate_required([:name, :abbreviation])
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

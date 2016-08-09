@@ -16,10 +16,17 @@ defmodule Store.Product do
     belongs_to :shop, Store.Shop
     belongs_to :brand, Store.Brand
 
+    many_to_many :tags, Store.Tag, join_through: Store.ProductTag, join_keys: [product_id: :id, tag_id: :id]
+    has_many :variants, Store.Variant
+
     timestamps
+
+
+
   end
 
-
+  @fields ~w(brand_id product_category_id shipping_category_id name short_description long_description available_at deleted_at permalink keywords featured)
+  @required_fields ~w(brand_id product_category_id shipping_category_id name short_description available_at featured)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -27,9 +34,9 @@ defmodule Store.Product do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, [:brand_id, :product_category_id, :shipping_category_id, :name, :short_description, :long_description, :available_at, :deleted_at, :permalink, :keywords, :featured])
-    |> validate_required([:brand_id, :product_category_id, :shipping_category_id, :name, :short_description, :long_description, :available_at, :deleted_at, :permalink, :keywords, :featured])
+  def changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

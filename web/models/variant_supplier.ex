@@ -14,6 +14,9 @@ defmodule Store.VariantSupplier do
     timestamps
   end
 
+  @fields ~w(supplier_id variant_id cost total_quantity_supplied min_quantity max_quantity active)
+  @required_fields ~w(supplier_id variant_id cost total_quantity_supplied)
+
   @doc """
   Creates a changeset based on the `model` and `params`.
 
@@ -22,7 +25,7 @@ defmodule Store.VariantSupplier do
   """
   def changeset(struct, params \\ :empty) do
     struct
-    |> cast(params, [:supplier_id, :variant_id, :cost, :total_quantity_supplied, :min_quantity, :max_quantity, :active])
-    |> validate_required([:supplier_id, :variant_id, :cost, :total_quantity_supplied, :min_quantity, :max_quantity])
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

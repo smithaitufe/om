@@ -16,6 +16,7 @@ defmodule Store.Coupon do
     timestamps
   end
 
+
   @fields ~w(type code description amount minimum_value percent combine starts_at expires_at)
   @required_fields ~w(type code description amount minimum_value percent combine starts_at expires_at)
 

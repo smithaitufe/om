@@ -19,12 +19,18 @@ defmodule Store.User do
     belongs_to :user_type, Store.UserType
     has_many :user_addresses, Store.UserAddress, foreign_key: :user_id
 
+    has_many :carts, Store.Cart
+    has_many :cart_items, through: [:carts, :cart]
+
     timestamps
 
 
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
   end
+
+  @fields ~w(user_type_id last_name first_name email password password_confirmation active locked lock_expires_at reset_token reset_token_created_at reset_token_expires_at login_attempts)
+  @required_fields ~w(user_type_id last_name first_name email password password_confirmation)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -34,7 +40,7 @@ defmodule Store.User do
   """
   def changeset(struct, params \\ :empty) do
     struct
-    |> cast(params, [:user_type_id, :last_name, :first_name, :email, :encrypted_password, :active, :locked, :lock_expires_at, :reset_token, :reset_token_created_at, :reset_token_expires_at, :login_attempts])
-    |> validate_required([:user_type_id, :last_name, :first_name, :email, :password, :password_confirmation])
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

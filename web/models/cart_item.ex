@@ -8,13 +8,15 @@ defmodule Store.CartItem do
 
     belongs_to :cart, Store.Cart
     belongs_to :variant, Store.Variant
-    belongs_to :item_type, Store.ItemType
+    belongs_to :item_type, Store.Term
+
 
     timestamps
   end
 
-  @required_fields ~w(cart_id variant_id item_type_id quantity active)
-  @optional_fields ~w()
+  @fields ~w(cart_id variant_id item_type_id quantity active)
+  @required_fields ~w(cart_id variant_id item_type_id quantity)
+
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -24,7 +26,7 @@ defmodule Store.CartItem do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:cart_id, :variant_id, :item_type_id, :quantity, :active])
-    |> validate_required([:cart_id, :variant_id, :item_type_id, :quantity])
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

@@ -9,8 +9,9 @@ defmodule Store.ReturnCondition do
     timestamps
   end
 
+  @fields ~w(label description)
   @required_fields ~w(label description)
-  @optional_fields ~w()
+
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -18,9 +19,9 @@ defmodule Store.ReturnCondition do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, [:label, :description])
-    |> validate_required([:label, :description])
+  def changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

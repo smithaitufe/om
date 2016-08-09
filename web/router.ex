@@ -52,11 +52,12 @@ defmodule Store.Router do
       resources "shipping_categories", ShippingCategoryController, except: [:new, :edit]
       resources "shipping_zones", ShippingZoneController, except: [:new, :edit]
       resources "shipping_methods", ShippingMethodController, except: [:new, :edit]
-
+      resources "tags", TagController, except: [:new, :edit]
       resources "suppliers", SupplierController, except: [:new, :edit]
       resources "variant_suppliers", VariantSupplierController, except: [:new, :edit]
       resources "product_categories", ProductCategoryController, except: [:new, :edit]
       resources "products", ProductController, except: [:new, :edit]
+      resources "product_tags", ProductTagController, except: [:new, :edit]
       resources "product_properties", ProductPropertyController, except: [:new, :edit]
       resources "variants", VariantController, except: [:new, :edit]
       resources "variant_properties", VariantPropertyController, except: [:new, :edit]

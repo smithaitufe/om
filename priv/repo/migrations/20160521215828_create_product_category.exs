@@ -7,6 +7,7 @@ defmodule Store.Repo.Migrations.CreateProductCategory do
       add :description, :string, size: 100
       add :active, :boolean, default: false
       add :parent_id, references(:product_categories)
+      add :slug, :string, null: false
 
       timestamps
     end

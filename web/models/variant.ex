@@ -18,8 +18,9 @@ defmodule Store.Variant do
     timestamps
   end
 
-  @required_fields ~w(product_id sku name price compare_price master quantity_on_hand quantity_pending_to_customer quantity_pending_from_supplier deleted_at)
-  @optional_fields ~w(image_group_id)
+  @fields ~w(product_id sku name price quantity_on_hand quantity_pending_to_customer quantity_pending_from_supplier master compare_price image_group_id deleted_at)
+  @required_fields ~w(product_id sku name price quantity_on_hand quantity_pending_to_customer quantity_pending_from_supplier)
+
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -27,9 +28,9 @@ defmodule Store.Variant do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(struct, params \\ :empty) do
+  def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:product_id, :sku, :name, :price, :compare_price, :master, :quantity_on_hand, :quantity_pending_to_customer, :quantity_pending_from_supplier, :deleted_at])
-    |> validate_required([:product_id, :sku, :name, :price, :quantity_on_hand, :quantity_pending_to_customer, :quantity_pending_from_supplier])
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

@@ -9,8 +9,8 @@ defmodule Store.Newsletter do
     timestamps
   end
 
+  @fields ~w(name autosubscribe)
   @required_fields ~w(name autosubscribe)
-  @optional_fields ~w()
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -20,7 +20,7 @@ defmodule Store.Newsletter do
   """
   def changeset(struct, params \\ :empty) do
     struct
-    |> cast(params, [:name, :autosubscribe])
-    |> validate_required([:name, :autosubscribe])
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

@@ -8,8 +8,9 @@ defmodule Store.ShippingZone do
     timestamps
   end
 
+  @fields ~w(name)
   @required_fields ~w(name)
-  @optional_fields ~w()
+
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -19,7 +20,7 @@ defmodule Store.ShippingZone do
   """
   def changeset(struct, params \\ :empty) do
     struct
-    |> cast(params, [:name])
-    |> validate_required([:name])
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end

@@ -12,8 +12,9 @@ defmodule Store.UserAddress do
     timestamps
   end
 
-  @required_fields ~w(user_id, address_id, active)
-  @optional_fields ~w()
+  @fields ~w(user_id, address_id, active)
+  @required_fields ~w(user_id, address_id)
+
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -23,7 +24,7 @@ defmodule Store.UserAddress do
   """
   def changeset(struct, params \\ :empty) do
     struct
-    |> cast(params, [:user_id, :address_id, :active])
-    |> validate_required([:user_id, :address_id, :active])
+    |> cast(params, @fields)
+    |> validate_required(@required_fields)
   end
 end
