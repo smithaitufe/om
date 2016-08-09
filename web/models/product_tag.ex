@@ -1,5 +1,6 @@
 defmodule Store.ProductTag do
-  use Store.Web, :model
+  use Ecto.Schema
+  import Ecto.Changeset
 
   schema "product_tags" do
     belongs_to :product, Store.Product
