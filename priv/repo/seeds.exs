@@ -1,7 +1,6 @@
-rule = "==============================================================================================================================================================================================================="
+rule = "============================================================================================================"
 alias Store.{Repo, Country, AddressType, ItemType, TaxRate, OrderStatusType, ShippingZone, State, LocalGovernmentArea}
 alias Timex.{Date}
-
 country  = Repo.get_by(Country, [name: "Nigeria"])
 if country == nil do
   Repo.insert!(%Country{name: "Nigeria", abbreviation: "NG"})
@@ -11,7 +10,9 @@ Repo.insert!(%ShippingZone{name: "Nation Wide"})
 Repo.insert!(%ShippingZone{name: "Area Wide"})
 
 country  = Repo.get_by(Country, [name: "Nigeria"])
-changeset = TaxRate.changeset(%TaxRate{}, %{country_id: country.id, percentage: 5, start_date: Date.from({1994, 1,1}) })
+# changeset = TaxRate.changeset(%TaxRate{}, %{country_id: country.id, percentage: 5, start_date: Date.from({1994, 1,1}) })
+
+changeset = TaxRate.changeset(%TaxRate{}, %{country_id: country.id, percentage: 5) })
 Repo.insert!(changeset)
 IO.puts rule
 order_status_types  =  [%{name: "Open"}, %{name: "Processed"}, %{name: "Failed"}, %{name: "Completed"}, %{name: "Cancelled"}, %{name: "Declined"}, %{name: "Backordered"}]
@@ -36,9 +37,7 @@ for item_type <- item_types do
   end
 end
 
-
 country = Country |> Repo.get_by(name: "Nigeria")
-
 states =[
   %{name: "Abia", shipping_zone_id: 1},
   %{name: "Adamawa", shipping_zone_id: 1},
