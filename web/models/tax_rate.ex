@@ -13,7 +13,7 @@ defmodule Store.TaxRate do
   end
 
   @fields ~w(country_id percentage start_date end_date active)a
-  @required_fields ~w(country_id percentage start_date end_date)a
+  @required_fields ~w(country_id percentage)a
 
   @doc """
   Creates a changeset based on the `model` and `params`.
