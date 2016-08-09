@@ -9,5 +9,5 @@ config :store, Store.Endpoint,
 # Configure your database
 config :store, Store.Repo,
   adapter: Ecto.Adapters.Postgres,
-  url: System.get_env("DATABASE_URL")
+  url: System.get_env("DATABASE_URL"),
   pool_size: 20
