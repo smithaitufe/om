@@ -9,8 +9,8 @@ defmodule Store.ProductImage do
     timestamps
   end
 
-  @fields ~w(product_id image_id)
-  @required_fields ~w(product_id image_id)
+  @fields ~w(product_id image_id)a
+  @required_fields ~w(product_id image_id)a
 
   @doc """
   Creates a changeset based on the `model` and `params`.

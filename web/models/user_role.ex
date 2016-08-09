@@ -9,8 +9,8 @@ defmodule Store.UserRole do
     timestamps
   end
 
-  @fields ~w(user_id role_id)
-  @required_fields ~w(user_id role_id)
+  @fields ~w(user_id role_id)a
+  @required_fields ~w(user_id role_id)a
 
 
   @doc """

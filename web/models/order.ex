@@ -12,8 +12,8 @@ defmodule Store.Order do
 
     timestamps
   end
-  @fields ~w(number active bill_address_id ship_address_id user_id)
-  @required_fields ~w(number active bill_address_id ship_address_id user_id)
+  @fields ~w(number active bill_address_id ship_address_id user_id)a
+  @required_fields ~w(number active bill_address_id ship_address_id user_id)a
   @doc """
   Creates a changeset based on the `model` and `params`.
 

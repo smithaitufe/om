@@ -10,8 +10,8 @@ defmodule Store.Country do
 
     timestamps
   end
-  @fields ~w(name abbreviation)
-  @required_fields ~w(name abbreviation)
+  @fields ~w(name abbreviation)a
+  @required_fields ~w(name abbreviation)a
   @doc """
   Creates a changeset based on the `model` and `params`.
 

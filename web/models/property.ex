@@ -10,8 +10,8 @@ defmodule Store.Property do
     timestamps
   end
 
-  @fields ~w(display_name identifying_name active)
-  @required_fields ~w(display_name identifying_name)
+  @fields ~w(display_name identifying_name active)a
+  @required_fields ~w(display_name identifying_name)a
 
 
   @doc """

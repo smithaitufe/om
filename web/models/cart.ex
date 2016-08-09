@@ -8,8 +8,8 @@ defmodule Store.Cart do
     timestamps
   end
 
-  @fields ~w(user_id)
-  @required_fields ~w(user_id)
+  @fields ~w(user_id)a
+  @required_fields ~w(user_id)a
 
   @doc """
   Creates a changeset based on the `model` and `params`.

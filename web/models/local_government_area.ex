@@ -9,8 +9,8 @@ defmodule Store.LocalGovernmentArea do
     timestamps
   end
 
-  @fields ~w(name state_id)
-  @required_fields ~w(name state_id)
+  @fields ~w(name state_id)a
+  @required_fields ~w(name state_id)a
 
   @doc """
   Creates a changeset based on the `model` and `params`.

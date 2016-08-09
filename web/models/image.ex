@@ -13,8 +13,8 @@ defmodule Store.Image do
     timestamps
   end
 
-  @fields ~w(url height width name position caption)
-  @required_fields ~w(url height width name position caption)
+  @fields ~w(url height width name position caption)a
+  @required_fields ~w(url height width name position caption)a
 
   @doc """
   Creates a changeset based on the `model` and `params`.

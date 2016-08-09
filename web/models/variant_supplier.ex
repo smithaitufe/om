@@ -14,8 +14,8 @@ defmodule Store.VariantSupplier do
     timestamps
   end
 
-  @fields ~w(supplier_id variant_id cost total_quantity_supplied min_quantity max_quantity active)
-  @required_fields ~w(supplier_id variant_id cost total_quantity_supplied)
+  @fields ~w(supplier_id variant_id cost total_quantity_supplied min_quantity max_quantity active)a
+  @required_fields ~w(supplier_id variant_id cost total_quantity_supplied)a
 
   @doc """
   Creates a changeset based on the `model` and `params`.

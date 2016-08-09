@@ -10,8 +10,8 @@ defmodule Store.UserType do
     timestamps
   end
 
-  @fields ~w(name description code)
-  @required_fields ~w(name description code)
+  @fields ~w(name description code)a
+  @required_fields ~w(name description code)a
 
 
   @doc """

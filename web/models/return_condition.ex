@@ -9,8 +9,8 @@ defmodule Store.ReturnCondition do
     timestamps
   end
 
-  @fields ~w(label description)
-  @required_fields ~w(label description)
+  @fields ~w(label description)a
+  @required_fields ~w(label description)a
 
 
   @doc """

@@ -12,8 +12,8 @@ defmodule Store.TaxRate do
     timestamps
   end
 
-  @fields ~w(country_id percentage start_date end_date active)
-  @required_fields ~w(country_id percentage start_date end_date)
+  @fields ~w(country_id percentage start_date end_date active)a
+  @required_fields ~w(country_id percentage start_date end_date)a
 
   @doc """
   Creates a changeset based on the `model` and `params`.

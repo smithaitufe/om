@@ -12,8 +12,8 @@ defmodule Store.UserAddress do
     timestamps
   end
 
-  @fields ~w(user_id, address_id, active)
-  @required_fields ~w(user_id, address_id)
+  @fields ~w(user_id, address_id, active)a
+  @required_fields ~w(user_id, address_id)a
 
 
   @doc """

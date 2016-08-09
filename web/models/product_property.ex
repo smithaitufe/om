@@ -11,8 +11,8 @@ defmodule Store.ProductProperty do
     timestamps
   end
 
-  @fields ~w(product_id property_id position description)
-  @required_fields ~w(product_id property_id position description)
+  @fields ~w(product_id property_id position description)a
+  @required_fields ~w(product_id property_id position description)a
 
 
   @doc """

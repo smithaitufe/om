@@ -8,8 +8,8 @@ defmodule Store.PaymentMethod do
     timestamps
   end
 
-  @fields ~w(name)
-  @required_fields ~w(name)
+  @fields ~w(name)a
+  @required_fields ~w(name)a
 
   @doc """
   Creates a changeset based on the `model` and `params`.

@@ -11,8 +11,8 @@ defmodule Store.VariantProperty do
     timestamps
   end
 
-  @fields ~w(variant_id property_id description primary)
-  @required_fields ~w(variant_id property_id description)
+  @fields ~w(variant_id property_id description primary)a
+  @required_fields ~w(variant_id property_id description)a
   @doc """
   Creates a changeset based on the `model` and `params`.
 

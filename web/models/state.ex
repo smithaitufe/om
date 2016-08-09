@@ -12,8 +12,8 @@ defmodule Store.State do
     timestamps
   end
 
-  @fields ~w(name described_as abbreviation country_id shipping_zone_id)
-  @required_fields ~w(name country_id shipping_zone_id)
+  @fields ~w(name described_as abbreviation country_id shipping_zone_id)a
+  @required_fields ~w(name country_id shipping_zone_id)a
 
   @doc """
   Creates a changeset based on the `model` and `params`.

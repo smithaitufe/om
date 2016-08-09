@@ -9,8 +9,8 @@ defmodule Store.ShippingCategory do
     timestamps
   end
 
-  @fields ~w(name description)
-  @required_fields ~w(name description)
+  @fields ~w(name description)a
+  @required_fields ~w(name description)a
 
 
   @doc """

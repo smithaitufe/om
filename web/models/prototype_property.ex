@@ -8,8 +8,8 @@ defmodule Store.PrototypeProperty do
 
     timestamps
   end
-  @fields ~w(prototype_id property_id)
-  @required_fields ~w(prototype_id property_id)
+  @fields ~w(prototype_id property_id)a
+  @required_fields ~w(prototype_id property_id)a
 
   @doc """
   Creates a changeset based on the `model` and `params`.

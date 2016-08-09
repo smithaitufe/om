@@ -9,8 +9,8 @@ defmodule Store.UserNewsletter do
     timestamps
   end
 
-  @fields ~w(user_id newsletter_id)
-  @required_fields ~w(user_id newsletter_id)
+  @fields ~w(user_id newsletter_id)a
+  @required_fields ~w(user_id newsletter_id)a
 
 
   @doc """

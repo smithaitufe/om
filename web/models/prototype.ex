@@ -9,8 +9,8 @@ defmodule Store.Prototype do
     timestamps
   end
 
-  @fields ~w(name active)
-  @required_fields ~w(name)
+  @fields ~w(name active)a
+  @required_fields ~w(name)a
 
 
   @doc """

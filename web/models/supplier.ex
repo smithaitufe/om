@@ -10,8 +10,8 @@ defmodule Store.Supplier do
     timestamps
   end
 
-  @fields ~w(name phone_number email)
-  @required_fields ~w(name phone_number email)
+  @fields ~w(name phone_number email)a
+  @required_fields ~w(name phone_number email)a
 
   @doc """
   Creates a changeset based on the `model` and `params`.

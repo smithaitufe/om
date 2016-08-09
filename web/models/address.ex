@@ -18,8 +18,8 @@ defmodule Store.Address do
     timestamps
   end
 
-  @fields ~w(address_type_id last_name first_name address1 city_id phone_number alternative_phone_number zip_code)
-  @required_fields ~w(address_type_id last_name first_name address1 city_id phone_number)
+  @fields ~w(address_type_id last_name first_name address1 city_id phone_number alternative_phone_number zip_code)a
+  @required_fields ~w(address_type_id last_name first_name address1 city_id phone_number)a
 
 
   @doc """

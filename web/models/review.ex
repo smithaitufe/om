@@ -11,8 +11,8 @@ defmodule Store.Review do
     timestamps
   end
 
-  @fields ~w(user_id product_id comment rating)
-  @required_fields ~w(user_id product_id comment)
+  @fields ~w(user_id product_id comment rating)a
+  @required_fields ~w(user_id product_id comment)a
 
 
   @doc """

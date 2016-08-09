@@ -9,8 +9,8 @@ defmodule Store.ImageGroup do
     timestamps
   end
 
-  @fields ~w(name product_id)
-  @required_fields ~w(name product_id)
+  @fields ~w(name product_id)a
+  @required_fields ~w(name product_id)a
 
   @doc """
   Creates a changeset based on the `model` and `params`.

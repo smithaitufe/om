@@ -9,8 +9,8 @@ defmodule Store.Newsletter do
     timestamps
   end
 
-  @fields ~w(name autosubscribe)
-  @required_fields ~w(name autosubscribe)
+  @fields ~w(name autosubscribe)a
+  @required_fields ~w(name autosubscribe)a
 
   @doc """
   Creates a changeset based on the `model` and `params`.

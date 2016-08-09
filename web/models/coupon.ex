@@ -17,8 +17,8 @@ defmodule Store.Coupon do
   end
 
 
-  @fields ~w(type code description amount minimum_value percent combine starts_at expires_at)
-  @required_fields ~w(type code description amount minimum_value percent combine starts_at expires_at)
+  @fields ~w(type code description amount minimum_value percent combine starts_at expires_at)a
+  @required_fields ~w(type code description amount minimum_value percent combine starts_at expires_at)a
 
   @doc """
   Creates a changeset based on the `model` and `params`.

@@ -11,8 +11,8 @@ defmodule Store.OrderStatus do
     timestamps
   end
 
-  @fields ~w(active order_id order_status_type_id user_id)
-  @required_fields ~w(active order_id order_status_type_id user_id)
+  @fields ~w(active order_id order_status_type_id user_id)a
+  @required_fields ~w(active order_id order_status_type_id user_id)a
 
 
   @doc """

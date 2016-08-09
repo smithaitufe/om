@@ -10,8 +10,8 @@ defmodule Store.UserPhone do
     timestamps
   end
 
-  @fields ~w(phone_id user_id)
-  @required_fields ~w(phone_id user_id)
+  @fields ~w(phone_id user_id)a
+  @required_fields ~w(phone_id user_id)a
   @doc """
   Creates a changeset based on the `model` and `params`.
 

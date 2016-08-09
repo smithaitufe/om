@@ -14,8 +14,8 @@ defmodule Store.CartItem do
     timestamps
   end
 
-  @fields ~w(cart_id variant_id item_type_id quantity active)
-  @required_fields ~w(cart_id variant_id item_type_id quantity)
+  @fields ~w(cart_id variant_id item_type_id quantity active)a
+  @required_fields ~w(cart_id variant_id item_type_id quantity)a
 
 
   @doc """

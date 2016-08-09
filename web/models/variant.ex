@@ -18,8 +18,8 @@ defmodule Store.Variant do
     timestamps
   end
 
-  @fields ~w(product_id sku name price quantity_on_hand quantity_pending_to_customer quantity_pending_from_supplier master compare_price image_group_id deleted_at)
-  @required_fields ~w(product_id sku name price quantity_on_hand quantity_pending_to_customer quantity_pending_from_supplier)
+  @fields ~w(product_id sku name price quantity_on_hand quantity_pending_to_customer quantity_pending_from_supplier master compare_price image_group_id deleted_at)a
+  @required_fields ~w(product_id sku name price quantity_on_hand quantity_pending_to_customer quantity_pending_from_supplier)a
 
 
   @doc """

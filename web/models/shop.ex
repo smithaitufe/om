@@ -13,8 +13,8 @@ defmodule Store.Shop do
 
   end
 
-  @fields ~w(user_id name phone_number email)
-  @required_fields ~w(user_id name phone_number email)
+  @fields ~w(user_id name phone_number email)a
+  @required_fields ~w(user_id name phone_number email)a
 
 
   @doc """

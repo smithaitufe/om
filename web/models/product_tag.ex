@@ -9,8 +9,8 @@ defmodule Store.ProductTag do
     timestamps
   end
 
-  @fields ~w(product_id tag_id)
-  @required_fields ~w(product_id tag_id)
+  @fields ~w(product_id tag_id)a
+  @required_fields ~w(product_id tag_id)a
 
 
   @doc """

@@ -10,8 +10,8 @@ defmodule Store.Phone do
     timestamps
   end
 
-  @fields ~w(number phone_type_id primary)
-  @required_fields ~w(number phone_type_id)
+  @fields ~w(number phone_type_id primary)a
+  @required_fields ~w(number phone_type_id)a
 
 
   @doc """

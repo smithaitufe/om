@@ -14,8 +14,8 @@ defmodule Store.ProductCategory do
     timestamps
   end
 
-  @fields ~w(name description active slug parent_id)
-  @required_fields ~w(name description active)
+  @fields ~w(name description active slug parent_id)a
+  @required_fields ~w(name description active)a
 
 
   @doc """

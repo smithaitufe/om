@@ -9,8 +9,8 @@ defmodule Store.ShippingMethod do
     timestamps
   end
 
-  @fields ~w(shipping_zone_id name)
-  @required_fields ~w(shipping_zone_id name)
+  @fields ~w(shipping_zone_id name)a
+  @required_fields ~w(shipping_zone_id name)a
 
   @doc """
   Creates a changeset based on the `model` and `params`.

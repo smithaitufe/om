@@ -10,8 +10,8 @@ defmodule Store.Tag do
     timestamps
   end
 
-  @fields ~w(name slug description)
-  @required_fields ~w(name)
+  @fields ~w(name slug description)a
+  @required_fields ~w(name)a
 
 
   @doc """

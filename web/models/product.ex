@@ -25,8 +25,8 @@ defmodule Store.Product do
 
   end
 
-  @fields ~w(brand_id product_category_id shipping_category_id name short_description long_description available_at deleted_at permalink keywords featured)
-  @required_fields ~w(brand_id product_category_id shipping_category_id name short_description available_at featured)
+  @fields ~w(brand_id product_category_id shipping_category_id name short_description long_description available_at deleted_at permalink keywords featured)a
+  @required_fields ~w(brand_id product_category_id shipping_category_id name short_description available_at featured)a
 
   @doc """
   Creates a changeset based on the `model` and `params`.
