@@ -41,7 +41,7 @@ end
 |> Enum.each(fn order_status ->
   case Repo.get_by(OrderStatus, name: order_status[:name]) do
     nil ->  OrderStatus.changeset(%OrderStatus{}, order_status)
-    |> Repo.insert!(changeset)
+    |> Repo.insert!()
     _ -> IO.inspect "Existing"
   end
 end )
