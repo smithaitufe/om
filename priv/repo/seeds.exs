@@ -23,8 +23,9 @@ end)
 
 country  = Repo.get_by(Country, [name: "Nigeria"])
 case Repo.get_by(TaxRate,  [country_id: country.id, percentage: 5]) do
-  nil ->  TaxRate.changeset(%TaxRate{}, %{country_id: country.id, percentage: 5})
-  |> Repo.insert!(changeset)
+  nil ->
+    TaxRate.changeset(%TaxRate{}, %{country_id: country.id, percentage: 5})
+    |> Repo.insert!()
   _ -> IO.inspect "Existing"
 end
 
