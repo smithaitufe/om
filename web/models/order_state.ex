@@ -1,4 +1,4 @@
-defmodule Store.OrderStatus do
+defmodule Store.OrderState do
   use Ecto.Schema
   import Ecto.Changeset
 
