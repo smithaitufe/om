@@ -1,5 +1,5 @@
 rule = "============================================================================================================"
-alias Store.{Repo, Country, AddressType, ItemType, TaxRate, OrderStatusType, ShippingZone, State, LocalGovernmentArea, InvoiceType}
+alias Store.{Repo, Country, AddressType, ItemType, TaxRate, OrderStatusType, ShippingZone, State, LocalGovernmentArea, InvoiceType, InvoiceStatus}
 alias Timex.{Date}
 country  = Repo.get_by(Country, [name: "Nigeria"])
 if country == nil do
@@ -881,8 +881,21 @@ end
   %{name: "Paid"}
 ]
 |> Enum.each(fn invoice_type ->
-  %InvoiceType{}
-  |> InvoiceType.changeset(invoice_type)
-  |> Repo.insert!()
-end
+    %InvoiceStatus{}
+    |> InvoiceStatus.changeset(invoice_type)
+    |> Repo.insert!()
+  end
+)
+
+
+
+[
+  %{name: "Purchase"},
+  %{name: "RMA"}
+]
+|> Enum.each(fn invoice_type ->
+    %InvoiceType{}
+    |> InvoiceType.changeset(invoice_type)
+    |> Repo.insert!()
+  end
 )
