@@ -1,6 +1,7 @@
 defmodule Store.ShippingZone do
   use Ecto.Schema
   import Ecto.Changeset
+  # import Ecto.Changeset, only: [cast: 3]
 
   schema "shipping_zones" do
     field :name, :string
@@ -18,7 +19,7 @@ defmodule Store.ShippingZone do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(struct, params \\ :empty) do
+  def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, @fields)
     |> validate_required(@required_fields)

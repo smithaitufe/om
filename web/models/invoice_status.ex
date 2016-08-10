@@ -24,4 +24,5 @@ defmodule Store.InvoiceStatus do
     |> validate_required(@required_fields)
 
   end
+
 end

@@ -9,7 +9,7 @@ defmodule Store.InvoiceType do
     timestamps
   end
   @fields ~w(name slug)a
-  @required_fields ~w(name slug)a
+  @required_fields ~w(name)a
 
 
   @doc """

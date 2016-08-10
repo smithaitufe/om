@@ -1,10 +1,11 @@
 rule = "============================================================================================================"
 alias Store.{Repo, Country, AddressType, ItemType, TaxRate, OrderStatus, OrderState, ShippingZone, State, LocalGovernmentArea, InvoiceType, InvoiceStatus}
-alias Timex.{Date}
 
 country  = Repo.get_by(Country, [name: "Nigeria"])
 if country == nil do
-  Repo.insert!(%Country{name: "Nigeria", abbreviation: "NG"})
+  %Country{}
+  |> Country.changeset(%{name: "Nigeria", abbreviation: "NG"})
+  |> Repo.insert!()
 end
 IO.puts rule
 
@@ -15,7 +16,9 @@ IO.puts rule
 |> Enum.each(fn shipping_zone ->
     Repo.get_by(ShippingZone, name: shipping_zone[:name])
     |> case do
-      nil -> ShippingZone.changeset(shipping_zone)
+      nil ->
+      %ShippingZone{}
+      |> ShippingZone.changeset(shipping_zone)
       |> Repo.insert!()
       _ -> IO.inspect "Existing already"
     end
@@ -906,11 +909,15 @@ end
   %{name: "Authorized"},
   %{name: "Paid"}
 ]
-|> Enum.each(fn invoice_type ->
-    %InvoiceStatus{}
-    |> InvoiceStatus.changeset(invoice_type)
-    |> Repo.insert!()
+|> Enum.each(fn invoice_status ->
+  case Repo.get_by(InvoiceStatus, [name: invoice_status[:name]]) do
+    nil ->
+      %InvoiceStatus{}
+      |> InvoiceStatus.changeset(invoice_status)
+      |> Repo.insert!()
+    _ -> IO.inspect "Found"
   end
+end
 )
 
 
@@ -920,8 +927,12 @@ end
   %{name: "RMA"}
 ]
 |> Enum.each(fn invoice_type ->
-    %InvoiceType{}
-    |> InvoiceType.changeset(invoice_type)
-    |> Repo.insert!()
+    case Repo.get_by(InvoiceType, name: invoice_type[:name]) do
+      nil ->
+        %InvoiceType{}
+        |> InvoiceType.changeset(invoice_type)
+        |> Repo.insert!()
+      _ -> IO.inspect "Found"
+    end
   end
 )
