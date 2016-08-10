@@ -1,5 +1,5 @@
 defmodule Store.InvoiceType do
-  use Store.Schema
+  use Ecto.Schema
   import Ecto.Changeset
 
   schema "invoice_types" do
@@ -22,5 +22,17 @@ defmodule Store.InvoiceType do
     struct
     |> cast(params, @fields)
     |> validate_required(@required_fields)
+    |> generate_slug()
+  end
+
+  defp generate_slug(changeset) do
+    if name = get_change(changeset, :name) do
+      slug = name
+      |> String.downcase()
+      |> String.replace(~r/[^\w-]+/, "-")
+      put_change(changeset, :slug, slug)
+    else
+      changeset
+    end
   end
 end

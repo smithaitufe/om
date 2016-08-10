@@ -1,5 +1,5 @@
 rule = "============================================================================================================"
-alias Store.{Repo, Country, AddressType, ItemType, TaxRate, OrderStatusType, ShippingZone, State, LocalGovernmentArea}
+alias Store.{Repo, Country, AddressType, ItemType, TaxRate, OrderStatusType, ShippingZone, State, LocalGovernmentArea, InvoiceType}
 alias Timex.{Date}
 country  = Repo.get_by(Country, [name: "Nigeria"])
 if country == nil do
@@ -872,3 +872,17 @@ for lga <- lga_list do
     if changeset.valid?, do: Repo.insert!(changeset)
   end
 end
+
+[
+  %{name: "Pending"},
+  %{name: "Canceled"},
+  %{name: "Refunded"},
+  %{name: "Authorized"},
+  %{name: "Paid"}
+]
+|> Enum.each(fn invoice_type ->
+  %InvoiceType{}
+  |> InvoiceType.changeset(invoice_type)
+  |> Repo.insert!()
+end
+)
