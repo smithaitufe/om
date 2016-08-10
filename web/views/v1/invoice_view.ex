@@ -2,11 +2,11 @@ defmodule Store.V1.InvoiceView do
   use Store.Web, :view
 
   def render("index.json", %{invoices: invoices}) do
-    %{data: render_many(invoices, Store.V1.InvoiceView, "invoice.json")}
+    render_many(invoices, Store.V1.InvoiceView, "invoice.json")
   end
 
   def render("show.json", %{invoice: invoice}) do
-    %{data: render_one(invoice, Store.V1.InvoiceView, "invoice.json")}
+    render_one(invoice, Store.V1.InvoiceView, "invoice.json")
   end
 
   def render("invoice.json", %{invoice: invoice}) do

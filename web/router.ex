@@ -30,6 +30,8 @@ defmodule Store.Router do
       resources "invoice_types", InvoiceTypeController, except: [:new, :edit]
       resources "invoice_statuses", InvoiceStatusController, except: [:new, :edit]
       resources "invoices", InvoiceController, except: [:new, :edit]
+      resources "payments", PaymentController, except: [:new, :edit]
+
       resources "properties", PropertyController, except: [:new, :edit]
       resources "prototypes", PrototypeController, except: [:new, :edit]
       resources "prototype_properties", PrototypePropertyController, except: [:new, :edit]
