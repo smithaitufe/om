@@ -1,25 +1,50 @@
 rule = "============================================================================================================"
-alias Store.{Repo, Country, AddressType, ItemType, TaxRate, OrderStatusType, ShippingZone, State, LocalGovernmentArea, InvoiceType, InvoiceStatus}
+alias Store.{Repo, Country, AddressType, ItemType, TaxRate, OrderStatus, OrderState, ShippingZone, State, LocalGovernmentArea, InvoiceType, InvoiceStatus}
 alias Timex.{Date}
+
 country  = Repo.get_by(Country, [name: "Nigeria"])
 if country == nil do
   Repo.insert!(%Country{name: "Nigeria", abbreviation: "NG"})
 end
 IO.puts rule
-Repo.insert!(%ShippingZone{name: "Nation Wide"})
-Repo.insert!(%ShippingZone{name: "Area Wide"})
+
+[
+  %{name: "Nation Wide"},
+  %{name: "Area Wide"}
+]
+|> Enum.each(fn shipping_zone ->
+    Repo.get_by(ShippingZone, name: shipping_zone[:name])
+    |> case do
+      nil -> ShippingZone.changeset(shipping_zone)
+      |> Repo.insert!()
+      _ -> IO.inspect "Existing already"
+    end
+end)
 
 country  = Repo.get_by(Country, [name: "Nigeria"])
-# changeset = TaxRate.changeset(%TaxRate{}, %{country_id: country.id, percentage: 5, start_date: Date.from({1994, 1,1}) })
-
-changeset = TaxRate.changeset(%TaxRate{}, %{country_id: country.id, percentage: 5})
-Repo.insert!(changeset)
-IO.puts rule
-order_status_types  =  [%{name: "Open"}, %{name: "Processed"}, %{name: "Failed"}, %{name: "Completed"}, %{name: "Cancelled"}, %{name: "Declined"}, %{name: "Backordered"}]
-for ost <- order_status_types do
-  changeset = OrderStatusType.changeset(%OrderStatusType{}, ost)
-  Repo.insert!(changeset)
+case Repo.get_by(TaxRate,  [country_id: country.id, percentage: 5]) do
+  nil ->  TaxRate.changeset(%TaxRate{}, %{country_id: country.id, percentage: 5})
+  |> Repo.insert!(changeset)
+  _ -> IO.inspect "Existing"
 end
+
+[
+  %{name: "Open"},
+  %{name: "Processed"},
+  %{name: "Failed"},
+  %{name: "Completed"},
+  %{name: "Cancelled"},
+  %{name: "Declined"},
+  %{name: "Backordered"}
+]
+|> Enum.each(fn order_status ->
+  case Repo.get_by(OrderStatus, name: order_status[:name]) do
+    nil ->  OrderStatus.changeset(%OrderStatus{}, order_status)
+    |> Repo.insert!(changeset)
+    _ -> IO.inspect "Existing"
+  end
+end )
+
 IO.puts rule
 address_types = [%{name: "Billing Address"}, %{name: "Shipping Address"}]
 for at <- address_types do

@@ -2,7 +2,7 @@ defmodule Store.V1.OrderStatusControllerTest do
   use Store.ConnCase
 
   alias Store.V1.OrderStatus
-  @valid_attrs %{active: true}
+  @valid_attrs %{name: "some content"}
   @invalid_attrs %{}
 
   setup do
@@ -19,9 +19,7 @@ defmodule Store.V1.OrderStatusControllerTest do
     order_status = Repo.insert! %OrderStatus{}
     conn = get conn, order_status_path(conn, :show, order_status)
     assert json_response(conn, 200)["data"] == %{"id" => order_status.id,
-      "order_id" => order_status.order_id,
-      "order_status_type_id" => order_status.order_status_type_id,
-      "active" => order_status.active}
+      "name" => order_status.name}
   end
 
   test "does not show resource and instead throw error when id is nonexistent", %{conn: conn} do

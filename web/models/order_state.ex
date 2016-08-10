@@ -2,14 +2,19 @@ defmodule Store.OrderStatus do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "order_statuses" do
-    field :name, :string
+  schema "order_states" do
+    field :active, :boolean, default: false
+    belongs_to :order, Store.Order
+    belongs_to :order_status, Store.OrderStatus
+    belongs_to :user, Store.User
 
     timestamps
   end
 
-  @fields ~w(name)a
-  @required_fields ~w(name)a
+  @fields ~w(active order_id order_status_id user_id)a
+  @required_fields ~w(active order_id order_status_id user_id)a
+
+
   @doc """
   Creates a changeset based on the `model` and `params`.
 

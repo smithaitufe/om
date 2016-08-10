@@ -6,8 +6,8 @@ defmodule Store.V1.OrderStatusController do
   plug :scrub_params, "order_status" when action in [:create, :update]
 
   def index(conn, _params) do
-    order_statuses = Repo.all(OrderStatus)
-    render(conn, "index.json", order_statuses: order_statuses)
+    order_statuss = Repo.all(OrderStatus)
+    render(conn, "index.json", order_statuss: order_statuss)
   end
 
   def create(conn, %{"order_status" => order_status_params}) do

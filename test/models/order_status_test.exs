@@ -3,7 +3,7 @@ defmodule Store.OrderStatusTest do
 
   alias Store.OrderStatus
 
-  @valid_attrs %{active: true}
+  @valid_attrs %{name: "some content"}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do
