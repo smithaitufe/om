@@ -48,6 +48,8 @@ defmodule Store.Router do
       resources "newsletters", NewsletterController, except: [:new,:edit]
 
       resources "return_conditions", ReturnConditionController, except: [:new, :edit]
+      resources "return_authorizations", ReturnAuthorizationController, except: [:new, :edit]
+
       resources "addresses", AddressController, except: [:new, :edit]
 
       resources "order_statuses", OrderStatusController, except: [:new, :edit]
