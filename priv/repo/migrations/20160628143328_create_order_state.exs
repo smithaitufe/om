@@ -10,9 +10,9 @@ defmodule Store.Repo.Migrations.CreateOrderStatus do
 
       timestamps
     end
-    create index(:order_statuses, [:order_id])
-    create index(:order_statuses, [:user_id])
-    create index(:order_statuses, [:order_status_id])
+    create index(:order_states, [:order_id])
+    create index(:order_states, [:user_id])
+    create index(:order_states, [:order_status_id])
 
   end
 end
