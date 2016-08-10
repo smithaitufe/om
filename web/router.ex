@@ -48,9 +48,9 @@ defmodule Store.Router do
       resources "return_conditions", ReturnConditionController, except: [:new, :edit]
       resources "addresses", AddressController, except: [:new, :edit]
 
-      resources "order_status_types", OrderStatusTypeController, except: [:new, :edit]
-      resources "orders", OrderController, except: [:new, :edit]
       resources "order_statuses", OrderStatusController, except: [:new, :edit]
+      resources "orders", OrderController, except: [:new, :edit]
+      resources "order_states", OrderStateController, except: [:new, :edit]
 
       resources "shipping_categories", ShippingCategoryController, except: [:new, :edit]
       resources "shipping_zones", ShippingZoneController, except: [:new, :edit]
