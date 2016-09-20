@@ -9,8 +9,8 @@ defmodule Store.ShippingZone do
     timestamps
   end
 
-  @fields ~w(name)a
-  @required_fields ~w(name)a
+  @fields [:name]
+  @required_fields [:name]
 
 
   @doc """

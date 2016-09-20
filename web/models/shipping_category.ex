@@ -5,12 +5,14 @@ defmodule Store.ShippingCategory do
   schema "shipping_categories" do
     field :name, :string
     field :description, :string
+
     has_many :products, Store.Product
+
     timestamps
   end
 
   @fields ~w(name description)a
-  @required_fields ~w(name description)a
+  @required_fields ~w(name)a
 
 
   @doc """
@@ -23,5 +25,6 @@ defmodule Store.ShippingCategory do
     struct
     |> cast(params, @fields)
     |> validate_required(@required_fields)
+    |> validate_length(:name, min: 2, max: 255)
   end
 end

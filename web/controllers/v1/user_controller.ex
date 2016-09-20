@@ -1,7 +1,7 @@
 defmodule Store.V1.UserController do
   use Store.Web, :controller
   plug :scrub_params, "user" when action in [:create]
-  alias Store.{Repo, User, UserRole, Term}
+  alias Store.{Repo, User}
 
   def index(conn, _) do
     users = Repo.all(User)
@@ -29,34 +29,6 @@ defmodule Store.V1.UserController do
         |> put_status(:unprocessable_entity)
         |> render("error.json", changeset: changeset)
     end
-  end
-
-
-  def upload_examinees(conn, %{"examinees" => examinees_params}) do
-    for examinee_params <- examinees_params do
-      user_params = %{
-        first_name: examinee_params["first_name"],
-        last_name: examinee_params["last_name"],
-        email: examinee_params["registration_no"] <> "@postutme.edu.ng",
-        password: examinee_params["jamb_registration_no"]
-      }
-
-      changeset = User.changeset(%User{}, user_params)
-      {:ok, user} = Repo.insert(changeset)
-
-      role = Term
-      |> Term.fetch("role","Examinee")
-      |> Repo.all
-      |> List.first
-
-      user_role_params = %{user_id: user.id, role_id: role.id, default: true}
-      changeset = UserRole.changeset(%UserRole{}, user_role_params)
-      {:ok, user_role} = Repo.insert(changeset)
-    end
-
-    conn
-    |> render("examinee_uploaded.json")
-
   end
 
   def update(conn, %{"id" => id, "user" => user_params}) do

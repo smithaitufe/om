@@ -1,7 +1,7 @@
 defmodule Store.V1.ReviewControllerTest do
   use Store.ConnCase
 
-  alias Store.V1.Review
+  alias Store.Review
   @valid_attrs %{comment: "some content", rating: 42}
   @invalid_attrs %{}
 
@@ -11,13 +11,13 @@ defmodule Store.V1.ReviewControllerTest do
   end
 
   test "lists all entries on index", %{conn: conn} do
-    conn = get conn, review_path(conn, :index)
+    conn = get conn, v1_review_path(conn, :index)
     assert json_response(conn, 200)["data"] == []
   end
 
   test "shows chosen resource", %{conn: conn} do
     review = Repo.insert! %Review{}
-    conn = get conn, review_path(conn, :show, review)
+    conn = get conn, v1_review_path(conn, :show, review)
     assert json_response(conn, 200)["data"] == %{"id" => review.id,
       "user_id" => review.user_id,
       "product_id" => review.product_id,
@@ -27,37 +27,37 @@ defmodule Store.V1.ReviewControllerTest do
 
   test "does not show resource and instead throw error when id is nonexistent", %{conn: conn} do
     assert_raise Ecto.NoResultsError, fn ->
-      get conn, review_path(conn, :show, -1)
+      get conn, v1_review_path(conn, :show, -1)
     end
   end
 
   test "creates and renders resource when data is valid", %{conn: conn} do
-    conn = post conn, review_path(conn, :create), review: @valid_attrs
+    conn = post conn, v1_review_path(conn, :create), review: @valid_attrs
     assert json_response(conn, 201)["data"]["id"]
     assert Repo.get_by(Review, @valid_attrs)
   end
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
-    conn = post conn, review_path(conn, :create), review: @invalid_attrs
+    conn = post conn, v1_review_path(conn, :create), review: @invalid_attrs
     assert json_response(conn, 422)["errors"] != %{}
   end
 
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
     review = Repo.insert! %Review{}
-    conn = put conn, review_path(conn, :update, review), review: @valid_attrs
+    conn = put conn, v1_review_path(conn, :update, review), review: @valid_attrs
     assert json_response(conn, 200)["data"]["id"]
     assert Repo.get_by(Review, @valid_attrs)
   end
 
   test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
     review = Repo.insert! %Review{}
-    conn = put conn, review_path(conn, :update, review), review: @invalid_attrs
+    conn = put conn, v1_review_path(conn, :update, review), review: @invalid_attrs
     assert json_response(conn, 422)["errors"] != %{}
   end
 
   test "deletes chosen resource", %{conn: conn} do
     review = Repo.insert! %Review{}
-    conn = delete conn, review_path(conn, :delete, review)
+    conn = delete conn, v1_review_path(conn, :delete, review)
     assert response(conn, 204)
     refute Repo.get(Review, review.id)
   end

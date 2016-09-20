@@ -14,8 +14,8 @@ defmodule Store.Payment do
     timestamps
   end
 
-  @fields ~w(invoice_id payment_method_id success error_code error cleared cleared_by_user_id)
-  @required_fields ~w(invoice_id payment_method_id)
+  @fields ~w(invoice_id payment_method_id success error_code error cleared cleared_by_user_id)a
+  @required_fields ~w(invoice_id payment_method_id)a
 
 
   @doc """

@@ -12,6 +12,8 @@ defmodule Store.V1.CityView do
   def render("city.json", %{city: city}) do
     %{id: city.id,
       state_id: city.state_id,
-      name: city.name}
+      shipping_zone_id: city.shipping_zone_id,
+      name: city.name
+    }
   end
 end

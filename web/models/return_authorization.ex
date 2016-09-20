@@ -13,8 +13,8 @@ defmodule Store.ReturnAuthorization do
     timestamps
   end
 
-  @fields ~w(order_id number amount restocking_fee active created_by)
-  @required_fields ~w(order_id number amount restocking_fee created_by)
+  @fields ~w(order_id number amount restocking_fee active created_by)a
+  @required_fields ~w(order_id number amount restocking_fee created_by)a
 
 
   @doc """
