@@ -12,6 +12,11 @@ defmodule Store.V1.ShippingMethodView do
   def render("shipping_method.json", %{shipping_method: shipping_method}) do
     %{id: shipping_method.id,
       name: shipping_method.name,
-      shipping_zone_id: shipping_method.shipping_zone_id}
+      shipping_zone_id: shipping_method.shipping_zone_id,
+      minimum_days: shipping_method.minimum_days,
+      maximum_days: shipping_method.maximum_days,
+      rate: shipping_method.rate
+
+    }
   end
 end
