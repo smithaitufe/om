@@ -30,6 +30,7 @@ defmodule Store.Router do
       resources "invoice_types", InvoiceTypeController, except: [:new, :edit]
       resources "invoice_statuses", InvoiceStatusController, except: [:new, :edit]
       resources "invoices", InvoiceController, except: [:new, :edit]
+      resources "invoice_states", InvoiceStateController, except: [:new, :edit]
       resources "payments", PaymentController, except: [:new, :edit]
 
       resources "properties", PropertyController, except: [:new, :edit]
@@ -53,12 +54,14 @@ defmodule Store.Router do
       resources "addresses", AddressController, except: [:new, :edit]
 
       resources "order_statuses", OrderStatusController, except: [:new, :edit]
+      resources "order_status_types", OrderStatusTypeController, except: [:new, :edit]
       resources "orders", OrderController, except: [:new, :edit]
       resources "order_states", OrderStateController, except: [:new, :edit]
 
       resources "shipping_categories", ShippingCategoryController, except: [:new, :edit]
       resources "shipping_zones", ShippingZoneController, except: [:new, :edit]
       resources "shipping_methods", ShippingMethodController, except: [:new, :edit]
+      resources "shipping_rates", ShippingRateController, except: [:new, :edit]
       resources "tags", TagController, except: [:new, :edit]
       resources "suppliers", SupplierController, except: [:new, :edit]
       resources "variant_suppliers", VariantSupplierController, except: [:new, :edit]

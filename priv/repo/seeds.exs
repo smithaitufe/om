@@ -1,5 +1,21 @@
-rule = "============================================================================================================"
-alias Store.{Repo, Country, AddressType, ItemType, TaxRate, OrderStatus, OrderState, ShippingZone, State, LocalGovernmentArea, InvoiceType, InvoiceStatus}
+rule = "____________________________________________________LINE__________________________________________"
+
+import Ecto.Query
+alias Store.{Repo, Country, AddressType, ItemType, TaxRate, OrderStatus, OrderState, ShippingZone, State, LocalGovernmentArea, InvoiceType, InvoiceStatus, ProductCategory}
+
+get_product_category = fn name -> Repo.get_by(ProductCategory, [name: ^name]) end
+save_product_category = fn product_categories ->
+  Enum.each(product_categories,
+    fn product_category ->
+      Repo.get_by(ProductCategory, name: product_category[:name])
+      |> case do
+          nil -> ProductCategory.changeset %ProductCategory{}, product_category
+                |> Repo.insert!
+          _ -> IO.inspect "Not inserted due to duplication"
+        end
+  end
+  )
+end
 
 country  = Repo.get_by(Country, [name: "Nigeria"])
 if country == nil do
@@ -7,12 +23,7 @@ if country == nil do
   |> Country.changeset(%{name: "Nigeria", abbreviation: "NG"})
   |> Repo.insert!()
 end
-IO.puts rule
-
-[
-  %{name: "Nation Wide"},
-  %{name: "Area Wide"}
-]
+[%{name: "Nation Wide"},%{name: "Area Wide"}]
 |> Enum.each(fn shipping_zone ->
     Repo.get_by(ShippingZone, name: shipping_zone[:name])
     |> case do
@@ -43,31 +54,28 @@ end
 ]
 |> Enum.each(fn order_status ->
   case Repo.get_by(OrderStatus, name: order_status[:name]) do
-    nil ->  OrderStatus.changeset(%OrderStatus{}, order_status)
-    |> Repo.insert!()
+    nil ->  OrderStatus.changeset(%OrderStatus{}, order_status) |> Repo.insert!()
     _ -> IO.inspect "Existing"
   end
 end )
 
-IO.puts rule
-address_types = [%{name: "Billing Address"}, %{name: "Shipping Address"}]
-for at <- address_types do
-  changeset = AddressType.changeset(%AddressType{}, at)
-  Repo.insert!(changeset)
-end
-IO.puts rule
+[%{name: "Billing Address"}, %{name: "Shipping Address"}]
+|> Enum.each(fn address_type ->
+  AddressType.changeset(%AddressType{}, address_type) |> Repo.insert!
+end)
 
-item_types = [%{name: "shopping_cart"},%{name: "save_for_later"},%{name: "wish_list"}, %{name: "purchased"}]
-for item_type <- item_types do
-  found = Repo.get_by(ItemType, [name: item_type[:name]])
-  if (found == nil) do
-    changeset = ItemType.changeset(%ItemType{}, item_type)
-    Repo.insert!(changeset)
-  end
-end
+[%{name: "shopping_cart"},%{name: "save_for_later"},%{name: "wish_list"}, %{name: "purchased"}]
+|> Enum.each(fn item_type ->
+  Repo.get_by(ItemType, [name: item_type[:name]])
+  |> case do
+      nil -> ItemType.changeset(%ItemType{}, item_type) |> Repo.insert!
+      _ -> IO.inspect "Existing already"
+    end
+end)
+
 
 country = Country |> Repo.get_by(name: "Nigeria")
-states =[
+[
   %{name: "Abia", shipping_zone_id: 1},
   %{name: "Adamawa", shipping_zone_id: 1},
   %{name: "Akwa Ibom", shipping_zone_id: 1},
@@ -106,20 +114,18 @@ states =[
   %{name: "Yobe", shipping_zone_id: 1},
   %{name: "Zamfara", shipping_zone_id: 1}
 ]
-
-for s <- states do
+Enum.each(fn state ->
   Repo.transaction fn ->
-    result = State |> Repo.get_by([country_id: country.id, name: s.name])
-    if result == nil do
-      state_params = Map.put(s, :country_id, country.id)
-      changeset = State.changeset(%State{}, state_params)
-      if changeset.valid?, do: Repo.insert(changeset)
-    end
+    State
+    |> Repo.get_by([country_id: country.id, name: state[:name]])
+    |> case do
+        country -> State.changeset(%State{}, Map.put(s, :country_id, country.id)) |> Repo.insert!
+        nil -> IO.inspect "Not found"
+      end
   end
-end
-IO.puts rule
+end)
 
-lga_list =[
+[
   %{name: "Aba North", state: "Abia"},
   %{name: "Aba South", state: "Abia"},
   %{name: "Arochukwu", state: "Abia"},
@@ -891,16 +897,20 @@ lga_list =[
   %{name: "Tsafe", state: "Zamfara"},
   %{name: "Zurmi", state: "Zamfara"}
 ]
-
-for lga <- lga_list do
-  state = Repo.get_by(State, name: lga[:state])
-  result = LocalGovernmentArea |> Repo.get_by([name: lga[:name], state_id: state.id])
-  if result == nil do
-    lga_params = %{name: lga[:name], state_id: state.id}
-    changeset = LocalGovernmentArea.changeset(%LocalGovernmentArea{}, lga_params)
-    if changeset.valid?, do: Repo.insert!(changeset)
-  end
-end
+|> Enum.each( fn lga ->
+    Repo.get_by(State, name: lga[:state])
+    |> case do
+        state ->
+          LocalGovernmentArea |> Repo.get_by([name: lga[:name], state_id: state.id])
+          |> case do
+              nil ->
+                LocalGovernmentArea.changeset(%LocalGovernmentArea{}, %{name: lga[:name], state_id: state.id})
+                |> Repo.insert!
+              _ -> IO.inspect "Existing"
+            end
+          nil -> IO.inspect "Not found"
+      end
+end)
 
 [
   %{name: "Pending"},
@@ -920,19 +930,62 @@ end
 end
 )
 
-
-
-[
-  %{name: "Purchase"},
-  %{name: "RMA"}
-]
+[ %{name: "Purchase"},  %{name: "RMA"}]
 |> Enum.each(fn invoice_type ->
     case Repo.get_by(InvoiceType, name: invoice_type[:name]) do
       nil ->
-        %InvoiceType{}
-        |> InvoiceType.changeset(invoice_type)
-        |> Repo.insert!()
+        |> InvoiceType.changeset(%InvoiceType{}, invoice_type)
+        |> Repo.insert!
       _ -> IO.inspect "Found"
     end
   end
 )
+[%{name: "pending"}, %{name: "authorized"}, %{name: "paid"}, %{name: "payment_declined"}, %{name: "canceled"}, %{name: "refunded"}]
+|> Enum.each(fn invoice_status ->
+    Repo.get_by(InvoiceStatus, [name: invoice_status[:name]])
+    |> case do
+        nil -> InvoiceStatus.changeset(%InvoiceStatus{}, invoice_status) |> Repo.insert!
+        _ -> IO.inspect "Existing"
+      end
+end)
+[ %{name: "Women's Clothing"},
+  %{name: "Men's Clothing"},
+  %{name: "Phones and Accessories"},
+  %{name: "Computer & Office"},
+  %{name: "Consumer Electronics"},
+  %{name: "Jewelry & Watches"},
+  %{name: "Home & Garden"},
+  %{name: "Bags & Shoes"},
+  %{name: "Toys, Kids & Baby"},
+  %{name: "Sports & Outdoors"},
+  %{name: "Health & Beauty"},
+  %{name: "Automobiles & Motorcycle"},
+  %{name: "Tools and Hardware"}]
+|> save_product_category.()
+
+
+women_clothing_category = get_product_category.("Women's Clothing")
+[
+  %{name: "Women's Dresses", parent_id: women_clothing_category.id},
+  %{name: "Women's Tops", parent_id: women_clothing_category.id},
+  %{name: "Women's Skirts", parent_id: women_clothing_category.id},
+  %{name: "Women's Trousers", parent_id: women_clothing_category.id},
+  %{name: "Lingerie and Sleepwear", parent_id: women_clothing_category.id},
+  %{name: "Jumpsuits and Playsuits", parent_id: women_clothing_category.id},
+  %{name: "Islamic Wear", parent_id: women_clothing_category.id},
+  %{name: "Traditional Clothing", parent_id: women_clothing_category.id}
+]
+|> save_product_category.()
+
+men_clothing_category = get_product_category.("Men's Clothing")
+[
+%{name: "Men's Shirts", parent_id: men_clothing_category.id},
+%{name: "Men's Jeans", parent_id: men_clothing_category.id},
+%{name: "Jerseys", parent_id: men_clothing_category.id},
+%{name: "Men's Trousers and Shorts", parent_id: men_clothing_category.id},
+%{name: "Suits, Blazers & Jackets", parent_id: men_clothing_category.id},
+%{name: "Men's Nightwear", parent_id: men_clothing_category.id},
+%{name: "Polo Shirts", parent_id: men_clothing_category.id},
+%{name: "Men's T-Shirts", parent_id: men_clothing_category.id}
+]
+|> save_product_category.()

@@ -25,7 +25,7 @@ defmodule Store.ShippingRate do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, @required_fields <> @optional_fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
   end
 end

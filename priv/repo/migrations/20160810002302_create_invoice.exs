@@ -1,10 +1,10 @@
 defmodule Store.Repo.Migrations.CreateInvoice do
   use Ecto.Migration
-
+  
   def change do
     create table(:invoices) do
       add :number, :string, limit: 50, null: false
-      add :amount, :decimal, default: 0.0
+      add :amount, :decimal, default: 0.0, precision: 8, scale: 2
       add :active, :boolean, default: true
       add :order_id, references(:orders)
       add :invoice_type_id, references(:invoice_types)

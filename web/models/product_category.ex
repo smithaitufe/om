@@ -14,9 +14,8 @@ defmodule Store.ProductCategory do
     timestamps
   end
 
-  @fields ~w(name description active slug parent_id)a
-  @required_fields ~w(name description active)a
-
+  @optional_fields ~w(description active slug parent_id)a
+  @required_fields ~w(name)a
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -24,13 +23,14 @@ defmodule Store.ProductCategory do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(struct, params \\ %{}) do
-    struct
-    |> cast(params, @fields)
+  def changeset(product_category, params \\ %{}) do
+    product_category
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
     |> generate_slug()
 
   end
+
 
   defp generate_slug(changeset) do
     if name = get_change(changeset, :name) do

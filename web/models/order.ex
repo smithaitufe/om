@@ -25,4 +25,14 @@ defmodule Store.Order do
     |> cast(params, @fields)
     |> validate_required(@required_fields)
   end
+
+  def completed_invoices do
+  end
+  def authorized_invoices do
+  end
+  def paid_invoices do
+  end
+  def canceled_invoices do
+  end
+  
 end

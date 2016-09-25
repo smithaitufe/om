@@ -1,6 +1,7 @@
 defmodule Store.Product do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use     Ecto.Schema
+  import  Ecto.Changeset
+  alias   Store.{ProductCategory, ShippingCategory, Shop, Tag, ProductTag, Brand, Variant}
 
   schema "products" do
     field :name, :string
@@ -11,13 +12,13 @@ defmodule Store.Product do
     field :permalink, :string
     field :keywords, :string
     field :featured, :boolean, default: false
-    belongs_to :product_category, Store.ProductCategory
-    belongs_to :shipping_category, Store.ShippingCategory
-    belongs_to :shop, Store.Shop
-    belongs_to :brand, Store.Brand
+    belongs_to :product_category, ProductCategory
+    belongs_to :shipping_category, ShippingCategory
+    belongs_to :shop, Shop
+    belongs_to :brand, Brand
 
-    many_to_many :tags, Store.Tag, join_through: Store.ProductTag, join_keys: [product_id: :id, tag_id: :id]
-    has_many :variants, Store.Variant
+    many_to_many :tags, Tag, join_through: ProductTag, join_keys: [product_id: :id, tag_id: :id]
+    has_many :variants, Variant
 
     timestamps
 
@@ -25,8 +26,9 @@ defmodule Store.Product do
 
   end
 
-  @fields ~w(brand_id product_category_id shipping_category_id name short_description long_description available_at deleted_at permalink keywords featured)a
-  @required_fields ~w(brand_id product_category_id shipping_category_id name short_description available_at featured)a
+  @required_fields ~w(brand_id product_category_id shipping_category_id name short_description)a
+  @optional_fields ~w(long_description deleted_at permalink keywords featured available_at)a
+
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -36,7 +38,7 @@ defmodule Store.Product do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, @fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
   end
 end

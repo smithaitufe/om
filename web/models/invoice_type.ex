@@ -8,6 +8,9 @@ defmodule Store.InvoiceType do
 
     timestamps
   end
+
+  def invoice_types, do:  ~w(Purchase RMA)
+
   @fields ~w(name slug)a
   @required_fields ~w(name)a
 

@@ -1,12 +1,13 @@
 defmodule Store.VariantProperty do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Store.{Variant, Property}
 
   schema "variant_properties" do
     field :description, :string
     field :primary, :boolean, default: false
-    belongs_to :variant, Store.Variant
-    belongs_to :property, Store.Property
+    belongs_to :variant, Variant
+    belongs_to :property, Property
 
     timestamps
   end

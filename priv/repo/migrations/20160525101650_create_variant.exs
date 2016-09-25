@@ -14,6 +14,7 @@ defmodule Store.Repo.Migrations.CreateVariant do
       add :deleted_at, :datetime
       add :product_id, references(:products)
       add :image_group_id, references(:image_groups)
+      add :weight, :float, default: 0.0, null: false
 
       timestamps
     end

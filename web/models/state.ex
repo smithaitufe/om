@@ -1,13 +1,15 @@
 defmodule Store.State do
-  use Ecto.Schema
+  use     Ecto.Schema
+  import  Ecto.Changeset
+  alias   Store.{Country, ShippingZone}
 
 
   schema "states" do
     field :name, :string
     field :described_as, :string
     field :abbreviation, :string
-    belongs_to :country, Store.Country
-    belongs_to :shipping_zone, Store.ShippingZone
+    belongs_to :country, Country
+    belongs_to :shipping_zone, ShippingZone
 
     timestamps
   end
@@ -24,7 +26,7 @@ defmodule Store.State do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> Ecto.Changeset.cast(params, @required_fields <> @optional_fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
   end
 end

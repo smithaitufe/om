@@ -7,7 +7,7 @@ defmodule Store.Repo.Migrations.CreateProduct do
       add :name, :string, size: 255, null: false
       add :short_description, :string
       add :long_description, :text
-      add :available_at, :datetime
+      add :available_at, :datetime, default: fragment("now()"), null: false
       add :deleted_at, :datetime
       add :permalink, :string
       add :keywords, :text

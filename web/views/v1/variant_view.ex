@@ -20,6 +20,8 @@ defmodule Store.V1.VariantView do
       quantity_on_hand: variant.quantity_on_hand,
       quantity_pending_to_customer: variant.quantity_pending_to_customer,
       quantity_pending_from_supplier: variant.quantity_pending_from_supplier,
-      deleted_at: variant.deleted_at}
+      deleted_at: variant.deleted_at,
+      weight: variant.weight
+    }
   end
 end

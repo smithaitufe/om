@@ -1,6 +1,7 @@
 defmodule Store.VariantSupplier do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Store.{Variant, Supplier}
 
   schema "variant_suppliers" do
     field :cost, :decimal
@@ -8,8 +9,8 @@ defmodule Store.VariantSupplier do
     field :min_quantity, :integer
     field :max_quantity, :integer
     field :active, :boolean, default: false
-    belongs_to :variant, Store.Variant
-    belongs_to :supplier, Store.Supplier
+    belongs_to :variant, Variant
+    belongs_to :supplier, Supplier
 
     timestamps
   end

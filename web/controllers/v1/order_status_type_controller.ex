@@ -1,7 +1,6 @@
 defmodule Store.V1.OrderStatusTypeController do
-  use Store.Web, :controller
-
-  alias Store.OrderStatusType
+  use     Store.Web, :controller
+  alias   Store.OrderStatusType
 
   plug :scrub_params, "order_status_type" when action in [:create, :update]
 
