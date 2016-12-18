@@ -1,0 +1,17 @@
+<template>
+  <form id="webpayForm" action.bind="post_url" method="POST" style="display: inline-block;">
+    <input type="hidden" name="pay_item_id" value.bind="pay_item_id"></input>
+    <input type="hidden" name="pay_item_name" value.bind="pay_item_name"></input>
+    <input type="hidden" name="product_id" value.bind="product_id"></input>
+    <input type="hidden" name="amount" value.bind="amount"></input>
+    <input type="hidden" name="currency" value.bind="currency"></input>
+    <input type="hidden" name="site_name" value.bind="site_name"></input>
+    <input type="hidden" name="cust_id" value.bind="cust_id"></input>
+    <input type="hidden" name="txn_ref" value.bind="txn_ref"></input>
+    <input type="hidden" name="cust_name" value="${last_name} ${first_name}"></input>
+    <input type="hidden" name="hash" value.bind="hash"></input>
+    <input type="hidden" name="site_redirect_url" value.bind="site_redirect_url"></input>
+    <input type="hidden" name="xml_data" value.bind="xml_data"></input>    
+    <button type="button" class="btn btn-default btn-sm" click.delegate="submitCallback()">${button_text}</button>
+  </form>
+</template>
