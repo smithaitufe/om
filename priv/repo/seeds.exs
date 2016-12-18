@@ -934,7 +934,7 @@ end
 |> Enum.each(fn invoice_type ->
     case Repo.get_by(InvoiceType, name: invoice_type[:name]) do
       nil ->
-        |> InvoiceType.changeset(%InvoiceType{}, invoice_type)
+        InvoiceType.changeset(%InvoiceType{}, invoice_type)
         |> Repo.insert!
       _ -> IO.inspect "Found"
     end
@@ -987,5 +987,17 @@ men_clothing_category = get_product_category.("Men's Clothing")
 %{name: "Men's Nightwear", parent_id: men_clothing_category.id},
 %{name: "Polo Shirts", parent_id: men_clothing_category.id},
 %{name: "Men's T-Shirts", parent_id: men_clothing_category.id}
+]
+|> save_product_category.()
+
+computer_category = get_product_category.("Computer & Office")
+[
+%{name: "Computing Accessories", parent_id: computer_category.id},
+%{name: "Desktop and Monitors", parent_id: computer_category.id},
+%{name: "Laptops", parent_id: computer_category.id},
+%{name: "Networking", parent_id: computer_category.id},
+%{name: "Printers, Scanners and Accessories", parent_id: computer_category.id},
+%{name: "Projectors & Accessories", parent_id: computer_category.id},
+%{name: "Computer Software", parent_id: computer_category.id},
 ]
 |> save_product_category.()

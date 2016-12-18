@@ -1,6 +1,5 @@
 defmodule Store.Address do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Store.Web, :model
 
 
   schema "addresses" do

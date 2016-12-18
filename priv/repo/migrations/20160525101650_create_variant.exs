@@ -12,7 +12,7 @@ defmodule Store.Repo.Migrations.CreateVariant do
       add :quantity_pending_to_customer, :integer
       add :quantity_pending_from_supplier, :integer
       add :deleted_at, :datetime
-      add :product_id, references(:products)
+      add :product_id, references(:products), null: false
       add :image_group_id, references(:image_groups)
       add :weight, :float, default: 0.0, null: false
 
