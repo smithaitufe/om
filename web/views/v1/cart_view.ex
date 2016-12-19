@@ -12,5 +12,6 @@ defmodule Store.V1.CartView do
   def render("cart.json", %{cart: cart}) do
     %{id: cart.id,
       user_id: cart.user_id}
+      |> Map.put(:cart_items, render_many(cart.cart_items, Store.V1.CartItemView, "cart_item.json"))
   end
 end

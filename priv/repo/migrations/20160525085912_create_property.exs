@@ -11,7 +11,7 @@ defmodule Store.Repo.Migrations.CreateProperty do
       timestamps
     end
 
-    add index(:properties, [:shop_id])
+    create index(:properties, [:shop_id])
 
   end
 end

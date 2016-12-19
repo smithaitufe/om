@@ -48,5 +48,8 @@ defmodule Store.Variant do
   end
   def quantity_available(model \\ %Variant{}) do
   end
+  def associations do    
+    [:suppliers, :properties, :product]
+  end
 
 end

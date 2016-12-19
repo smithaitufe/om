@@ -5,8 +5,12 @@ defmodule Store.V1.CartController do
 
   plug :scrub_params, "cart" when action in [:create, :update]
 
-  def index(conn, _params) do
-    carts = Repo.all(Cart)
+  def index(conn, params) do
+    carts = Cart
+    |> build_query(Map.to_list(params))
+    |> Repo.all
+    |> Repo.preload(Cart.associations)
+
     render(conn, "index.json", carts: carts)
   end
 
@@ -53,5 +57,22 @@ defmodule Store.V1.CartController do
     Repo.delete!(cart)
 
     send_resp(conn, :no_content, "")
+  end
+
+  defp build_query(query, []), do: query    
+  # defp filter_where(params) do
+  #   keys = Map.to_list(params) |> Keyword.keys
+  #   for key <- keys, value = params[Atom.to_string(params)], do: {key, value}
+  # end
+  defp build_query(query, [{"order_by", value} | tail]) do
+    query
+    |> Ecto.Query.order_by([query], [asc: ^String.to_atom(value)])
+    |> build_query(tail)
+  end
+  defp build_query(query, [{attr, value} | tail ]) do
+    query
+    |> Ecto.Query.where([query], fragment("? = ?", ^attr, ^value))
+    |> build_query(tail)
+    
   end
 end

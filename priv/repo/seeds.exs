@@ -3,14 +3,13 @@ rule = "____________________________________________________LINE________________
 import Ecto.Query
 alias Store.{Repo, Country, AddressType, ItemType, TaxRate, OrderStatus, OrderState, ShippingZone, State, LocalGovernmentArea, InvoiceType, InvoiceStatus, ProductCategory}
 
-get_product_category = fn name -> Repo.get_by(ProductCategory, [name: ^name]) end
+get_product_category = fn name -> Repo.get_by(ProductCategory, [name: name]) end
 save_product_category = fn product_categories ->
   Enum.each(product_categories,
     fn product_category ->
       Repo.get_by(ProductCategory, name: product_category[:name])
       |> case do
-          nil -> ProductCategory.changeset %ProductCategory{}, product_category
-                |> Repo.insert!
+          nil -> ProductCategory.changeset(%ProductCategory{}, product_category) |> Repo.insert!
           _ -> IO.inspect "Not inserted due to duplication"
         end
   end
@@ -38,9 +37,8 @@ end)
 country  = Repo.get_by(Country, [name: "Nigeria"])
 case Repo.get_by(TaxRate,  [country_id: country.id, percentage: 5]) do
   nil ->
-    TaxRate.changeset(%TaxRate{}, %{country_id: country.id, percentage: 5})
-    |> Repo.insert!()
-  _ -> IO.inspect "Existing"
+    TaxRate.changeset(%TaxRate{}, %{country_id: country.id, percentage: 5, start_date: DateTime.utc_now}) |> Repo.insert!()
+    _ -> IO.inspect "Existing"
 end
 
 [
@@ -114,13 +112,13 @@ country = Country |> Repo.get_by(name: "Nigeria")
   %{name: "Yobe", shipping_zone_id: 1},
   %{name: "Zamfara", shipping_zone_id: 1}
 ]
-Enum.each(fn state ->
+|> Enum.each(fn state ->
   Repo.transaction fn ->
     State
     |> Repo.get_by([country_id: country.id, name: state[:name]])
     |> case do
-        country -> State.changeset(%State{}, Map.put(s, :country_id, country.id)) |> Repo.insert!
-        nil -> IO.inspect "Not found"
+        nil -> State.changeset(%State{}, Map.put(state, :country_id, country.id)) |> Repo.insert!
+        country -> IO.inspect "found"
       end
   end
 end)
