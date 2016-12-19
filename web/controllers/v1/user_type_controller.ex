@@ -1,7 +1,7 @@
 defmodule Store.V1.UserTypeController do
   use Store.Web, :controller
 
-  alias Store.V1.UserType
+  alias Store.UserType
 
   plug :scrub_params, "user_type" when action in [:create, :update]
 
@@ -17,7 +17,7 @@ defmodule Store.V1.UserTypeController do
       {:ok, user_type} ->
         conn
         |> put_status(:created)
-        |> put_resp_header("location", user_type_path(conn, :show, user_type))
+        |> put_resp_header("location", v1_user_type_path(conn, :show, user_type))
         |> render("show.json", user_type: user_type)
       {:error, changeset} ->
         conn
