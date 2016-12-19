@@ -1,6 +1,5 @@
 defmodule Store.UserType do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Store.Web, :model
 
   schema "user_types" do
     field :name, :string
@@ -10,8 +9,9 @@ defmodule Store.UserType do
     timestamps
   end
 
-  @fields ~w(name description code)a
-  @required_fields ~w(name description code)a
+  
+  @required_fields [:name, :code]
+  @optional_fields  [:description]
 
 
   @doc """
@@ -20,9 +20,10 @@ defmodule Store.UserType do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, @fields)
+  def changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
   end
+  
 end
