@@ -43,6 +43,8 @@ export function put(url, data) {
     .then(checkStatus).then(parseJSON)
 }
 export function get(url) {
+
+  console.log(http());
   return http().fetch(url, { method: 'get' })
     .then(checkStatus).then(parseJSON)
 }

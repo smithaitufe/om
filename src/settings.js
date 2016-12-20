@@ -1,5 +1,5 @@
-export const brand = "Temple Gate Polytechnic"; 
-export const institution = "Temple Gate";
+export const brand = "Onitsha Market"; 
+export const institution = "Onitsha Market";
 export const restUrl =  "http://localhost:4000";
 export const siteUrl =  "http://localhost:9000";
 export const tokenName = "cupid16_t";

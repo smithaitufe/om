@@ -1,3 +1,39 @@
 <template>
-  <h1>Welcome to Temple Gate Polytechnic</h1>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-2 feature-item">This should show products from a particular merchant and changes every 10 seconds</div>
+      <div class="col-sm-2 feature-item"></div>
+      <div class="col-sm-2 feature-item"></div>
+      <div class="col-sm-2 feature-item"></div>
+      <div class="col-sm-2 feature-item"></div>
+      <div class="col-sm-2 feature-item"></div>
+    </div>
+
+    <div class="nav navbar-nav welcome-navbar">
+      <li class="category"><a href="">Category</a></li>
+      <li class="whats-new"><a href="">What's New</a></li>
+      <li class="specials"><a href="">Specials</a></li>
+      <li class="top-sellers"><a href="">Top Sellers</a></li>
+      <li class="manufacturers"><a href="">Manufacturers</a></li>
+      <li class="featured"><a href="">Featured</a></li>
+      <li class="best-sellers"><a href="">Bestsellers</a></li>
+      <li class="clearance-sales"><a href="">Clearance Sales</a></li>
+      <li class="brand"><a href="">Brand</a></li>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-2">
+
+        <div class="row">
+          <div repeat.for="item of product_categories" class="col-sm-12">
+            ${item.name}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
 </template>

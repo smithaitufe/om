@@ -5,41 +5,27 @@ export class UserService {
     if (params) return get(`/api/v1/users?${params}`);
     return get(`/api/v1/users`);
   }
-  getUserById(id) {
-    return new Promise((reject) => {
-      if (!id) reject("Parameter not specified");
+  getUserById(id) {    
+      if (!id) throw new Error("Parameter not specified");
       return get(`/api/v1/users/${id}`);
-    });
+    
   }
-  saveUser(user) {
-    return new Promise(reject => {
-      if (!user) reject("Parameter not specified");
+  saveUser(user) {    
+      if (!user) throw new Error("Parameter not specified");
       const {id} = user;
       const data = { user: user };
       if (id) return put(`/api/v1/users/${id}`, data);
       return post(`/api/v1/users`, data);
-    })
+    
   }
-  getUserProfile(params) {
-    return new Promise( reject => {
-      if (!params) reject("Parameter not specified");
-      return get(`/api/v1/user_profiles?${params}`);
-    })
+
+  getUserTypes(params){
+    if(params) return get(`/api/v1/user_types?${params}`);
+    return get(`/api/v1/user_types`);
   }
-  getUserProfileById(id) {
-    return new Promise(reject => {
-      if (!id) reject("Parameter not specified");
-      return get(`/api/v1/user_profiles?${id}`);
-    })
-  }
-  saveUserProfile(user_profile = null) {
-    return new Promise(reject => {
-      if (!user_profile) reject("User profile not specified");
-      const data = { user_profile: user_profile };
-      const { id } = user_profile;
-      if (id) return put(`/api/v1/user_profiles/${id}`, data)
-      return post(`/api/v1/user_profiles`, data)
-    })
-  }
+  getUserTypeById(id){
+    if(!id) throw new Error("Id not specified");
+    return get(`/api/v1/user_types/${id}`);
+  } 
 
 }

@@ -6,7 +6,7 @@ import { SessionService } from '../../services';
 
 @inject(Aurelia, Router, ValidationControllerFactory, SessionService)
 export class Login {
-    email;
+    uid;
     password;
 
     constructor(aurelia, router, controllerFactory, sessionService) {
@@ -18,17 +18,17 @@ export class Login {
 
 
         ValidationRules
-            .ensure("email").required().withMessage("Email is required")
+            .ensure("uid").displayName("Email/Phone No").required().withMessage("${$displayName} is required")
             .ensure("password").required()
             .on(this);
     }
 
-    loginClicked() {
-        this.sessionService.login(this.email, this.password).then(response => {
+    login() {
+        this.sessionService.login(this.uid, this.password).then(response => {
             const { user, token } = response;
             this.sessionService.setToken(token);
-            this.router.navigate("/", { replace: true, trigger: false });
-            this.aurelia.setRoot("private-section/private-section").then(() => { this.router.refreshNavigation(); })
+            // this.router.navigate("/", { replace: true, trigger: false });
+            // this.aurelia.setRoot("private-section/private-section").then(() => { this.router.refreshNavigation(); })
         })
     }
 }

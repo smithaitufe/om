@@ -1,0 +1,41 @@
+.welcome-navbar{
+  width: 100%;
+  
+  padding: 0 !important;
+}
+.welcome-navbar li{
+  border: 1px solid #008000;
+}
+.welcome-navbar li.category{
+  width: 17%;
+}
+.welcome-navbar li.whats-new{
+  width: 10%;
+}
+.welcome-navbar li.specials{
+  width: 7%
+}
+.welcome-navbar li.top-sellers{
+  width: 12%;
+}
+.welcome-navbar li.clearance-sales{
+  width: 14%;
+}
+.welcome-navbar li.manufacturers{
+  width: 12%;
+}
+.welcome-navbar li.featured{
+  width: 8%;
+}
+.welcome-navbar li.best-sellers{
+  width: 10%;
+}
+.welcome-navbar li.brand{
+  width: 10%;
+}
+.welcome-navbar li a{
+  text-transform: uppercase;
+  color: #000;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}

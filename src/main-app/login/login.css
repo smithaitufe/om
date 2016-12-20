@@ -1,0 +1,11 @@
+.login-container{
+  border: 1px solid #ccc;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+.title{
+  border: 0px solid #ccc;
+  padding-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}

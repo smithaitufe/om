@@ -1,0 +1,56 @@
+<template>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+
+      <form submit.delegate="register()">
+        <div class="row">
+          <div class="form-group col-sm-4">
+            <label for="first_name" class="control-label">First Name</label>
+            <input type="text" id="first_name" class="form-control" placeholder="First Name" valid.bind="entity.first_name & validate">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-4">
+             <label for="last_name" class="control-label">Last Name</label>
+            <input type="text" id="last_name" class="form-control" placeholder="Last Name" valid.bind="entity.last_name & validate">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-4">
+             <label for="email" class="control-label">Email</label>
+            <input type="text" id="email" class="form-control" placeholder="Email" valid.bind="entity.email & validate">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-4">
+             <label for="phone_number" class="control-label">Phone Number</label>
+            <input type="text" id="phone_number" class="form-control" placeholder="Phone Number" valid.bind="entity.phone_number & validate">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-4">
+             <label for="password" class="control-label">Password</label>
+            <input type="password" id="password" class="form-control" valid.bind="entity.password & validate">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-4">
+             <label for="password_confirmation" class="control-label">Password Confirmation</label>
+            <input type="password" id="password_confirmation" class="form-control" valid.bind="entity.password_confirmation & validate">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <label for="user_type" class="control-label">I am registering as</label>
+            <select name="user_type" id="user_type" class="form-control">
+              <option repeat.for="item of user_types" model.bind="item">${item.description}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-default" type="submit">Sign up</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>

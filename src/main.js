@@ -25,7 +25,7 @@ export async function configure(aurelia) {
 
     await aurelia.start();
     let rootShell = "main-app/app";
-    if ((new SessionService()).getToken()) rootShell = "private-section/private-section";
+    // if ((new SessionService()).getToken()) rootShell = "private-section/private-section";
 
     aurelia.setRoot(rootShell);
 
