@@ -10,7 +10,10 @@ defmodule Store.V1.BrandView do
   end
 
   def render("brand.json", %{brand: brand}) do
-    %{id: brand.id,
-      name: brand.name}
+    %{
+      id: brand.id,
+      name: brand.name,
+      product_category_id: brand.product_category_id
+    }
   end
 end

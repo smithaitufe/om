@@ -35,5 +35,6 @@ defmodule Store.Endpoint do
     key: "_store_key",
     signing_salt: "V/9zJKZL"
 
+  plug Corsica, [origins: "*", allow_headers: ["Accept","Content-Type","Access-Control-Allow-Origin","Authorization"]]
   plug Store.Router
 end

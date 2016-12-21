@@ -16,6 +16,10 @@ save_product_category = fn product_categories ->
   )
 end
 
+
+
+
+
 country  = Repo.get_by(Country, [name: "Nigeria"])
 if country == nil do
   %Country{}
@@ -999,3 +1003,21 @@ computer_category = get_product_category.("Computer & Office")
 %{name: "Computer Software", parent_id: computer_category.id},
 ]
 |> save_product_category.()
+
+product_category = Repo.get_by(ProductCategory, name: "Laptops")
+[
+  %{name: "HP", product_category_id: product_category.id},
+  %{name: "Dell", product_category_id: product_category.id},
+  %{name: "Apple", product_category_id: product_category.id},
+  %{name: "Lenovo", product_category_id: product_category.id},
+  %{name: "Acer", product_category_id: product_category.id},
+  %{name: "Toshiba", product_category_id: product_category.id},
+  %{name: "Asus", product_category_id: product_category.id},
+  %{name: "Razor", product_category_id: product_category.id}
+]
+|> Enum.each(fn brand -> 
+  case Repo.get_by(Brand, brand[:name] do
+    nil -> Brand.changeset(%Brand, brand) |> Repo.insert!
+    _ -> IO.inspect "Insertion failed due to duplication"
+  end 
+end)

@@ -1,16 +1,16 @@
 defmodule Store.Brand do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Store.Web, :controller
 
   schema "brands" do
     field :name, :string
+    belongs_to :product_category, Store.ProductCategory
 
     timestamps
 
     has_many :products, Store.Product
   end
-  @fields ~w(name)a
-  @required_fields ~w(name)a
+  @required_fields [:name, :product_category_id]
+  @optional_fields []
 
 
   @doc """
@@ -21,7 +21,7 @@ defmodule Store.Brand do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, @fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
   end
 end

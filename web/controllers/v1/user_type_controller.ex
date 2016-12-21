@@ -1,12 +1,17 @@
 defmodule Store.V1.UserTypeController do
   use Store.Web, :controller
+  import Ecto.Query
 
   alias Store.UserType
 
   plug :scrub_params, "user_type" when action in [:create, :update]
 
-  def index(conn, _params) do
-    user_types = Repo.all(UserType)
+  def index(conn, params) do
+    user_types = UserType
+    |> build_query(Map.to_list(params))
+    |> Repo.all
+
+
     render(conn, "index.json", user_types: user_types)
   end
 
@@ -54,4 +59,12 @@ defmodule Store.V1.UserTypeController do
 
     send_resp(conn, :no_content, "")
   end
+
+  defp build_query(query, []), do: query    
+  defp build_query(query, [{attr, value} | tail]) do
+    query
+    |> where(fragment("? = ?", ^attr, ^value))
+    |> build_query(tail)
+  end
+
 end
