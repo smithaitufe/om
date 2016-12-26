@@ -1,7 +1,7 @@
-rule = "____________________________________________________LINE__________________________________________"
+rule = "-------------------------------------------------------------------------------------------------";
 
 import Ecto.Query
-alias Store.{Repo, Country, AddressType, ItemType, TaxRate, OrderStatus, OrderState, ShippingZone, State, LocalGovernmentArea, InvoiceType, InvoiceStatus, ProductCategory}
+alias Store.{Repo, Country, AddressType, ItemType, TaxRate, OrderStatus, OrderState, ShippingZone, State, LocalGovernmentArea, InvoiceType, InvoiceStatus, ProductCategory, Brand, UserType}
 
 get_product_category = fn name -> Repo.get_by(ProductCategory, [name: name]) end
 save_product_category = fn product_categories ->
@@ -1016,8 +1016,21 @@ product_category = Repo.get_by(ProductCategory, name: "Laptops")
   %{name: "Razor", product_category_id: product_category.id}
 ]
 |> Enum.each(fn brand -> 
-  case Repo.get_by(Brand, brand[:name] do
-    nil -> Brand.changeset(%Brand, brand) |> Repo.insert!
+  case Repo.get_by(Brand, name: brand[:name]) do
+    nil -> Brand.changeset(%Brand{}, brand) |> Repo.insert!
+    _ -> IO.inspect "Insertion failed due to duplication"
+  end 
+end)
+
+[
+  %{name: "Reseller", code: "RSL"}, 
+  %{name: "Buyer", code: "BYR"},
+  %{name: "Manufacturer", code: "MFT"}, 
+  %{name: "Distributor", code: "DST"}
+]
+|> Enum.each(fn user_type -> 
+  case Repo.get_by(UserType, name: user_type[:name]) do
+    nil -> UserType.changeset(%UserType{}, user_type) |> Repo.insert!
     _ -> IO.inspect "Insertion failed due to duplication"
   end 
 end)

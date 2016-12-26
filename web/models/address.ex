@@ -17,8 +17,8 @@ defmodule Store.Address do
     timestamps
   end
 
-  @fields ~w(address_type_id last_name first_name address1 city_id phone_number alternative_phone_number zip_code)a
-  @required_fields ~w(address_type_id last_name first_name address1 city_id phone_number)a
+  @required_fields [:address_type_id, :last_name, :first_name, :address1, :city_id, :phone_number, :landmark]
+  @optional_fields [:alternative_phone_number, :zip_code]
 
 
   @doc """
@@ -29,7 +29,7 @@ defmodule Store.Address do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, @fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
   end
 end

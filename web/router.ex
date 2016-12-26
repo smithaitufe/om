@@ -57,6 +57,7 @@ defmodule Store.Router do
       resources "/order_statuses", OrderStatusController, except: [:new, :edit]
       resources "/order_status_types", OrderStatusTypeController, except: [:new, :edit]
       resources "/orders", OrderController, except: [:new, :edit]
+      resources "order_items", OrderItemController, except: [:new, :edit]
       resources "/order_states", OrderStateController, except: [:new, :edit]
 
       resources "/shipping_categories", ShippingCategoryController, except: [:new, :edit]

@@ -1,6 +1,5 @@
 defmodule Store.OrderStatus do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Store.Web, :model
 
   schema "order_statuses" do
     field :name, :string
@@ -8,8 +7,8 @@ defmodule Store.OrderStatus do
     timestamps
   end
 
-  @fields ~w(name)a
-  @required_fields ~w(name)a
+  @required_fields [:name]
+  @optional_fields []
   @doc """
   Creates a changeset based on the `model` and `params`.
 
@@ -18,7 +17,7 @@ defmodule Store.OrderStatus do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, @fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
   end
 end

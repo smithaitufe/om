@@ -1,6 +1,5 @@
 defmodule Store.AddressType do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Store.Web, :model
 
   schema "address_types" do
     field :name, :string
@@ -8,8 +7,8 @@ defmodule Store.AddressType do
     timestamps
   end
 
-  @fields ~w(name)a
-  @required_fields ~w(name)a
+  @required_fields [:name]
+  @optional_fields []
 
 
   @doc """
@@ -20,7 +19,7 @@ defmodule Store.AddressType do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, @fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
   end
 end

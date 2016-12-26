@@ -1,5 +1,5 @@
 defmodule Store.Brand do
-  use Store.Web, :controller
+  use Store.Web, :model
 
   schema "brands" do
     field :name, :string

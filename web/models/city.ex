@@ -12,8 +12,8 @@ defmodule Store.City do
     timestamps
   end
 
-  @fields ~w(name state_id shipping_zone_id)a
-  @required_fields ~w(name state_id shipping_zone_id)a
+  @required_fields [:name, :state_id, :shipping_zone_id]
+  @optional_fields []
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -23,7 +23,7 @@ defmodule Store.City do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, @fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
   end
 end

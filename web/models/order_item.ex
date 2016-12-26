@@ -1,24 +1,22 @@
-defmodule Store.CartItem do
+defmodule Store.OrderItem do
   use Store.Web, :model
 
-  schema "cart_items" do
+  schema "order_items" do
+    field :price, :decimal
     field :quantity, :integer
-    field :active, :boolean, default: false
-
-    belongs_to :cart, Store.Cart
+    field :total, :decimal
+    field :state, :string
+    belongs_to :order, Store.Order
     belongs_to :variant, Store.Variant
-    belongs_to :item_type, Store.Term
-
 
     timestamps
   end
 
-  @required_fields [:cart_id, :variant_id, :item_type_id, :quantity]
-  @optional_fields [:active]
-
+  @required_fields [:order_id, :variant_id, :price, :quantity]
+  @optional_fields [:state]
 
   @doc """
-  Creates a changeset based on the `model` and `params`.
+  Creates a changeset based on the `struct` and `params`.
 
   If no params are provided, an invalid changeset is returned
   with no validation performed.
@@ -27,5 +25,6 @@ defmodule Store.CartItem do
     struct
     |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
+    |> calculate_total
   end
 end
