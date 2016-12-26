@@ -1,3 +1,47 @@
 <template>
 <h2>Order details</h2>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Product</th>
+      <th>Unit Price</th>
+      <th>Quantity</th>
+      <th>Discount</th>
+      <th>Total</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr repeat.for="detail of order.order_items">
+      <td>${$index + 1}</td>
+      <td>${detail.variant.product.name}</td>
+      <td>${detail.price}</td>
+      <td>${detail.quantity}</td>
+      <td>${detail.discount}</td>
+      <td>${detail.quantity * detail.price | numberFormat:'N0,0.00'}</td>      
+      <td>
+        <button class="btn btn-default btn-sm">Reorder</button>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+        <td colspan="4"></td>
+        <td><strong class="right-align">Subtotal:</strong></td>
+        <td>${detailTotal | numberFormat:'N0,0.00'}</td>
+      </tr>
+      <!--<tr>
+        <td colspan="4"></td>
+        <td><strong class="right-align">Freight:</strong></td>
+        <td>${order.Freight | numberFormat:'N0,0.00'}</td>
+      </tr>-->
+      <tr>
+        <td colspan="4"></td>
+        <td><strong class="right-align">Total:</strong></td>
+        <td><strong>${detailTotal + order.Freight | numberFormat:'N0,0.00'}</strong></td>
+      </tr>
+  </tfoot>
+</table>
 </template>
