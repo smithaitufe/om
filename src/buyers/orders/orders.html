@@ -1,0 +1,21 @@
+<template>
+<h2>My Orders</h2>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Total</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody class="cursor-pointer">
+    <tr repeat.for="item of orders" click.delegate="openDetails(item)">
+      <td>${item.number}</td>
+      <td>${ item | getTotal()}</td>
+      <td>${item.inserted_at}</td>      
+    </tr>
+  </tbody>
+</table>
+
+</template>

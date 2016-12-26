@@ -3,6 +3,8 @@ import {ValidationController, validateTrigger} from 'aurelia-validation';
 import { RouteMapper } from 'aurelia-route-mapper';
 import { institution } from '../settings';
 
+import { routes as buyersRoutes } from '../buyers/buyers-section';
+
 @inject(RouteMapper)
 export class App {
   constructor(mapper){
@@ -20,5 +22,6 @@ let routes = [
   { route: [''], name: 'welcome',  moduleId: './welcome/welcome',      nav: true, title: 'Welcome' },
   { route: "/login", name: "login", moduleId: "./login/login", title: "Login", nav: false},
   { route: "/registration", name: "registration", moduleId: "./registration/registration", title: "Registration", nav: false},
-  { route: "/cart", name: "cart", moduleId: "./cart/cart", title: "Cart", nav: false}
+  { route: "/cart", name: "cart", moduleId: "./cart/cart", title: "Cart", nav: false},
+  { route: "/buyer", name: "buyers-section", moduleId: "../buyers/buyers-section", title: "Buyer", nav: false, settings: { childRoutes: buyersRoutes}}
 ]
