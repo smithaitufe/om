@@ -1034,3 +1034,26 @@ end)
     _ -> IO.inspect "Insertion failed due to duplication"
   end 
 end)
+
+get_user_type = fn code -> Repo.get_by(UserType, code: code) end
+
+[%{
+  first_name: "Smith", 
+  last_name: "Samuel", 
+  email: "smithaitufe@live.com", 
+  password: "password", 
+  password_confirmation: "password", 
+  user_type_id: get_user_type.("BYR").id,
+  code: "OM/BYR/100001"
+}, %{
+  first_name: "Smith", 
+  last_name: "Samuel", 
+  email: "ssfejiro@outlook.com", 
+  password: "password", 
+  password_confirmation: "password", 
+  user_type_id: get_user_type.("RSL").id,
+  code: "OM/RSL/100002"
+}]
+|> Enum.each(&(User.changeset(%User{}, &1) |> Repo.insert!))
+
+%{user_id: }

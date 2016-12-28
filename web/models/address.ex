@@ -5,8 +5,7 @@ defmodule Store.Address do
   schema "addresses" do
     field :last_name, :string
     field :first_name, :string
-    field :address1, :string
-    field :address2, :string
+    field :address, :string
     field :phone_number, :string
     field :alternative_phone_number, :string
     field :city_id, :integer

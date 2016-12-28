@@ -25,6 +25,6 @@ defmodule Store.OrderItem do
     struct
     |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
-    |> calculate_total
+    
   end
 end

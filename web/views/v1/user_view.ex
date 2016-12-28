@@ -14,14 +14,13 @@ defmodule Store.V1.UserView do
       user_type_id: user.user_type_id,
       last_name: user.last_name,
       first_name: user.first_name,
-      email: user.email,
-      encrypted_password: user.encrypted_password,
+      email: user.email,      
+      code: user.code,
       active: user.active,
       locked: user.locked,
       lock_expires_at: user.lock_expires_at,
       reset_token: user.reset_token,
       reset_token_created_at: user.reset_token_created_at,
-      reset_token_expires_at: user.reset_token_expires_at,
-      login_attempts: user.login_attempts}
+      reset_token_expires_at: user.reset_token_expires_at}
   end
 end

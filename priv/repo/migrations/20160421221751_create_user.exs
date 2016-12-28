@@ -8,8 +8,8 @@ defmodule Store.Repo.Migrations.CreateUser do
       add :last_name, :string
       add :first_name, :string
       add :email, :string
-      add :encrypted_password, :string
-      add :registration_no, :string, limit: 50
+      add :hashed_password, :string
+      add :code, :string, limit: 50
       add :active, :boolean, default: false
       add :locked, :boolean, default: false
       add :lock_expires_at, :datetime
