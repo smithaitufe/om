@@ -1,0 +1,78 @@
+<template>
+  <require from="./address.css"></require>
+  <div class="modal fade" id="address-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-address">
+      <div class="modal-content">
+        <div class="modal-header" align="center">          
+          <h4 style="margin: 0;">
+            Address
+          </h4>
+          <button type="button" class="close modal-address-close" data-dismiss="modal" aria-label="Close">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>          
+        </div>
+
+        <!-- Begin # DIV Form -->
+        <div id="div-forms">
+
+          <!-- Begin # Login Form -->
+          <form id="address-form" submit.delegate="submit()">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="last_name" class="control-label">Last Name</label>
+                <input type="text" id="last_name" class="form-control input-sm" placeholder="Last Name" value.bind="entity.last_name & validate:address_rules">
+              </div>
+              <div class="form-group">
+                <label for="first_name" class="control-label">First Name</label>
+                <input type="text" id="first_name" class="form-control input-sm" placeholder="First Name" value.bind="entity.first_name & validate:address_rules">
+              </div>
+              <div class="form-group">
+                <label for="address" class="control-label">Address</label>
+                <textarea class="form-control input-sm" id="address" rows="3" placeholder="Address" value.bind="entity.address & validate:address_rules"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="landmark" class="control-label">Landmark</label>
+                <input type="text" id="landmark" class="form-control input-sm" placeholder="Landmark" value.bind="entity.landmark & validate:address_rules">
+              </div>
+              <div class="form-group">
+                <label for="state_id" class="control-label">State</label>
+                <select id="state_id" class="form-control input-sm" value.bind="entity.state_id & validate:address_rules" change.delegate="stateChanged()">
+                  <option value="">Select state</option>
+                  <option repeat.for="item of states" model.bind="item">${item.name} - ${item.code}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="city_id" class="control-label">City</label>
+                <select id="city_id" class="form-control input-sm" value.bind="entity.city_id & validate:address_rules">
+                  <option value="">Select city</option>
+                  <option repeat.for="item of cities" model.bind="item">${item.name}</option>
+                </select>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-default">Save</button>
+            </div>
+          </form>
+          <!-- End # Login Form -->
+
+          <!-- Begin | Lost Password Form -->
+          <form id="lost-form" style="display:none;">
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+
+            </div>
+          </form>
+          <!-- End | Lost Password Form -->
+      </div>
+      <!-- End # DIV Form -->
+    </div>
+    <!-- end of modal content div -->
+    </div>
+    <!-- end of modal dialog div -->
+</div>
+<!-- end of modal div -->
+
+</template>

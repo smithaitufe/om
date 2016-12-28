@@ -3,15 +3,15 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Item</th>
-        <th>Quantity</th>
-        <th>Unit Price</th>
-        <th>Sub Total</th>        
+        <th style="width: 50%">Item</th>
+        <th style="width: 5%">Quantity</th>
+        <th style="width: 15%">Unit Price</th>
+        <th style="width: 25%">Sub Total</th>        
       </tr>
     </thead>
     <tbody>
       <tr repeat.for="index of items.length">
-        <td>${item[index].variant.product.name}</td>
+        <td>${items[index].variant.product.name}</td>
         <td><input type="text" class="form-control" value.bind="items[index].quantity"></td>
         <td></td>
         <td></td>
@@ -19,40 +19,15 @@
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="5"></td>
+        <td colspan="2"></td>
+        <td><strong>Subtotal:</strong></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="2"></td>
+        <td><strong>Subtotal:</strong></td>
+        <td></td>
       </tr>
     </tfoot>
   </table>
-
-  <div class="row hidden-xs" style="padding: 5px">
-    <div class="col-sm-8"><strong>Item</strong></div>
-    <div class="col-sm-1"><strong>Unit Price</strong></div>
-    <div class="col-sm-1"><strong>Quantity</strong></div>
-    <div class="col-sm-1"><strong>Sub total</strong></div>
-  </div>
- <div>
-    <div class="row">
-    <div class="col-sm-8">
-      DELL XPS 15, INTEL CORE i7, 2.6GHz, 512GB SSD, 16GB RAM, 2GB NVIDIA GTX 960 GRAPHICS, WEBCAM, W/LAN, BTH, 15.6” HD LED, BACKLIT KEYBOARD, WIN 10 - Black
-    </div>
-    <div class="col-sm-1"></div>
-    <div class="col-sm-1">
-      <input type="text" class="form-control">
-    </div>
-    <div class="col-sm-1"></div>
-  </div>
- </div>
-  <div class="row" style="padding: 5px; border: 1px solid #ccc">
-    <div class="col-sm-10"></div>
-    <div class="col-sm-2">     
-      <div class="row">
-        <div class="col-sm-6"><strong>Sub Total</strong></div>
-        <div class="col-sm-6">${25000 | currencyFormat}</div>
-      </div>
-      <div class="row">
-          <div class="col-sm-6"><strong>Total</strong></div>
-          <div class="col-sm-6">${25000 | currencyFormat}</div>
-      </div>
-    </div>    
-  </div>
 </template>

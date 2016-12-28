@@ -1,0 +1,47 @@
+<template>
+<h2>Address</h2>
+list address here and allow use to choose the one to use or add a new one
+
+<div class="form-group">
+  <button class="btn btn-default show-modal"><i class="fa fa-plus"></i> New Address</button>
+</div>
+
+<div class="row">
+  <div class="col-sm-4">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9"><h4>Aitufe Smith</h4></div>
+          <div class="col-sm-3">
+            <i class="fa fa-trash header-button-four"></i>
+            <i class="fa fa-pencil header-button-four"></i>
+          </div>
+        </div>
+        
+        <div class="address-line">8, Black Moore Street</div>
+        <div class="landmark">Welcome U Supermarket</div>
+        <div class="city">Port Harcourt/Woji</div>
+        <div class="state">Rivers State</div>
+        <div class="phone-numbers">
+          08080046987
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<require from="../../resources/components/address/modal-address"></require>
+<modal-address entity.two-way="entity"></modal-address>
+
+</template>

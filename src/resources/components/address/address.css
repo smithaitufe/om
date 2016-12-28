@@ -1,0 +1,30 @@
+@media screen and (min-width: 768px) {
+  body .modal-address {    
+      max-width: 30%;    
+  }
+}
+.modal-header {
+    position: relative;
+}
+
+.modal-address-close {
+    position: absolute;
+    margin: 0;
+    top: -23px; /* half height of "X" image, just for nice placing*/
+    right: -23px; /* half width of "X" image, just for nice placing*/
+    opacity: 0.9;
+
+    background-color: #000 !important;
+    /*padding: 20px;*/
+    width: 30px !important;
+    height: 30px !important;
+    top: -25px;
+    right: -25px;
+    color: #fafafa;
+    opacity: 1;
+    border-radius: 15px !important;
+}
+.modal-address-close:hover {
+    opacity: 1;
+    color: #fafafa;
+}

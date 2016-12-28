@@ -23,5 +23,6 @@ let routes = [
   { route: "/login", name: "login", moduleId: "./login/login", title: "Login", nav: false},
   { route: "/registration", name: "registration", moduleId: "./registration/registration", title: "Registration", nav: false},
   { route: "/cart", name: "cart", moduleId: "./cart/cart", title: "Cart", nav: false},
+  { route: "/checkout", name: "checkout", moduleId: "./checkout/checkout", title: "Checkout", nav: false},
   { route: "/buyer", name: "buyers-section", moduleId: "../buyers/buyers-section", title: "Buyer", nav: false, settings: { childRoutes: buyersRoutes}}
 ]
