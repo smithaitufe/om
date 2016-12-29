@@ -15,8 +15,8 @@ export class SessionService {
     return get(`/api/v1/current_user`)
   }
 
-  login(email, password){
-    const data = {session: { email: email, password: password }}      
+  login(id, password){
+    const data = {session: { id: id, password: password }}      
     this.clearSession(tokenName);        
     return post(`/api/v1/sessions`, data)        
   }

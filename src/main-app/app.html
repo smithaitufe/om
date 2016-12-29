@@ -1,39 +1,35 @@
 <template>
   <require from="./app.css"></require>
-  <!--<header>
-    <nav class="navbar navbar-static-top navbar-top-most hidden-xs">
-     <div class="container-fluid">
-        <div class="navbar-inner">        
+  <header>
+    <nav class="navbar navbar-static-top navbar-first">
+      <div class="container-fluid">
+        <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="navbar-text"><span class="welcome">Welcome!</span></li>
-            <li><a href="#">Buyer Protection</a></li>
-            <li><a href="#">Join free</a></li>          
+            <li class="navbar-left navbar-text"><span class="welcome">Welcome!</span></li>
+            <li class="navbar-left"><a href="#">Buyer Protection</a></li>
+            <li class="navbar-left"><a href="#">Join free</a></li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">About Us (Mission and Vision Statement)</a></li>
+                <li><a href="#">Investors</a></li>
+                <li><a href="#">Partners</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Office locations across the country</a></li>
+                <li><a href="#">Contact us</a></li>
+              </ul>
+            </li>
+            <li class="navbar-right"><a href="#">Contact Us</a></li>
+            <li class="navbar-text navbar-right">Need help? Call us now on 2347000 046 1111 <span>Or</span> </li>
           </ul>
-        <ul class="nav navbar-nav navbar-center">
-          <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">About Us (Mission and Vision Statement)</a></li>
-            <li><a href="#">Investors</a></li>
-            <li><a href="#">Partners</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Office locations across the country</a></li>
-            <li><a href="#">Contact us</a></li>            
-          </ul>        
-        </ul>
-        <ul class="nav navbar-nav navbar-right">          
-          <li class="navbar-text">Need help? Call us now on 2347000 046 1111 <span>Or</span></li>
-          <li><a href="#">Contact Us</a></li>          
-        </ul>
+
+
+        </div>
       </div>
-     </div>
     </nav>
     <nav class="navbar">
       <div class="container-fluid">
         <div class="navbar-header">
-          
-          
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".logo-navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -41,38 +37,36 @@
           </button>
           <a href.bind="mapper.generate('welcome')" class="navbar-brand">${router.title}</a>
         </div>
-         <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right logo-navbar-nav">
-          <li><a href.bind="mapper.generate('login')">
-            <img src="../../images/icons/3.png" alt="" class="my-cart-icon">
-            My Cart            
-            </a></li>
-          <li><a class="checklist" href.bind="mapper.generate('login')">Checklist</a></li>
-          <li><a class="favourites" href.bind="mapper.generate('login')">Sign-in</a></li>
-          <li><a class="favourites" href.bind="mapper.generate('login')">Favourites</a></li>
-        </ul>
-        <form action="" class="navbar-form search-navbar">
-          <div class="form-group">
-            <div class="input-group">
-              <input type="text" class="form-control search-text" placeholder="I am looking for">
-              <span class="input-group-btn">
-           
-
-              <select name="category" id="category" class="form-control search-category">
-                <option value="">Electronics</option>
-                <option value="">Computer & Laptop</option>
-                <option value="">Women Clothings</option>
-              </select>
-
-              <button class="btn btn-default search-button"><i class="fa fa-search search-icon"></i></button>
-              </span>
+        <div class="navbar-collapse collapse logo-navbar-collapse">
+          <ul class="nav navbar-nav navbar-right logo-navbar-nav">
+            <li>
+              <a href.bind="mapper.generate('login')">
+                <img src="../../images/icons/3.png" alt="" class="my-cart-icon"> My Cart
+              </a>
+            </li>
+            <li><a class="checklist" href.bind="mapper.generate('login')">Checklist</a></li>
+            <li><a class="favourites" href.bind="mapper.generate('login')">Sign-in</a></li>
+            <li><a class="favourites" href.bind="mapper.generate('login')">Favourites</a></li>
+          </ul>
+          <form action="" class="navbar-form search-navbar">
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" class="form-control search-text" placeholder="I am looking for">
+                <span class="input-group-btn">
+                  <select name="category" id="category" class="form-control search-category">
+                    <option value="">Electronics</option>
+                    <option value="">Computer & Laptop</option>
+                    <option value="">Women Clothings</option>
+                  </select>
+                  <button class="btn btn-default search-button"><i class="fa fa-search search-icon"></i></button>
+                </span>
+              </div>
             </div>
-          </div>
-        </form>
-         </div>
+          </form>
+        </div>
       </div>
     </nav>
-  </header>-->
+  </header>
 
   <div class="container-fluid">
     <router-view></router-view>

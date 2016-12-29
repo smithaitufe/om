@@ -97,3 +97,4 @@ export const hashString = (str) => {
     var outString =  hash.toString(CryptoJS.enc.Hex);
     return outString.toUpperCase();
 }
+export const dasherize = (str) =>  str.replace(/[^a-z0-9]+/gi, '-').replace(/^-*|-*$/g, '').toLowerCase()
