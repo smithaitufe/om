@@ -42,6 +42,9 @@ defmodule Store.V1.SessionView do
   def render("delete.json", _) do
     %{ok: true}
   end
+  def render("no_session.json", _) do
+    %{error: "No session was found"}
+  end
 
   def render("forbidden.json", %{error: error}) do
     %{error: error}
