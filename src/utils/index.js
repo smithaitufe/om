@@ -11,6 +11,7 @@ const get_headers = () => {
   if (localStorage.getItem(tokenName)) {
     headers = Object.assign({}, ...headers, { 'Authorization': localStorage.getItem(tokenName) })
   }
+  
   return headers;
 }
 const http = () => {

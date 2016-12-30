@@ -23,7 +23,7 @@ export class SessionService {
   logOut(){    
     return destroy('/api/v1/sessions').then((response) => {
         if(response.ok){            
-          this.clearSession(tokenName)
+          this.clearSession(tokenName);
         }
     })
   }
@@ -34,8 +34,7 @@ export class SessionService {
     return localStorage.getItem(tokenName)
   }
   clearSession(name){    
-    if (localStorage.getItem(name) || localStorage.getItem(name) !== null) {  
-      console.log("logging out");     
+    if (localStorage.getItem(name) || localStorage.getItem(name) !== null) {        
       delete localStorage[name];   
     }    
   }

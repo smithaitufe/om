@@ -22,7 +22,12 @@ export class App {
     this.router = router;
   }
 
+  get isAuthenticated(){
+    return this.sessionService.getToken() || false
+  }
+
   logOut(){
+    alert("Logging out....")
     this.sessionService.logOut().then(() => {
       this.router.navigate("");
     })

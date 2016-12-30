@@ -46,8 +46,8 @@
             </li>
             <li><a class="wishlist" href.bind="mapper.generate('login')">Wishlist</a></li>
             <li><a class="favourites" href.bind="mapper.generate('login')">Favourites</a></li>
-            <li  if.bind="!sessionService.getToken()"><a class="favourites" href.bind="mapper.generate('login')">Sign-in</a></li>            
-            <li class="text-center logged-in" if.bind="sessionService.getToken()">
+            <li  if.bind="!isAuthenticated"><a class="favourites" href.bind="mapper.generate('login')">Sign-in</a></li>            
+            <li class="text-center logged-in" if.bind="isAuthenticated">
               ${user | stringify}
               <span class="user">${user.last_name} ${user.first_name}</span>
               <a class="my-account" href="">My Account</a>
