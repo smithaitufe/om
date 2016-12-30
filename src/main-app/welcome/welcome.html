@@ -23,16 +23,71 @@
 
 
     <div class="row">
-      <div class="col-sm-2">
+      <div class="col-sm-2 no-padding-right">
 
+        <div class="product-categories-container">
+          <ul class="parent-product-categories">
+            <li repeat.for="item of parent_product_categories" id="product-category-${item.id}">
+              <a href="" mouseover.delegate="productCategoryMouseOverChanged(item)">${item.name}</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="col-sm-10">
+        <div class="sub-product-categories-container" mouseout.delegate="hideSubProductCategoriesContainer()">
+          <h4 class="product-category-name">${product_category.name}</h4>
+          <ul class="sub-product-categories">
+            <li repeat.for="item of sub_product_categories">${item.name}</li>
+          </ul>
+        </div>
+        <div class="slider-container">
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
         <div class="row">
-          <div repeat.for="item of product_categories" class="col-sm-12">
-            ${item.name}
+          <div class="col-sm-2 no-padding-right">
+            <div class="featured-product-container">
+              <h4 class="featured-product-caption">Featured Product</h4>
+              
+            </div>
+          </div>
+          <div class="col-sm-10">
+            <div class="row">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-9">
+                <div class="trending-products-container">
+                  <h4 class="trending-products-caption">Trending Products</h4>
+                  
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
     </div>
-
+  
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-3"></div>
+    <div class="col-sm-3"></div>
+    <div class="col-sm-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4"></div>
+  </div>
+  
+  
+  
+  
+  
+  
   </div>
 
 

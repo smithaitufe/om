@@ -2,6 +2,12 @@ body {
   background-color: #fff;
   font-family: Roboto;
 }
+.no-padding-right{
+  padding-right: 0px !important;
+}
+.no-padding-left{
+  padding-left: 0px !important;
+}
 li.logged-in{
 
 }
