@@ -26,8 +26,8 @@ defmodule Store.Product do
 
   end
 
-  @required_fields ~w(brand_id product_category_id shipping_category_id name short_description)a
-  @optional_fields ~w(long_description deleted_at permalink keywords featured available_at)a
+  @required_fields [:brand_id, :product_category_id, :shipping_category_id, :name, :short_description, :keywords, :permalink]
+  @optional_fields [:long_description, :deleted_at, :featured, :available_at, :meta_keywords, :meta_description]
 
 
   @doc """

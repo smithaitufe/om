@@ -14,8 +14,8 @@ defmodule Store.ShippingRate do
     timestamps
   end
 
-  @required_fields ~w(shipping_method_id shipping_rate_type_id payment_method_id minimum maximum rate)a
-  @optional_fields ~w(active)a
+  @required_fields [:shipping_method_id, :shipping_rate_type_id, :payment_method_id, :minimum, :maximum, :rate]
+  @optional_fields [:active]
 
   @doc """
   Creates a changeset based on the `model` and `params`.

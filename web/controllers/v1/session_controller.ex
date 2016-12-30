@@ -4,24 +4,18 @@ defmodule Store.V1.SessionController do
   plug :scrub_params, "session" when action in [:create]
 
   def create(conn, %{"session" => session_params}) do
-
     case Store.Helper.Session.authenticate(session_params) do
       {:ok, user} ->
-
-        {:ok, jwt, _full_claims} = user |> Guardian.encode_and_sign(:token)
-
-        # changeset = Session.changeset(%Session{}, %{user_id: user.id, token: jwt})
-        # if changeset.valid? do
-        #   Repo.insert(changeset)
-        # end
-
+        {:ok, token, _full_claims} = user |> Guardian.encode_and_sign(:token)
+        user = user |> Repo.preload([:user_type])
+        
         roles = user
-        |> assoc(:roles)
+        |> Ecto.assoc(:roles)
         |> Repo.all
-
+        
         conn
         |> put_status(:created)
-        |> render("show.json", jwt: jwt, user: user, roles: roles)
+        |> render("show.json", token: token, user: user, roles: roles)
 
       {:error, _} ->
         conn

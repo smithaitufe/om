@@ -25,6 +25,10 @@ defmodule Store.Router do
 
     scope "/v1", V1, as: :v1 do
 
+      post "sessions", SessionController, :create
+      delete "sessions", SessionController, :delete
+      get "current_user", CurrentUserController, :show
+
       resources "address_types", AddressTypeController, except: [:new, :edit]
       resources "item_types", ItemTypeController, except: [:new, :edit]
       resources "invoice_types", InvoiceTypeController, except: [:new, :edit]

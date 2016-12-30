@@ -27,8 +27,8 @@ defmodule Store.Variant do
     timestamps
   end
 
-  @required_fields ~w(product_id sku name price weight)a
-  @optional_fields ~w(quantity_on_hand quantity_pending_to_customer quantity_pending_from_supplier master compare_price image_group_id deleted_at)a
+  @required_fields [:product_id, :sku, :name, :price, :weight]
+  @optional_fields [:quantity_on_hand, :quantity_pending_to_customer, :quantity_pending_from_supplier, :master, :compare_price, :image_group_id, :deleted_at]
 
 
 

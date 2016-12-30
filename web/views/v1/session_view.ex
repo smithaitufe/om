@@ -1,19 +1,18 @@
 defmodule Store.V1.SessionView do
   use Store.Web, :view
-  def render("show.json", %{jwt: jwt, user: user, roles: roles}) do
-    %{data:
-      %{
+  def render("show.json", %{token: token, user: user, roles: roles}) do
+     %{
         user: %{
         id: user.id,
         first_name: user.first_name,
         last_name: user.last_name,
         email: user.email,
-        active: user.active
+        active: user.active,
+        roles: render_many(roles, Store.V1.RoleView, "role.json")
         },
-        jwt: jwt
-      }
-      |> render_roles(%{roles: roles})
-    }
+        token: token
+      }     
+    
   end
   def render("show.json", %{jwt: jwt, user: user}) do
     %{data:

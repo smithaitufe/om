@@ -1,6 +1,5 @@
 defmodule Store.Shop do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Store.Web, :model
 
   schema "shops" do
     field :name, :string
@@ -13,8 +12,8 @@ defmodule Store.Shop do
 
   end
 
-  @fields ~w(user_id name phone_number email)a
-  @required_fields ~w(user_id name phone_number email)a
+  @required_fields [:user_id, :name, :phone_number]
+  @optional_fields [:email]
 
 
   @doc """
@@ -23,9 +22,9 @@ defmodule Store.Shop do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(struct, params \\ :empty) do
+  def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, @fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
   end
 end

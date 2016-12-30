@@ -5,16 +5,18 @@ defmodule Store.Repo.Migrations.CreateProduct do
     create table(:products) do
       add :shop_id, references(:shops)
       add :name, :string, size: 255, null: false
-      add :short_description, :string
+      add :short_description, :text, null: false
       add :long_description, :text
-      add :available_at, :datetime, default: fragment("now()"), null: false
+      add :available_at, :datetime
       add :deleted_at, :datetime
-      add :permalink, :string
-      add :keywords, :text
+      add :permalink, :string, null: false
+      add :keywords, :text, null: false
       add :featured, :boolean, default: false
       add :product_category_id, references(:product_categories)
       add :shipping_category_id, references(:shipping_categories)
       add :brand_id, references(:brands)
+      add :meta_keywords, :string
+      add :meta_description, :string
 
       timestamps
     end

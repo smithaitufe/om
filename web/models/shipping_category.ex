@@ -1,6 +1,5 @@
 defmodule Store.ShippingCategory do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Store.Web, :model
 
   schema "shipping_categories" do
     field :name, :string
@@ -11,8 +10,8 @@ defmodule Store.ShippingCategory do
     timestamps
   end
 
-  @fields ~w(name description)a
-  @required_fields ~w(name)a
+  @required_fields [:name]
+  @optional_fields [:description]
 
 
   @doc """
@@ -23,7 +22,7 @@ defmodule Store.ShippingCategory do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, @fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
     |> validate_length(:name, min: 2, max: 255)
   end

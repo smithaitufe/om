@@ -2,8 +2,8 @@ defmodule Store.Repo.Migrations.CreateShopUser do
   use Ecto.Migration
 
   def change do
-    create table(:shop_users) do
-      add :shop_id, references(:shops)
+    create table(:shop_users, primary_key: false) do
+      add :shop_id, references(:shops), primary_key: true
       add :user_id, references(:users)
 
       timestamps

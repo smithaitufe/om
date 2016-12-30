@@ -17,6 +17,9 @@ defmodule Store.User do
     
 
     belongs_to :user_type, Store.UserType
+
+    has_many :user_roles, Store.UserRole
+    has_many :roles, through: [:user_roles, :role]
     has_many :user_addresses, Store.UserAddress, foreign_key: :user_id
 
     has_many :carts, Store.Cart
@@ -38,9 +41,9 @@ defmodule Store.User do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(struct, params \\ :empty) do
+  def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, @fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
     |> hash_password
   end

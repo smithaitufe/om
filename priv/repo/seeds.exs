@@ -1,8 +1,9 @@
 rule = "-------------------------------------------------------------------------------------------------";
 
 import Ecto.Query
-alias Store.{Repo, Country, AddressType, ItemType, TaxRate, OrderStatus, OrderState, ShippingZone, State, LocalGovernmentArea, InvoiceType, InvoiceStatus, ProductCategory, Brand, UserType}
+alias Store.{Repo, Country, AddressType, ItemType, TaxRate, OrderStatus, OrderState, ShippingZone, State, LocalGovernmentArea, InvoiceType, InvoiceStatus, ProductCategory, Brand, UserType, User, Shop, Product, Variant, ShippingCategory}
 
+get_user_type = fn code -> Repo.get_by(UserType, code: code) end
 get_product_category = fn name -> Repo.get_by(ProductCategory, [name: name]) end
 save_product_category = fn product_categories ->
   Enum.each(product_categories,
@@ -1034,8 +1035,9 @@ end)
     _ -> IO.inspect "Insertion failed due to duplication"
   end 
 end)
+[%{name: "Individual"}, %{name: "Order"}]
+|> Enum.each(&(ShippingCategory.changeset(%ShippingCategory{}, &1) |> Repo.insert!))
 
-get_user_type = fn code -> Repo.get_by(UserType, code: code) end
 
 [%{
   first_name: "Smith", 
@@ -1056,4 +1058,25 @@ get_user_type = fn code -> Repo.get_by(UserType, code: code) end
 }]
 |> Enum.each(&(User.changeset(%User{}, &1) |> Repo.insert!))
 
-%{user_id: }
+shop_params = %{user_id: Repo.get(User, 2).id, name: "Onitsha Market", phone_number: "08050999022"}
+{:ok, shop} = Shop.changeset(%Shop{}, shop_params) |> Repo.insert
+
+
+brand = Repo.get_by(Brand, name: "HP")
+shipping_category = Repo.all(ShippingCategory |> order_by([desc: :id])) |> List.first
+
+product_params = %{
+  shop_id: shop.id,
+  brand_id: brand.id, 
+  product_category_id: brand.product_category_id, 
+  shipping_category_id: shipping_category.id,
+  name: ~s(2017 NEWEST HP 15-F222WM 15.6" Touch Screen Laptop - Intel Quad Core Pentium N3540 Processor, 4GB Memory, 500GB Hard Drive, DVD±RW/CD-RW, HD Webcam Windows 10),
+  short_description: "<ul><li>Intel Pentium Quad Core N3540 processor 2.16GHz (up to 2.66GHz via Turbo boost)</li><li>4GB DDR3L SDRAM/500GB Serial ATA hard drive (5400 rpm)</li><li>15.6-inch high-definition display/1366 x 768 resolution touchscreen</li><li>DVD±RW/CD-RW drive/Built-in webcam and integrated digital microphone</li><li>Windows 10 64-bit /Built-in wireless LAN (802.11b/g/n</li></ul>",
+  permalink: "HP-15-f222WM",
+  keywords: "hp, quad core, intel, pentium, 2.16ghz"
+}
+Product.changeset(%Product{}, product_params) 
+|> Repo.insert
+|> case do
+  {:ok, product} -> Variant.changeset(%Variant{}, %{product_id: product.id, name: product.name, sku: "32989hn89", price: 150000, weight: 2}) |> Repo.insert
+end
