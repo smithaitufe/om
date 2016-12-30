@@ -34,7 +34,8 @@ export class SessionService {
     return localStorage.getItem(tokenName)
   }
   clearSession(name){    
-    if (localStorage.getItem(name) || localStorage.getItem(name) !== null) {       
+    if (localStorage.getItem(name) || localStorage.getItem(name) !== null) {  
+      console.log("logging out");     
       delete localStorage[name];   
     }    
   }

@@ -2,6 +2,27 @@ body {
   background-color: #fff;
   font-family: Roboto;
 }
+li.logged-in{
+
+}
+li.logged-in a{
+  padding: 0px !important;
+}
+li.logged-in a:hover{
+  background-color: transparent !important;
+}
+li.logged-in .user{
+  font-weight: bold;
+}
+li.logged-in a.my-account{
+  text-decoration: underline;
+}
+.btn-default {
+  background-color: #008000;
+  border-color: #008000;
+  color: #fff;
+  
+}
 
 .navbar-top-most {
   margin-bottom: 0;
@@ -19,7 +40,7 @@ body {
   height: auto;
   display: block;
 }
-.favourites:before, .checklist:before {
+.favourites:before, .wishlist:before {
   background-position: 0 top;
   content: "";
   display: block;
@@ -28,7 +49,7 @@ body {
   background-repeat: no-repeat;
   margin-left: 25%;
 }
-.checklist:before{
+.wishlist:before{
   background-image: url('../../images/icons/183.png');
 }
 .favourites:before{

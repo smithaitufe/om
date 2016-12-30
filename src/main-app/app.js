@@ -2,13 +2,17 @@ import { inject } from 'aurelia-framework';
 import {ValidationController, validateTrigger} from 'aurelia-validation';
 import { RouteMapper } from 'aurelia-route-mapper';
 import { institution } from '../settings';
+import { SessionService } from '../services';
+import { User } from '../user';
 
 import { routes as buyersRoutes } from '../buyers/buyers-section';
 
-@inject(RouteMapper)
+@inject(RouteMapper, User, SessionService)
 export class App {
-  constructor(mapper){
+  constructor(mapper, user, sessionService){
     this.mapper = mapper;
+    this.user = user;
+    this.sessionService = sessionService;
   }
   configureRouter(config, router) {
     config.title = institution;
@@ -16,6 +20,12 @@ export class App {
     config.map(routes);
     this.mapper.map(routes);
     this.router = router;
+  }
+
+  logOut(){
+    this.sessionService.logOut().then(() => {
+      this.router.navigate("");
+    })
   }
 }
 let routes = [
