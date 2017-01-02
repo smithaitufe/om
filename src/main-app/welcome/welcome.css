@@ -6,7 +6,8 @@
 .welcome-navbar li{
   border: 1px solid #008000;
 }
-.welcome-navbar li.category{
+@media (min-width: 768px) {
+  .welcome-navbar li.category{
   width: 17%;
 }
 .welcome-navbar li.whats-new{
@@ -32,6 +33,7 @@
 }
 .welcome-navbar li.brand{
   width: 10%;
+}
 }
 .welcome-navbar li a{
   text-transform: uppercase;
@@ -81,9 +83,13 @@
 }
 .sub-product-categories-container ul.sub-product-categories li a {}
 
-.featured-product-container, .trending-products-container{
+.featured-product-container{
   border: 1px solid #90ee90;
-  height: 200px;
+  height: 250px;
+}
+.trending-products-container{
+  border: 1px solid #90ee90;
+  height: 250px;
 }
 .featured-product-container .featured-product-caption, .trending-products-container .trending-products-caption{
   border-bottom: 1px solid #90ee90;

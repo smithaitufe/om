@@ -11,7 +11,14 @@ export class SessionService {
     }
     return null;
   }
+  setCurrentUser(value){
+     localStorage.setItem("person", doEncrypt(JSON.stringify(value), "session"))
+  }
   getCurrentUser(){
+    let value = localStorage.getItem("person");
+    if(value){
+      return new Promise(resolve => resolve(JSON.parse(doDecrypt(value, "session"))));
+    }
     return get(`/api/v1/current_user`)
   }
 

@@ -26,8 +26,15 @@ export class App {
     return this.sessionService.getToken() || false
   }
 
+  activate(){
+    if(this.isAuthenticated){
+      this.sessionService.getCurrentUser().then(response => {
+        this.user = Object.assign({}, this.user, {...response})
+      })
+    }
+  }
+
   logOut(){
-    alert("Logging out....")
     this.sessionService.logOut().then(() => {
       this.router.navigate("");
     })

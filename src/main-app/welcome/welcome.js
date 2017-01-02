@@ -24,7 +24,7 @@ export class Welcome {
     this.sub_product_categories = this.product_categories.filter(product_category => product_category.parent_id === item.id)
   }
   hideSubProductCategoriesContainer(){
-    // $("body .sub-product-categories-container").css({"display": "none"});
+    $("body .sub-product-categories-container").css({"display": "none"});
   }
 
 }

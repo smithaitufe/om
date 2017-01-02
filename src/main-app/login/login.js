@@ -28,7 +28,8 @@ export class Login {
     login() {
         this.sessionService.login(this.id, this.password).then(response => {
             const { user, token } = response;
-            this.user = Object.assign(this.user, {...user});            
+            this.user = Object.assign(this.user, {...user});   
+            this.sessionService.setCurrentUser(user);         
             this.sessionService.setToken(token);
             this.router.navigate("");
             // this.router.navigate("/", { replace: true, trigger: false });

@@ -26,7 +26,7 @@
         </div>
       </div>
     </nav>
-    <nav class="navbar">
+    <!--<nav class="navbar">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".logo-navbar-collapse">
@@ -48,7 +48,6 @@
             <li><a class="favourites" href.bind="mapper.generate('login')">Favourites</a></li>
             <li  if.bind="!isAuthenticated"><a class="favourites" href.bind="mapper.generate('login')">Sign-in</a></li>            
             <li class="text-center logged-in" if.bind="isAuthenticated">
-              ${user | stringify}
               <span class="user">${user.last_name} ${user.first_name}</span>
               <a class="my-account" href="">My Account</a>
               <a class="sign-out" href="" click.delegate="logOut()">Sign out <i class="fa fa-signout"></i></a>
@@ -72,14 +71,70 @@
           </form>
         </div>
       </div>
-    </nav>
+    </nav>-->
+
+
+   <div class="container-fluid">
+      <div class="row main-navbar">
+    <div class="col-sm-2">
+        <h3>Onitshamarket.com</h3>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+       <div class="form-search-container">
+          <form>
+          
+            <div class="form-group">
+              
+              <div class="input-group search-input-group">
+                <input type="text" class="form-control search-text" placeholder="I am looking for">                         
+              <div class="input-group-btn">      
+                 <!--<select name="category" id="category" class="form-control search-category">
+                    <option value="">Electronics</option>
+                    <option value="">Computer & Laptop</option>
+                    <option value="">Women Clothings</option>
+                </select>   -->
+                <button type="button" class="btn dropdown-toggle as-is bs-dropdown-to-select" data-toggle="dropdown">
+                        <span data-bind="bs-drp-sel-label">Select...</span>
+                        <input type="hidden" name="selected_value" data-bind="bs-drp-sel-value" value="">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu search-category" role="menu" style="">
+                        <li data-value="1"><a href="#">One</a></li>
+                        <li data-value="2"><a href="#">Two</a></li>
+                        <li data-value="3"><a href="#">Three</a></li>
+                </ul>
+                <button class="btn btn-default search-button"><i class="fa fa-search search-icon"></i></button>
+              </div>
+            </div>
+            </div>
+          
+        </form>
+       </div>
+      </div>
+      <div class="col-sm-4">
+        <ul class="action-links">
+            <li><a class="cart" href.bind="mapper.generate('login')">My Cart</a></li>
+            <li><a class="wishlist" href.bind="mapper.generate('login')">Wishlist</a></li>
+            <li><a class="favourites" href.bind="mapper.generate('login')">Favourites</a></li>
+            <li  if.bind="!isAuthenticated"><a class="favourites" href.bind="mapper.generate('login')">Sign-in</a></li>            
+            <li class="logged-in" if.bind="isAuthenticated">
+              <span class="user">${user.last_name} ${user.first_name}</span>
+              <a class="my-account" href="">My Account</a>
+              <a class="sign-out" href="" click.delegate="logOut()">Sign out <i class="fa fa-signout"></i></a>
+            </li>
+
+          </ul>
+      </div>
+    </div>
+   </div>
   </header>
 
   <div class="container-fluid">
     <router-view></router-view>
   </div>
 
-  <footer>
+  <footer class="footer">
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12">
@@ -89,15 +144,93 @@
       <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-sm-3">
-          <h3>Tech Support 24/7</h3>
+          <div>
+            <h3>Tech Support 24/7</h3>
+            Our customer support is always ready to help you with all your orders, including after sales support
+          </div>
         </div>
         <div class="col-sm-3">
-          <h3>Free Shipping</h3>
+          <div>
+            <h3>Free Shipping</h3>
+            Ordering so much and worried about the shipping cost? Enjoy free shipping on all orders above #10,000
+          </div>
         </div>
         <div class="col-sm-3">
-          <h3>10 Days Return Policy</h3>
+          <div>
+            <h3>10 Days Return Policy</h3>
+            Quality assurance covers all product listed. Return products not as described or damaged during transit, <a href="">T & C applies</a>
+          </div>
         </div>
       </div>
+
+
+     <div class="footer-links-container">
+        <div class="row">
+        <div class="col-sm-12">          
+          <ul class="footer-links">
+            <li class="text header">Buy</li>
+            <li><a href="">Registration</a></li>
+            <li><a href="">Onitshamarket Money Back Guarantee</a></li>
+            <li><a href="">Stores</a></li>
+            <li><a href="">Onitshamarket Guides</a></li>
+            <li><a href="">Onitshamarket Gift Cards</a></li>
+          </ul>
+          <ul class="footer-links">
+            <li class="text header">Sell</li>
+            <li><a href="">Start selling</a></li>
+            <li><a href="">Learn to sell</a></li>
+            <li><a href="">Business sellers</a></li>
+            <li><a href="">Affiliates</a></li>            
+          </ul>
+          <ul class="footer-links">
+            <li class="text header">Tools & Apps</li>
+            <li><a href="">Mobile apps</a></li>
+            <li><a href="">Downloads</a></li>
+            <li><a href="">Developers</a></li>
+            <li><a href="">Security Centers</a></li>            
+            <li><a href="">See all companies</a></li>
+          </ul>
+          <ul class="footer-links">
+            <li class="text header">About Onitshamarket</li>
+            <li><a href="">Company Info</a></li>
+            <li><a href="">Investors</a></li>
+            <li><a href="">News</a></li>
+            <li><a href="">Jobs</a></li>  
+            <li><a href="">Advertise with us</a></li>
+            <li><a href="">Policies</a></li>            
+          </ul>
+          <ul class="footer-links">
+            <li class="text header">Help & Contact</li>
+            <li><a href="">Resolution Center</a></li>
+            <li><a href="">Seller Information Center</a></li>
+            <li><a href="">Contact us</a></li>
+            <li><a href="">Discussion boards</a></li>            
+            <li><a href="">Tell us what you think</a></li>
+          </ul>
+          <ul class="footer-links">
+            <li class="text header text-center">Subscription</li>
+            <li>
+             <form action="" class="form-inline">
+               <div class="form-group">
+                <div class="input-group">
+                <input type="text" class="form-control input-subscribe" placeholder="Email">
+                <span class="input-group-btn"><button class="btn btn-default btn-subscribe">Subscribe</button></span>
+              </div>
+              </div>
+             </form>
+
+              
+              
+            </li>
+
+          </ul>
+
+
+
+        </div>
+        
+      </div>
+     </div>
     </div>
   </footer>
 </template>
