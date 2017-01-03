@@ -2,7 +2,7 @@
   <require from="./app.css"></require>
   <header>
     <nav class="navbar navbar-static-top navbar-first">
-      <div class="container-fluid">
+      <div class="container">
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="navbar-left navbar-text"><span class="welcome">Welcome!</span></li>
@@ -74,20 +74,18 @@
     </nav>-->
 
 
-   <div class="container-fluid">
+   <div class="container">
       <div class="row main-navbar">
     <div class="col-sm-2">
-        <h3>Onitshamarket.com</h3>
+        Onitshamarket
       </div>
       <div class="col-xs-12 col-sm-6">
        <div class="form-search-container">
-          <form>
-          
-            <div class="form-group">
-              
+          <form>          
+            <div class="form-group">              
               <div class="input-group search-input-group">
                 <input type="text" class="form-control search-text" placeholder="I am looking for">                         
-              <div class="input-group-btn">      
+                <div class="input-group-btn">      
                  <!--<select name="category" id="category" class="form-control search-category">
                     <option value="">Electronics</option>
                     <option value="">Computer & Laptop</option>
@@ -99,7 +97,7 @@
                         <span class="caret"></span>
                         <span class="sr-only">Toggle Dropdown</span>
                 </button>
-                <ul class="dropdown-menu search-category" role="menu" style="">
+                <ul class="dropdown-menu search-category" role="menu">
                         <li data-value="1"><a href="#">One</a></li>
                         <li data-value="2"><a href="#">Two</a></li>
                         <li data-value="3"><a href="#">Three</a></li>
@@ -112,8 +110,8 @@
         </form>
        </div>
       </div>
-      <div class="col-sm-4">
-        <ul class="action-links">
+      <div class="col-sm-4">        
+          <ul class="action-links pull-right">
             <li><a class="cart" href.bind="mapper.generate('login')">My Cart</a></li>
             <li><a class="wishlist" href.bind="mapper.generate('login')">Wishlist</a></li>
             <li><a class="favourites" href.bind="mapper.generate('login')">Favourites</a></li>
@@ -123,50 +121,47 @@
               <a class="my-account" href="">My Account</a>
               <a class="sign-out" href="" click.delegate="logOut()">Sign out <i class="fa fa-signout"></i></a>
             </li>
-
-          </ul>
+        </ul>
+        
       </div>
     </div>
    </div>
   </header>
-
-  <div class="container-fluid">
-    <router-view></router-view>
-  </div>
-
+  <router-view></router-view>
   <footer class="footer">
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <p>Why Shop At <span style="color: #008000">Onitsha</span><span style="color:gold">market</span> </p>
+          <p>Why Shop At <span style="color: #008000">Onitsha</span><span style="color:gold">market</span></p>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-sm-3">
           <div>
-            <h3>Tech Support 24/7</h3>
+            <h4>Tech Support 24/7</h4>
             Our customer support is always ready to help you with all your orders, including after sales support
           </div>
         </div>
         <div class="col-sm-3">
           <div>
-            <h3>Free Shipping</h3>
+            <h4>Free Shipping</h4>
             Ordering so much and worried about the shipping cost? Enjoy free shipping on all orders above #10,000
           </div>
         </div>
         <div class="col-sm-3">
           <div>
-            <h3>10 Days Return Policy</h3>
+            <h4>10 Days Return Policy</h4>
             Quality assurance covers all product listed. Return products not as described or damaged during transit, <a href="">T & C applies</a>
           </div>
         </div>
       </div>
 
 
-     <div class="footer-links-container">
+     
         <div class="row">
-        <div class="col-sm-12">          
+        <div class="col-sm-12">  
+          <div class="footer-links-container">        
           <ul class="footer-links">
             <li class="text header">Buy</li>
             <li><a href="">Registration</a></li>
@@ -208,7 +203,7 @@
             <li><a href="">Tell us what you think</a></li>
           </ul>
           <ul class="footer-links">
-            <li class="text header text-center">Subscription</li>
+            <li class="text header">Subscription</li>
             <li>
              <form action="" class="form-inline">
                <div class="form-group">

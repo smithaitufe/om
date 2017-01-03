@@ -1,30 +1,37 @@
 <template>
   <div class="container-fluid">
-    <div class="row">
+    <!--<div class="row">
       <div class="col-sm-2 feature-item">This should show products from a particular merchant and changes every 10 seconds</div>
       <div class="col-sm-2 feature-item"></div>
       <div class="col-sm-2 feature-item"></div>
       <div class="col-sm-2 feature-item"></div>
       <div class="col-sm-2 feature-item"></div>
       <div class="col-sm-2 feature-item"></div>
-    </div>
-
-    <div class="nav navbar-nav welcome-navbar">
-      <li class="category"><a href="">Category</a></li>
-      <li class="whats-new"><a href="">What's New</a></li>
-      <li class="specials"><a href="">Specials</a></li>
-      <li class="top-sellers"><a href="">Top Sellers</a></li>
-      <li class="manufacturers"><a href="">Manufacturers</a></li>
-      <li class="featured"><a href="">Featured</a></li>
-      <li class="best-sellers"><a href="">Bestsellers</a></li>
-      <li class="clearance-sales"><a href="">Clearance Sales</a></li>
-      <li class="brand"><a href="">Brand</a></li>
-    </div>
-
-
+    </div>-->
+  </div>
+  <div class="container">
     <div class="row">
-      <div class="col-sm-2 no-padding-right">
+      <div class="col-sm-12">
+        <ul class="welcome-navbar">
+          <li class="category"><a href="">Category</a></li>
+          <li class="whats-new"><a href="">What's New</a></li>
+          <li class="specials"><a href="">Specials</a></li>
+          <li class="top-sellers"><a href="">Top Sellers</a></li>
+          <li class="manufacturers"><a href="">Manufacturers</a></li>
+          <li class="featured"><a href="">Featured</a></li>
+          <li class="best-sellers"><a href="">Bestsellers</a></li>
+          <li class="clearance-sales"><a href="">Clearance Sales</a></li>
+          <li class="brand"><a href="">Brand</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
+
+
+  <div class="container">
+    <!--<div class="row">
+      <div class="hidden-xs col-sm-2">
         <div class="product-categories-container">
           <ul class="nav parent-product-categories">
             <li repeat.for="item of parent_product_categories" id="product-category-${item.id}">
@@ -32,9 +39,8 @@
             </li>
           </ul>
         </div>
-
       </div>
-      <div class="col-sm-10">
+      <div class="col-xs-12 col-sm-10">
         <div class="sub-product-categories-container" mouseout.delegate="hideSubProductCategoriesContainer()">
           <h4 class="product-category-name">${product_category.name}</h4>
           <ul class="sub-product-categories">
@@ -45,57 +51,61 @@
 
         </div>
       </div>
-    </div>
+    </div>-->
+
     <div class="row">
-      <div class="col-sm-12 no-padding-top">
-        <div>
-          <div class="row">
-          <div class="col-sm-2 no-padding-right">
-            <div class="featured-product-container">
-              <h4 class="featured-product-caption">Featured Product</h4>
-              
-            </div>
-          </div>
-          <div class="col-sm-10">
-            <div class="row">
-              <div class="col-sm-3 no-padding-left no-padding-right">
-                <div style="border: 1px solid #99ee99; height: 250px">
-
-                </div>
-              </div>
-              <div class="col-sm-9 no-padding-left">
-                <div class="trending-products-container">
-                  <h4 class="trending-products-caption">Trending Products</h4>
-                  
-                </div>
-              </div>
-            </div>
-
-          </div>
+      <div class="col-sm-12">        
+        <div class="sidebar-section">
+          <div class="product-categories-container">
+          <ul class="nav parent-product-categories">
+            <li repeat.for="item of parent_product_categories" id="product-category-${item.id}">
+              <a href="" mouseover.delegate="productCategoryMouseOverChanged(item)">${item.name}</a>
+            </li>
+          </ul>
+        </div>
+        </div>
+        <div class="slider-section">
+          <div class="sub-product-categories-container" mouseout.delegate="hideSubProductCategoriesContainer()">
+          <h4 class="product-category-name">${product_category.name}</h4>
+          <ul class="sub-product-categories">
+            <li repeat.for="item of sub_product_categories">${item.name}</li>
+          </ul>
         </div>
         </div>
         
       </div>
     </div>
-  
-  <div class="row">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-3"></div>
-    <div class="col-sm-3"></div>
-    <div class="col-sm-3"></div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4"></div>
-  </div>
-  
-  
-  
-  
-  
-  
-  </div>
 
 
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="featured-product-section">
+          <h4 class="featured-product-caption">Featured Product</h4>
+          Featured product will appear here
+        </div>
+        <div class="premium-product-section">
+
+        </div>
+        <div class="trending-products-section">
+          <h4 class="trending-products-caption">Trending Products</h4>
+          Trending products will appear here
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3"></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4"></div>
+    </div>
+
+  </div>
 </template>

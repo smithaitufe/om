@@ -1,98 +1,170 @@
-.welcome-navbar{
-  width: 100%;
-  
-  padding: 0 !important;
+.welcome-navbar {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
-.welcome-navbar li{
+
+.welcome-navbar li {
+  display: block;
+  float: left;
   border: 1px solid #008000;
 }
+
+@media (max-width: 400px) {
+  .welcome-navbar li {
+    float: none;
+  }
+}
+
 @media (min-width: 768px) {
-  .welcome-navbar li.category{
-  width: 17%;
+  .welcome-navbar li.category {
+    width: 20%;
+  }
+  .welcome-navbar li.whats-new {
+    width: 10%;
+  }
+  .welcome-navbar li.specials {
+    width: 7%
+  }
+  .welcome-navbar li.top-sellers {
+    width: 12%;
+  }
+  .welcome-navbar li.clearance-sales {
+    width: 14%;
+  }
+  .welcome-navbar li.manufacturers {
+    width: 12%;
+  }
+  .welcome-navbar li.featured {
+    width: 8%;
+  }
+  .welcome-navbar li.best-sellers {
+    width: 10%;
+  }
+  .welcome-navbar li.brand {
+    width: 7%;
+  }
 }
-.welcome-navbar li.whats-new{
-  width: 10%;
-}
-.welcome-navbar li.specials{
-  width: 7%
-}
-.welcome-navbar li.top-sellers{
-  width: 12%;
-}
-.welcome-navbar li.clearance-sales{
-  width: 14%;
-}
-.welcome-navbar li.manufacturers{
-  width: 12%;
-}
-.welcome-navbar li.featured{
-  width: 8%;
-}
-.welcome-navbar li.best-sellers{
-  width: 10%;
-}
-.welcome-navbar li.brand{
-  width: 10%;
-}
-}
-.welcome-navbar li a{
+
+.welcome-navbar li a {
+  display: block;
   text-transform: uppercase;
   color: #000;
   padding-top: 8px;
   padding-bottom: 8px;
+  text-align: center;
 }
 
-
-.product-categories-container{
+.product-categories-container {
   margin-top: 5px;
 }
-.product-categories-container ul.parent-product-categories{
+
+.product-categories-container ul.parent-product-categories {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.product-categories-container ul.parent-product-categories li{
-    margin-bottom: 2px;
+
+.product-categories-container ul.parent-product-categories li {
+  margin-bottom: 2px;
 }
-.product-categories-container ul.parent-product-categories li a{
+
+.product-categories-container ul.parent-product-categories li a {
   display: block;
-  background-color: lightgreen; /*#90ee90*/
+  background-color: lightgreen;
+  /*#90ee90*/
   color: green;
   width: 100%;
   padding: 5px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  
 }
 
-.sub-product-categories-container{
+.sub-product-categories-container {
   border: 2px solid #90ee90;
   margin-left: -12px;
   margin-top: 5px;
   display: none;
 }
-.sub-product-categories-container .product-category-name{
+
+.sub-product-categories-container .product-category-name {
   padding-left: 20px;
   font-weight: bold;
 }
+
 .sub-product-categories-container ul.sub-product-categories {
   list-style: none;
 }
+
 .sub-product-categories-container ul.sub-product-categories li {
   padding: 3px;
 }
+
 .sub-product-categories-container ul.sub-product-categories li a {}
 
-.featured-product-container{
-  border: 1px solid #90ee90;
+.featured-product-container,
+.trending-products-container {
   height: 250px;
 }
-.trending-products-container{
+
+.featured-product-container {
   border: 1px solid #90ee90;
+}
+
+.trending-products-container {
   height: 250px;
 }
-.featured-product-container .featured-product-caption, .trending-products-container .trending-products-caption{
+
+.featured-product-caption,
+.trending-products-caption {
   border-bottom: 1px solid #90ee90;
   padding-bottom: 5px;
   text-align: center;
+}
+
+@media (max-width: 400px) {
+  .trending-products-caption {
+    border-top: 1px solid #90ee90;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+.new-product-close-to-trending-container {
+  border-right: 1px solid #99ee99;
+}
+
+.new-product-close-to-trending {
+  height: 250px;
+}
+
+.featured-product-section, .premium-product-section, .trending-products-section {
+  float: left;
+  height: 250px;
+  display: block;
+  border: 1px solid #99ee99;  
+}
+.featured-product-section {
+   width: 20%; 
+   margin-right: 1%;
+}
+.premium-product-section {
+   width: 19%;   
+}
+.trending-products-section{
+   width: 60%;
+}
+@media (max-width: 400px) {
+  .featured-product-section, .premium-product-section, .trending-products-section{
+    float: none;
+    width: 100%;
+  }
+}
+.sidebar-section{
+  width: 20%;  
+  float:left
+}
+.slider-section {  
+  width: 80%;
+  float:left
 }

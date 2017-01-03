@@ -15,25 +15,6 @@ body {
   }
 }
 
-li.logged-in {}
-
-li.logged-in a {
-  padding: 0px !important;  
-}
-
-li.logged-in a:hover {
-  background-color: transparent !important;
-}
-
-li.logged-in .user {
-  font-weight: bold;
-  color: #008000;  
-}
-
-li.logged-in a.my-account {
-  text-decoration: underline;
-}
-
 .btn-default {
   background-color: #008000;
   border-color: #008000;
@@ -58,7 +39,8 @@ li.logged-in a.my-account {
   display: block;
 }
 
-.cart:before, .favourites:before,
+.cart:before,
+.favourites:before,
 .wishlist:before {
   background-position: 0 top;
   content: "";
@@ -70,10 +52,12 @@ li.logged-in a.my-account {
   margin-left: 25%;
   padding: 0;
 }
-.cart:before{
+
+.cart:before {
   background-image: url('../../images/icons/3.png');
   background-size: 35px 100%;
 }
+
 .wishlist:before {
   background-image: url('../../images/icons/183.png');
 }
@@ -94,44 +78,28 @@ li.logged-in a.my-account {
   /*border:1px solid #008000;*/
   /*display: inline-block;*/
 }
-
 .search-text {
   border-top-left-radius: 20px !important;
   border-bottom-left-radius: 20px !important;
-  border-color:green;
+  border-color: green;
   padding-top: 10px !important;
   padding-bottom: 10px !important;
 }
-@media (min-width: 768px) {
-  .search-input-group .search-text{
-    /*width: 50% !important;*/
-  }
-}
-@media (min-width: 400px) {
-  .search-input-group .search-text{
-  /*width: 50% !important;*/
-}
-}
+
 
 .search-category {
   border: 1px solid green;
   padding-top: 6px !important;
   padding-bottom: 6px !important;
 }
-
 .search-button {
   background-color: green;
   border-color: green
 }
-
 .search-icon {
   font-size: 19px;
   line-height: 18px;
   color: #fff;
-}
-
-.my-group .form-control {
-  width: 50%;
 }
 
 .feature-item {
@@ -204,65 +172,79 @@ li.logged-in a.my-account {
   }
 }
 
-.footer-links-container{
+.footer-links-container {
   padding-top: 50px;
+
 }
-.footer-links{
+.footer-links {
   display: block;
+  padding: 0;
+  margin: 0;
   list-style: none;
+  padding-right: 15px;
 }
+.footer-links:last-child{
+  padding-right: 0;
+}
+
 @media (min-width: 460px) {
-  .footer-links{
+  .footer-links {
     float: none;
   }
 }
-@media (min-width: 760px){
-  .footer-links{
+
+@media (min-width: 760px) {
+  .footer-links {
     float: left;
   }
 }
-.footer-links .text.header{
+
+.footer-links .text.header {
   font-weight: 700;
 }
-.footer-links .btn-subscribe{
-  border-top-right-radius: 10px; 
+
+.footer-links .btn-subscribe {
+  border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
+
 .footer-links .input-subscribe {
   border-top-left-radius: 10px !important;
   border-bottom-left-radius: 10px !important;
 }
-.footer-form{
+
+.footer-form {
   float: right;
   list-style: none;
 }
 
-.main-navbar{
-  
-}
-.main-navbar .form-search-container{
+.main-navbar {}
+
+.main-navbar .form-search-container {
   padding-top: 10px;
   padding-bottom: 10px;
-  
 }
-.action-links{
+
+.action-links {
   list-style: none;
-  
+  padding: 0px;
+  margin: 0px;  
 }
-.action-links li{
+
+.action-links li {
   float: left;
   display: block;
-  
 }
-.action-links li a{
+
+.action-links li a {
   padding: 5px 10px 10px;
-  display:block;
-  
+  display: block;
 }
+
 .action-links li.logged-in {}
 
 .action-links li.logged-in a {
-  padding: 0px !important;  
+  padding: 0px !important;
   display: block;
 }
 
@@ -272,9 +254,38 @@ li.logged-in a.my-account {
 
 .action-links li.logged-in .user {
   font-weight: bold;
-  color: #008000;  
+  color: #008000;
 }
 
 .action-links li.logged-in a.my-account {
   text-decoration: underline;
+}
+@media (min-width: 400px) {
+  .action-links {
+    list-style: none;
+    float: none;    
+  }
+  .action-links li {
+    float: left;
+    display: block;
+  }
+  .action-links li a {
+    padding: 5px 10px 10px;
+    display: block;
+  }
+  .action-links li.logged-in {}
+  .action-links li.logged-in a {
+    padding: 0px !important;
+    display: block;
+  }
+  .action-links li.logged-in a:hover {
+    background-color: transparent !important;
+  }
+  .action-links li.logged-in .user {
+    font-weight: bold;
+    color: #008000;
+  }
+  .action-links li.logged-in a.my-account {
+    text-decoration: underline;
+  }
 }
