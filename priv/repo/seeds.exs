@@ -1,7 +1,7 @@
 rule = "-------------------------------------------------------------------------------------------------";
 
 import Ecto.Query
-alias Store.{Repo, Country, AddressType, ItemType, TaxRate, OrderStatus, OrderState, ShippingZone, State, LocalGovernmentArea, InvoiceType, InvoiceStatus, ProductCategory, Brand, UserType, User, Shop, Product, Variant, ShippingCategory}
+alias Store.{Repo, Country, AddressType, ItemType, TaxRate, OrderStatus, OrderState, ShippingZone, State, LocalGovernmentArea, InvoiceType, InvoiceStatus, ProductCategory, Brand, UserType, User, Shop, Product, Variant, ShippingCategory, City}
 
 get_user_type = fn code -> Repo.get_by(UserType, code: code) end
 get_product_category = fn name -> Repo.get_by(ProductCategory, [name: name]) end
@@ -914,6 +914,32 @@ end)
           nil -> IO.inspect "Not found"
       end
 end)
+
+state = Repo.get_by(State, name: "Delta")
+cities = [
+  %{name: "Abraka", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Agbarho", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Agbor", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Aladja", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Asaba", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Eku", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Effurun", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Isele-Uku", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Obiaruku", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Oghara", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Ogwashi-Uku", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Oleh", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Otor-Udu", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Ovwian", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Ozoro", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Sapele", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Ughelli", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Umunede", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Udu", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Warri", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+]
+Enum.each(cities, fn city -> City.changeset(%City{}, city) |> Repo.insert! end )
+
 
 [
   %{name: "Pending"},

@@ -1,6 +1,5 @@
 defmodule Store.State do
-  use     Ecto.Schema
-  import  Ecto.Changeset
+  use     Store.Web, :model
   alias   Store.{Country, ShippingZone}
 
 
@@ -14,8 +13,8 @@ defmodule Store.State do
     timestamps
   end
 
-  @required_fields ~w(name country_id shipping_zone_id)a
-  @optional_fields ~w(described_as abbreviation)a
+  @required_fields [:name, :country_id, :shipping_zone_id]
+  @optional_fields [:described_as, :abbreviation]
 
 
   @doc """
