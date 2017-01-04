@@ -3,6 +3,13 @@ body {
   font-family: Roboto;
 }
 
+.white-bg{
+  background-color: #ffffff !important;
+}
+.green-bg{
+  background-color: #008000 !important;
+}
+
 @media (min-width: 768px) {
   .no-padding-right {
     padding-right: 0px !important;
@@ -28,8 +35,8 @@ body {
 .welcome {
   color: #008000;
   font-weight: 700;
-  font-size: 20px;
-  line-height: 10px;
+  /*font-size: 20px;*/
+  /*line-height: 10px;*/
 }
 
 .my-cart-icon {
@@ -162,10 +169,20 @@ body {
   .navbar-first .navbar-nav {
     width: 100%;
     text-align: center;
+    padding: 0;
+    
   }
   .navbar-first .navbar-nav>li {
     float: none;
     display: inline-block;
+  }
+  .navbar-first .navbar-nav > li a, .navbar-first .navbar-nav > li.navbar-text{
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+  }
+   .navbar-first .navbar-nav > li.navbar-text{
+    margin-top: 0;
+    margin-bottom: 0;
   }
   .navbar-first .navbar-nav>li.navbar-right {
     float: right !important;
@@ -289,3 +306,6 @@ body {
     text-decoration: underline;
   }
 }
+
+
+
