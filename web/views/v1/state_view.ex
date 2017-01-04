@@ -15,6 +15,8 @@ defmodule Store.V1.StateView do
       name: state.name,
       described_as: state.described_as,
       abbreviation: state.abbreviation,
-      shipping_zone_id: state.shipping_zone_id}
+      shipping_zone_id: state.shipping_zone_id
+    }
+    |> Map.put(:cities, render_many(state.cities, Store.V1.CityView, "city.json"))
   end
 end

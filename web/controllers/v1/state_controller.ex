@@ -5,8 +5,11 @@ defmodule Store.V1.StateController do
 
   plug :scrub_params, "state" when action in [:create, :update]
 
-  def index(conn, _params) do
-    states = Repo.all(State)
+  def index(conn, params) do
+    states = State
+    |> Repo.all
+    |> Repo.preload(State.associations)
+
     render(conn, "index.json", states: states)
   end
 
@@ -15,6 +18,9 @@ defmodule Store.V1.StateController do
 
     case Repo.insert(changeset) do
       {:ok, state} ->
+        state = state 
+        |> Repo.preload(State.associations)
+
         conn
         |> put_status(:created)
         |> put_resp_header("location", v1_state_path(conn, :show, state))
@@ -28,6 +34,8 @@ defmodule Store.V1.StateController do
 
   def show(conn, %{"id" => id}) do
     state = Repo.get!(State, id)
+    |> Repo.preload(State.associations)
+
     render(conn, "show.json", state: state)
   end
 
@@ -37,6 +45,9 @@ defmodule Store.V1.StateController do
 
     case Repo.update(changeset) do
       {:ok, state} ->
+        state = state
+        |> Repo.preload(State.associations)
+        
         render(conn, "show.json", state: state)
       {:error, changeset} ->
         conn

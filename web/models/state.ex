@@ -1,6 +1,6 @@
 defmodule Store.State do
   use     Store.Web, :model
-  alias   Store.{Country, ShippingZone}
+  alias   Store.{Country, City, LocalGovernmentArea, ShippingZone}
 
 
   schema "states" do
@@ -9,6 +9,7 @@ defmodule Store.State do
     field :abbreviation, :string
     belongs_to :country, Country
     belongs_to :shipping_zone, ShippingZone
+    has_many :cities, City
 
     timestamps
   end
@@ -27,5 +28,8 @@ defmodule Store.State do
     struct
     |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
+  end
+  def associations() do
+    [:cities]
   end
 end

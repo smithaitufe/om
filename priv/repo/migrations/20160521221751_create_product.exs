@@ -15,8 +15,8 @@ defmodule Store.Repo.Migrations.CreateProduct do
       add :product_category_id, references(:product_categories)
       add :shipping_category_id, references(:shipping_categories)
       add :brand_id, references(:brands)
-      add :meta_keywords, :string
-      add :meta_description, :string
+      add :meta_keywords, :text
+      add :meta_description, :text
 
       timestamps
     end

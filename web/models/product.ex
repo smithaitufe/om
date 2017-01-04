@@ -12,6 +12,9 @@ defmodule Store.Product do
     field :permalink, :string
     field :keywords, :string
     field :featured, :boolean, default: false
+    field :meta_keywords, :string
+    field :meta_description, :string
+    
     belongs_to :product_category, ProductCategory
     belongs_to :shipping_category, ShippingCategory
     belongs_to :shop, Shop
