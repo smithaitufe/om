@@ -1,4 +1,4 @@
-export class BuyersSection {
+export class BuyerSection {
   configureRouter(config){
     config.map(routes);
   }
