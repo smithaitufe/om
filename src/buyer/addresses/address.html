@@ -1,62 +1,21 @@
-<template>
-
-  <require from="../../resources/components/password/password"></require>
-  <password entity.two-way="password_entity" submit-callback.call="submit()"></password>
-
-  
-  <h2></h2>
+<template>  
+  <h2>Address</h2>
   <form role="form" submit.delegate="submit()">
     <div class="row">
-      <div class="form-group col-sm-4">
-        <label for="last_name" class="control-label">Last Name</label>
+      <div class="form-group col-sm-3">
+        <label for="last_name" class="control-label required">Last Name</label>
         <input type="text" id="last_name" class="form-control" placeholder="Last Name" value.bind="entity.last_name & validate:address_rules">
       </div>
-      <div class="form-group col-sm-4">
-        <label for="first_name" class="control-label">First Name</label>
+      <div class="form-group col-sm-3">
+        <label for="first_name" class="control-label required">First Name</label>
         <input type="text" id="first_name" class="form-control" placeholder="First Name" value.bind="entity.first_name & validate:address_rules">
       </div>
     </div>
     <div class="row">
-      <div class="form-group col-sm-12">
-        <label for="address1" class="control-label">Address Line 1</label>
-        <input type="text" id="address1" class="form-control" placeholder="Address line 1" value.bind="entity.address1 & validate:address_rules">
+      <div class="form-group col-sm-6">
+        <label for="address" class="control-label required">Address</label>
+        <input type="text" id="address" class="form-control" placeholder="Address" value.bind="entity.address & validate:address_rules">
       </div>
-    </div>
-    <div class="row">
-      <div class="form-group col-sm-12">
-        <label for="address2" class="control-label">Address Line 2</label>
-        <input type="text" id="address2" class="form-control" placeholder="Address line 2" value.bind="entity.address2 & validate:address_rules">
-      </div>
-    </div>
-    <div class="row">
-      <div class="form-group col-sm-3">
-        <label for="state_id" class="control-label">State</label>
-        <select id="state_id" class="form-control" data-title="Select state" value.bind="entity.state_id & validate:address_rules">
-          <option value="">Select state</option>
-          <option repeat.for="item of states" model.bind="item.id">${item.name}</option>
-        </select>
-      </div>
-       <div class="form-group col-sm-3">
-        <label for="state" class="control-label">Local Government Area</label>
-        <select name="local_government_area_id" id="local_government_area_id" data-title="Select local government area" class="form-control"  value.bind="entity.local_government_area_id & validate:address_rules">
-          <option value="">Select local government area</option>
-          <option repeat.for="item of local_government_areas" model.bind="item.id">${item.name}</option>
-        </select>
-      </div>
-      <div class="form-group col-sm-3">
-        <label for="city_id" class="control-label">City</label>
-        <select name="city_id" id="city_id" class="form-control" data-title="City" value.bind="entity.city_id & validate:address_rules">
-          <option value="">Select a city</option>
-          <option repeat.for="item of local_government_areas" model.bind="item.id">${item.name}</option>
-        </select>
-      </div>
-    </div>
-    <div class="row">
-     
-    </div>
-    <!--https://download-a.akamaihd.net/files/media_broadcasting/5e/jwb_E_201612_01_r720P.mp4-->
-    <div class="row">
-      
     </div>
     <div class="row">
       <div class="form-group col-sm-3">
@@ -65,9 +24,43 @@
       </div>
     </div>
 
+     <div class="row">
+      <div class="form-group col-sm-3">
+        <label for="phone_number" class="control-label required">Phone Number</label>
+        <input type="text" id="phone_number" class="form-control" placeholder="Phone Number" value.bind="entity.phone_number & validate:address_rules">
+      </div>
+      <div class="form-group col-sm-3">
+        <label for="alternative_phone_number" class="control-label">Alternative Phone Number</label>
+        <input type="text" id="alternative_phone_number" class="form-control" placeholder="Alternative Phone Number" value.bind="entity.alternative_phone_number & validate:address_rules">
+      </div>
+    </div>
+
+   <div class="row">
+      <div class="form-group col-sm-3">
+        <label for="state" class="control-label required">State</label>
+        <select id="state" class="form-control" data-title="Select state" value.bind="entity.state & validate:address_rules" change.delegate="stateChanged()">
+          <option value="">Select state</option>
+          <option repeat.for="item of states" model.bind="item">${item.name}</option>
+        </select>
+      </div>
+      <div class="form-group col-sm-3">
+        <label for="city_id" class="control-label required">City</label>
+        <select name="city_id" id="city_id" class="form-control" data-title="City" value.bind="entity.city_id & validate:address_rules">
+          <option value="">Select a city</option>
+          <option repeat.for="item of entity.cities" model.bind="item.id">${item.name}</option>
+        </select>
+      </div>
+    </div>
+
+    <!--https://download-a.akamaihd.net/files/media_broadcasting/5e/jwb_E_201612_01_r720P.mp4-->
+
+
+
     <div class="form-group">
       <button class="btn btn-default" type="submit">Save</button>
     </div>
    
   </form>
 </template>
+<!--<require from="../../resources/components/password/password"></require>
+<password entity.two-way="password_entity" submit-callback.call="submit()"></password>-->

@@ -5,7 +5,7 @@ import { institution } from '../settings';
 import { SessionService } from '../services';
 import { User } from '../user';
 
-import { routes as buyersRoutes } from '../buyers/buyers-section';
+import { routes as buyerRoutes } from '../buyer/buyer-section';
 
 @inject(RouteMapper, User, SessionService)
 export class App {
@@ -26,10 +26,10 @@ export class App {
     return this.sessionService.getToken() || false
   }
 
-  activate(){
+  async activate(){
     if(this.isAuthenticated){
-      this.sessionService.getCurrentUser().then(response => {
-        this.user = Object.assign({}, this.user, {...response})
+      return await this.sessionService.getCurrentUser().then(response => {        
+        this.user = Object.assign(this.user, {...response})        
       })
     }
   }
@@ -46,5 +46,5 @@ let routes = [
   { route: "/registration", name: "registration", moduleId: "./registration/registration", title: "Registration", nav: false},
   { route: "/cart", name: "cart", moduleId: "./cart/cart", title: "Cart", nav: false},
   { route: "/checkout", name: "checkout", moduleId: "./checkout/checkout", title: "Checkout", nav: false},
-  { route: "/buyer", name: "buyer-section", moduleId: "../buyer/buyer-section", title: "Buyer", nav: false, settings: { childRoutes: buyersRoutes}}
+  { route: "/buyer", name: "buyer-section", moduleId: "../buyer/buyer-section", title: "Buyer", nav: false, settings: { childRoutes: buyerRoutes}}
 ]

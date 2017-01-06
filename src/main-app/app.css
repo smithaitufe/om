@@ -2,7 +2,14 @@ body {
   background-color: #fff;
   font-family: Roboto;
 }
-
+.required::after{
+  content: "*";
+  display: inline-block;
+  color: #e32;
+  position: absolute;
+  margin-top: 3px;
+  margin-left: 5px;
+}
 .white-bg{
   background-color: #ffffff !important;
 }

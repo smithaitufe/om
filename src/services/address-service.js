@@ -10,7 +10,7 @@ export class AddressService {
       return get(`/api/v1/addresses/${id}`);
     
   }
-  saveAddress(user, address) {    
+  saveAddress(address) {    
       if (!address) throw new Error("Parameter not specified");
       const {id} = address;
       const data = { address: address };

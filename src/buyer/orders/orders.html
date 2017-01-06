@@ -12,7 +12,7 @@
   <tbody class="cursor-pointer">
     <tr repeat.for="item of orders" click.delegate="openDetails(item)">
       <td>${item.number}</td>
-      <td>${ item | getTotal()}</td>
+      <td>${ item | getTotal}</td>
       <td>${item.inserted_at}</td>      
     </tr>
   </tbody>

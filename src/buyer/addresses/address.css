@@ -1,0 +1,31 @@
+.items{
+  padding-bottom: 5px;
+  border: 1px solid #99ee99;
+  width: 25%;
+  float: left;  
+}
+.item-container {
+  border-bottom: 1px solid #99ee99;
+  padding:10px;
+}
+.item-buttons-container{
+  padding: 10px;
+}
+
+.icon{
+  position: relative; 
+  display: block;
+  height: 100%;
+  width: 20px; 
+  float: left;  
+}
+.icon i[class^="fa fa-"] {
+  background-color: #99ee99;
+  color: #fff;
+}
+.content {
+  padding-left: 20px;
+}
+.recipient {
+  font-weight: 700;
+}

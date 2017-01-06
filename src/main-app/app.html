@@ -70,7 +70,7 @@
             <li  if.bind="!isAuthenticated"><a class="favourites" href.bind="mapper.generate('login')">Sign-in</a></li>            
             <li class="logged-in" if.bind="isAuthenticated">
               <span class="user">${user.last_name} ${user.first_name}</span>
-              <a class="my-account" href.bind="mapper.generate("buyer-section")">My Account</a>
+              <a class="my-account" href.bind="mapper.generate('buyer-section')">My Account</a>
               <a class="sign-out" href="" click.delegate="logOut()">Sign out <i class="fa fa-signout"></i></a>
             </li>
         </ul>
