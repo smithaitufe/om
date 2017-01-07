@@ -1,15 +1,15 @@
 defmodule Store.ItemType do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Store.Web, :model
 
   schema "item_types" do
     field :name, :string
+    field :description, :string
 
     timestamps
   end
 
-  @fields ~w(name)a
-  @required_fields ~w(name)a
+  @required_fields [:name, :description]
+  @optional_fields []
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -19,7 +19,7 @@ defmodule Store.ItemType do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, @fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
   end
 end

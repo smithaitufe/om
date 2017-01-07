@@ -11,6 +11,8 @@ defmodule Store.V1.ItemTypeView do
 
   def render("item_type.json", %{item_type: item_type}) do
     %{id: item_type.id,
-      name: item_type.name}
+      name: item_type.name,
+      description: item_type.description
+    }
   end
 end

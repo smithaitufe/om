@@ -1,7 +1,7 @@
 rule = "-------------------------------------------------------------------------------------------------";
 
 import Ecto.Query
-alias Store.{Repo, Country, AddressType, ItemType, TaxRate, OrderStatus, OrderState, ShippingZone, State, LocalGovernmentArea, InvoiceType, InvoiceStatus, ProductCategory, Brand, UserType, User, Shop, Product, Variant, ShippingCategory, City}
+alias Store.{Repo, Country, ItemType, TaxRate, OrderStatus, OrderState, ShippingZone, State, LocalGovernmentArea, InvoiceType, InvoiceStatus, ProductCategory, Brand, UserType, User, Shop, Product, Variant, ShippingCategory, City, Cart, CartItem, Address}
 
 get_user_type = fn code -> Repo.get_by(UserType, code: code) end
 get_product_category = fn name -> Repo.get_by(ProductCategory, [name: name]) end
@@ -62,12 +62,7 @@ end
   end
 end )
 
-[%{name: "Billing Address"}, %{name: "Shipping Address"}]
-|> Enum.each(fn address_type ->
-  AddressType.changeset(%AddressType{}, address_type) |> Repo.insert!
-end)
-
-[%{name: "shopping_cart"},%{name: "save_for_later"},%{name: "wish_list"}, %{name: "purchased"}]
+[%{name: "shopping_cart", description: "Shopping Cart"},%{name: "save_for_later", description: "Save for later"},%{name: "wish_list", description: "Wish List"}, %{name: "purchased", description: "Purchased"}]
 |> Enum.each(fn item_type ->
   Repo.get_by(ItemType, [name: item_type[:name]])
   |> case do
@@ -1106,3 +1101,16 @@ Product.changeset(%Product{}, product_params)
 |> case do
   {:ok, product} -> Variant.changeset(%Variant{}, %{product_id: product.id, name: product.name, sku: "32989hn89", price: 150000, weight: 2}) |> Repo.insert
 end
+
+state = Repo.get_by(State, name: "Delta")
+user = Repo.get_by(User, email: "smithaitufe@live.com")
+
+Address.changeset(%Address{}, %{user_id: user.id, last_name: "Samuel", first_name: "Smith", address: "102, Okpanam Road, Off Legislator's Quarters, Okpanam", landmark: "Shoprite", phone_number: "08050999022", city_id: Repo.get_by(City, [state_id: state.id, name: "Asaba"]).id}) |> Repo.insert
+
+
+case Cart.changeset(%Cart{}, %{user_id: user.id}) |> Repo.insert do
+  {:ok, cart} -> CartItem.changeset(%CartItem{}, %{cart_id: cart.id, variant_id: Repo.get(Variant, 1).id, item_type_id: Repo.get_by(ItemType, name: "shopping_cart").id }) |> Repo.insert!
+
+end
+
+

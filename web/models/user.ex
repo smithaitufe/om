@@ -20,7 +20,7 @@ defmodule Store.User do
 
     has_many :user_roles, Store.UserRole
     has_many :roles, through: [:user_roles, :role]
-    has_many :user_addresses, Store.UserAddress, foreign_key: :user_id
+    has_many :addresses, Store.Address, foreign_key: :user_id
 
     has_many :carts, Store.Cart
     has_many :cart_items, through: [:carts, :cart]

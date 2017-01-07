@@ -44,7 +44,8 @@ defmodule Store.Mixfile do
      {:comeonin, "~> 2.1"},
      {:guardian, "~> 0.10.0"},
      {:timex, "~> 2.1.4"},
-     {:timex_ecto, "~> 1.0.4"}
+     {:timex_ecto, "~> 1.0.4"},
+     {:arc, "~> 0.6.0"}
     ]
   end
 

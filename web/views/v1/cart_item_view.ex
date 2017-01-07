@@ -14,8 +14,10 @@ defmodule Store.V1.CartItemView do
       cart_id: cart_item.cart_id,
       variant_id: cart_item.variant_id,
       quantity: cart_item.quantity,
-      active: cart_item.active,
-      iactive: cart_item.iactive,
-      item_type_id: cart_item.item_type_id}
+      active: cart_item.active,      
+      item_type_id: cart_item.item_type_id,
+      inserted_at: cart_item.inserted_at
+    }
+      |> Map.put(:variant, render_one(cart_item.variant, Store.V1.VariantView, "variant.json"))
   end
 end

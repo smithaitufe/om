@@ -6,7 +6,10 @@ defmodule Store.V1.AddressController do
   plug :scrub_params, "address" when action in [:create, :update]
 
   def index(conn, _params) do
-    addresses = Repo.all(Address)
+    addresses = Address
+    |> Repo.all
+    |> Repo.preload(Address.associations)
+    
     render(conn, "index.json", addresses: addresses)
   end
 
@@ -28,6 +31,8 @@ defmodule Store.V1.AddressController do
 
   def show(conn, %{"id" => id}) do
     address = Repo.get!(Address, id)
+    |> Repo.preload(Address.associations)
+    
     render(conn, "show.json", address: address)
   end
 

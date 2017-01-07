@@ -29,6 +29,10 @@ config :guardian, Guardian,
   secret_key: "SRE8FGl7O6Xy-oIjdvcl4TRrx9EqKEkU_vKTi2qV3S95vfh1RB9gqiBJ6Uys-NuhSWCOn3FO84JFdpXy",
   serializer: Store.GuardianSerializer
 
+# Configure AWS
+
+# Configure Arc for uploads
+
 # Configure Ecto tasks such as migrate
 config :store, ecto_repos: [Store.Repo]
 

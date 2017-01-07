@@ -29,7 +29,7 @@ defmodule Store.Router do
       delete "sessions", SessionController, :delete
       get "current_user", CurrentUserController, :show
 
-      resources "address_types", AddressTypeController, except: [:new, :edit]
+      
       resources "item_types", ItemTypeController, except: [:new, :edit]
       resources "invoice_types", InvoiceTypeController, except: [:new, :edit]
       resources "invoice_statuses", InvoiceStatusController, except: [:new, :edit]
@@ -47,7 +47,7 @@ defmodule Store.Router do
       resources "user_newsletters", UserNewsletter, except: [:new, :edit]
       resources "user_types", UserTypeController, except: [:new, :edit]
       resources "user_roles", UserRoleController, except: [:new, :edit]
-      resources "user_addresses", UserAddressController, except: [:new, :edit]
+      
       resources "user_phones", UserPhoneController, except: [:new, :edit]
 
       resources "merchants", MerchantController, except: [:new, :edit]
