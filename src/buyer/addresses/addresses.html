@@ -4,10 +4,8 @@
 <a class="btn btn-default pull-right header-button" href.bind="mapper.generate('buyer-section/addresses-section/address', {address_id: 'new'})"><i class="fa fa-plus"></i> New Address</a>
 </div>
 
-
-<div class="items" repeat.for="item of addresses">
-  ${item | stringify}
-  <div class="item-container">
+<div class="items" repeat.for="item of addresses">  
+  <div class="item-container green white-text">
     <div class="icon"><i class="fa fa-user"></i></div><div class="content recipient">${item.last_name} ${item.first_name}</div>
   </div>
   <div class="item-container">
@@ -15,7 +13,7 @@
     <div class="content">
       ${item.address}
       <div if.bind="item.landmark">${item.landmark}</div> 
-      <div>${item.city.name} -  ${item.state.name}</div>
+      <div>${item.city.name} -  ${item.city.state.name}</div>
     </div>
   </div>
   <div class="item-container">

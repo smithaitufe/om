@@ -16,4 +16,9 @@ export class CartService {
       if (id) return put(`/api/v1/carts/${id}`, data);
       return post(`/api/v1/carts`, data);
   }
+
+  getItemTypes() {
+    // if (params) return get(`/api/v1/item_types?${params}`);
+    return get(`/api/v1/item_types`);
+  }
 }

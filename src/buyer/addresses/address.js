@@ -44,10 +44,11 @@ export class Address {
     this.states = responses[0];
     this.cities = responses[1];
 
-    if(address_id && address_id.toLowerCase() !== "new") {
+    if ( address_id && address_id.toLowerCase() !== "new") {
       this.addressService.getAddressById(address_id).then(response => {
         this.entity = response;
         this.entity = Object.assign(this.entity, {state: this.getStateById(this.getCityById(this.entity.city_id).state_id)})
+        this.stateChanged();
       });
     }else{      
       const { first_name, last_name, id } = this.user;
