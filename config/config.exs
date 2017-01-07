@@ -31,7 +31,21 @@ config :guardian, Guardian,
 
 # Configure AWS
 
-# Configure Arc for uploads
+# Configure Arc and ex_aws for uploads
+config :arc,
+  storage: Arc.Storage.S3,
+  bucket: {:system, "downloadsz"}
+
+config :ex_aws,
+ access_key_id: “accesskey”,
+ secret_access_key: “secretkey”,
+ region: “us-west-2”,
+ host: “s3.us-west-2.amazonaws.com”,
+ s3: [
+ scheme: “https://”,
+ host: “s3.us-west-2.amazonaws.com”,
+ region: “us-west-2”
+ ]
 
 # Configure Ecto tasks such as migrate
 config :store, ecto_repos: [Store.Repo]
