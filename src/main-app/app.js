@@ -6,6 +6,7 @@ import { SessionService } from '../services';
 import { User } from '../user';
 
 import { routes as buyerRoutes } from '../buyer/buyer-section';
+import { routes as resellerRoutes } from '../reseller/reseller-section';
 
 @inject(RouteMapper, User, SessionService)
 export class App {
@@ -46,5 +47,6 @@ let routes = [
   { route: "/registration", name: "registration", moduleId: "./registration/registration", title: "Registration", nav: false},
   { route: "/cart", name: "cart", moduleId: "./cart/cart", title: "Cart", nav: false},
   { route: "/checkout", name: "checkout", moduleId: "./checkout/checkout", title: "Checkout", nav: false},
-  { route: "/buyer", name: "buyer-section", moduleId: "../buyer/buyer-section", title: "Buyer", nav: false, settings: { childRoutes: buyerRoutes}}
+  { route: "/buyer", name: "buyer-section", moduleId: "../buyer/buyer-section", title: "Buyer", nav: false, settings: { childRoutes: buyerRoutes}},
+  { route: "/reseller", name: "reseller-section", moduleId: "../reseller/reseller-section", title: "Reseller", nav: false, settings: { childRoutes: resellerRoutes}}
 ]
