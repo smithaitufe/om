@@ -1,10 +1,47 @@
 <template>
   <h2>Product</h2>
 
-  <form action="">
+  <form submit.delegate="submit()">
+    <img src="http://downloadsz.s3-us-west-2.amazonaws.com/om/files/media/products/istock-000057793060-large.jpg" alt="">
     <div class="form-group">
-      <label for="" class="control-label"></label>
-      <input type="text" class="form-control">
+      <label for="name" class="control-label">Name</label>
+      <input type="text" name="name" id="name" class="form-control" placeholder="Product Name" data-title="Product Name" value.bind="entity.name">
+    </div>
+    <div class="form-group">
+      <label for="name" class="control-label">Product Category</label>
+      <select name="product_category_id" id="product_category_id" class="form-control" value.bind="entity.product_category_id">
+        <option value="">Select product category</option>
+        
+        <option repeat.for="item of product_categories" model.bind="item.id">${item.name}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="name" class="control-label">Shipping Category</label>
+      <select name="shipping_category_id" id="shipping_category_id" class="form-control" value.bind="entity.shipping_category_id">
+        <option value="">Select shipping category</option>        
+        <option repeat.for="item of shipping_categories" model.bind="item.id">${item.name}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="price" class="control-label">Price</label>
+      <input type="text" name="price" id="price" class="form-control" placeholder="Price" data-title="Price" value.bind="entity.price">
+    </div>
+    <div class="form-group">
+      <label for="short_description" class="control-label">Short Description</label>
+      <textarea name="short_description" id="short_description" class="form-control" rows="5" value.bind="entity.short_description"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="sku" class="control-label">SKU</label>
+      <input type="text" name="sku" id="sku" class="form-control" placeholder="SKU" data-title="Stock Keeping Unit" value.bind="entity.sku">
+    </div>
+    <div class="form-group">
+      <label for="weight" class="control-label">Weight</label>
+      <input type="text" name="weight" id="weight" class="form-control" placeholder="Weight" data-title="Weight" value.bind="entity.weight">
+    </div>
+
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-default">Save</button>
     </div>
   </form>
 </template>

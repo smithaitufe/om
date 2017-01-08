@@ -1,6 +1,7 @@
 import { inject } from 'aurelia-framework';
 import { RouteMapper } from 'aurelia-route-mapper';
 import { routes as productsRoutes } from "./products/products-section";
+
 @inject(RouteMapper)
 export class ResellerSection {
   constructor(mapper) {
@@ -8,6 +9,13 @@ export class ResellerSection {
   }
   configureRouter(config) {
     config.map(routes);
+  }
+
+  attached() {
+    $("#menu-toggle").click(e => {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    })
   }
 }
 export let routes = [

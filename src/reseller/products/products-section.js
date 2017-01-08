@@ -7,5 +7,5 @@ export class ProductsSection {
 export let routes = [
   { route: "/", name: "products", moduleId: "./products", title: "", nav: false},
   { route: "/:product_id", name: "product", moduleId: "./product", title: "", nav: false},
-  { route: "/:product_id/details", name: "product-details", moduleId: "./product-details/product-details-section", title: "", nav: false, settings: { childRoutes: productDetailsRoutes}},
+  { route: "/:product_id/details", name: "product-details-section", moduleId: "./product-details/product-details-section", title: "", nav: false, settings: { childRoutes: productDetailsRoutes}},
 ]

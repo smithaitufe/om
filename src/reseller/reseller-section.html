@@ -1,7 +1,22 @@
 <template>
 
-  <ul class="list-unstyled">
-    <li><a href.bind="mapper.generate('products-section/product-details/images')">Images</a></li>
-  </ul>
-  <router-view></router-view>
+  <require from="./reseller-section.css"></require>
+
+
+
+
+
+  <div id="wrapper">
+    <div id="sidebar-wrapper">
+      <ul class="nav-pills nav-stacked sidebar-nav">
+        <li><a href.bind="mapper.generate('reseller-section/products-section/products')">Products</a></li>
+        <li><a href.bind="mapper.generate('reseller-section/products-section/product-details-section/images-section', { product_id: 2})">Images</a></li>
+      </ul>
+    </div>
+    <div id="page-content-wrapper">
+      <div class="container-fluid">
+        <router-view></router-view>
+      </div>
+    </div>
+  </div>
 </template>
