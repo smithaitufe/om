@@ -27,9 +27,12 @@ defmodule Store.Mixfile do
        :logger, 
        :phoenix_ecto, 
        :postgrex, 
+       :arc_ecto,
+       :httpoison,
        :ex_aws,
        :hackney,
-       :poison]
+       :poison
+      ]
    ]
   end
 
@@ -46,7 +49,7 @@ defmodule Store.Mixfile do
      {:phoenix_pubsub, "~> 1.0"},
      {:phoenix_ecto, "~> 3.0"},
      {:postgrex, ">= 0.11.2"},
-     {:phoenix_html, "~> 2.1"},
+     {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"},
      {:corsica, "~> 0.4"},
@@ -55,10 +58,11 @@ defmodule Store.Mixfile do
      {:timex, "~> 2.1.4"},
      {:timex_ecto, "~> 1.0.4"},
      {:arc, "~> 0.6.0"},
-     {:arc_ecto, "~> 0.5.0"},     
+     {:arc_ecto, "~> 0.5.0"},  
+     {:sweet_xml, "~> 0.6.3"},  
+     {:hackney, "~> 1.6", override: true}, 
      {:ex_aws, "~> 1.0"},
-     {:hackney, "~> 1.6.1"},
-     {:poison, "~> 2.2"}   
+     {:httpoison, "~> 0.11.0"}         
     ]
   end
 

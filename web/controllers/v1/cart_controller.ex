@@ -1,6 +1,6 @@
 defmodule Store.V1.CartController do
   use Store.Web, :controller
-
+  
   alias Store.Cart
 
   plug :scrub_params, "cart" when action in [:create, :update]
@@ -60,10 +60,10 @@ defmodule Store.V1.CartController do
   end
 
   defp build_query(query, []), do: query    
-  # defp filter_where(params) do
-  #   keys = Map.to_list(params) |> Keyword.keys
-  #   for key <- keys, value = params[Atom.to_string(params)], do: {key, value}
-  # end
+  defp filter_where(params) do
+    keys = Map.to_list(params) |> Keyword.keys
+    for key <- keys, value = params[Atom.to_string(params)], do: {key, value}
+  end
   defp build_query(query, [{"order_by", value} | tail]) do
     query
     |> Ecto.Query.order_by([query], [asc: ^String.to_atom(value)])
@@ -72,7 +72,6 @@ defmodule Store.V1.CartController do
   defp build_query(query, [{attr, value} | tail ]) do
     query
     |> Ecto.Query.where([query], fragment("? = ?", ^attr, ^value))
-    |> build_query(tail)
-    
+    |> build_query(tail)    
   end
 end

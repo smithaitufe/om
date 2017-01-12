@@ -25,10 +25,9 @@ alias Store.{CartItem, User, Variant}
   end
 
   def associations do
-    cart_items_query = from ci in CartItem,
-                      order_by: [asc: ci.inserted_at], 
-                      preload: [{:variant, ^Variant.associations}]
+    #cart_items_query = from ci in CartItem, order_by: [asc: ci.inserted_at],preload: [{:variant, ^Variant.associations}]
 
-    [cart_items: cart_items_query]
+    #[cart_items: cart_items_query]
+    [:cart_items]
   end
 end

@@ -29,6 +29,9 @@ defmodule Store.Router do
       delete "sessions", SessionController, :delete
       get "current_user", CurrentUserController, :show
 
+      post "images", ImageController, :create
+      get "images", ImageController, :index
+
       
       resources "item_types", ItemTypeController, except: [:new, :edit]
       resources "invoice_types", InvoiceTypeController, except: [:new, :edit]
