@@ -1,20 +1,14 @@
 defmodule Store.Image do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Store.Web, :model
 
   schema "images" do
-    field :url, :string
-    field :height, :integer
-    field :width, :integer
-    field :name, :string
-    field :position, :integer
-    field :caption, :string
-
+    field :image, :string
+    
     timestamps
   end
 
-  @fields ~w(url height width name position caption)a
-  @required_fields ~w(url height width name position caption)a
+  @required_fields [:image]
+  @optional_fields []
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -24,7 +18,7 @@ defmodule Store.Image do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, @fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
   end
 end
