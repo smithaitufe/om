@@ -2,12 +2,10 @@ defmodule Store.Uploader do
   use Arc.Definition
 
   # Include ecto support (requires package arc_ecto installed):
-  use Arc.Ecto.Definition
-
-  @versions [:original]
-
-  # To add a thumbnail version:
-  @versions [@versions | :thumb]
+  # use Arc.Ecto.Definition
+  @acl :public_read
+  @height %{show: 315, thumb: 40, slide: 250}
+  @versions [:original, :thumb, :show, :slide]
 
   # Whitelist file extensions:
   def validate({file, _}) do
@@ -16,20 +14,29 @@ defmodule Store.Uploader do
 
   # Define a thumbnail transformation:
   def transform(:thumb, _) do
-    {:convert, "-strip -thumbnail 250x250^ -gravity center -extent 250x250 -format png", :png}
+    {:convert, "-strip -thumbnail x#{@height[:thumb]}^ -gravity center -extent x#{@height[:thumb]} -format png", :png}
   end
+  def transform(:show, _) do
+    {:convert, "-strip -resize x#{@height[:show]}^ -gravity center -extent x#{@height[:show]} -format png", :png}
+  end
+  def transform(:slide, _) do
+    {:convert, "-strip -resize x#{@height[:slide]}^ -gravity center -extent x#{@height[:slide]} -format png", :png}
+  end
+  
 
   # Override the persisted filenames:
-  # def filename(version, _) do
-  #   version
-  # end
+  def filename(version, {file, _}) do
+    Path.rootname("#{version}_#{file.file_name}")
+  end
   # using local storage
-  def __storage, do: Arc.Storage.Local
+  # def __storage, do: Arc.Storage.Local
   
   # Override the storage directory:
-  # def storage_dir(version, {file, scope}) do
-  #   "uploads/user/avatars/#{scope.id}"
-  # end
+  def storage_dir(version, {_, image}) do
+    # "uploads/user/avatars/#{scope.id}"
+    # "om/files/media/#{image.id}/versions/#{image.id}/#{version}"
+    "om/files/media/#{image.id}/versions"
+  end
 
   # Provide a default URL if there hasn't been a file uploaded
   # def default_url(version, scope) do

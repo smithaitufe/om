@@ -3,7 +3,7 @@ defmodule Store.Repo.Migrations.CreateImage do
 
   def change do
     create table(:images) do
-      add :image, :string
+      add :name, :string
 
       timestamps
     end

@@ -2,12 +2,13 @@ defmodule Store.Image do
   use Store.Web, :model
 
   schema "images" do
-    field :image, :string
+    field :name, :string
+    field :upload, :any, virtual: true
     
-    timestamps
+    timestamps()
   end
 
-  @required_fields [:image]
+  @required_fields [:upload]
   @optional_fields []
 
   @doc """
@@ -21,4 +22,25 @@ defmodule Store.Image do
     |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
   end
+  def attachment_changeset(struct, params \\ %{}) do
+    struct
+    |> changeset(params)
+    |> put_name()
+    |> cast(params, [:name])
+  end
+  def put_name(changeset) do
+    case changeset do
+      %Ecto.Changeset{valid?: true, changes: %{upload: %Plug.Upload{content_type: "image/" <> _, filename: name}}} ->
+        put_change(changeset, :name, name)
+      _ -> changeset
+      
+    end
+  end
+  def store(%Plug.Upload{} = upload, image) do
+    Store.Uploader.store({upload, image})
+  end
+  def url(image, version) do
+    Store.Uploader.url({image.name, image}, version)
+  end
+
 end
