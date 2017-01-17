@@ -6,3 +6,5 @@ export { AddressService } from './address-service';
 export { StateService } from './state-service';
 export { CityService } from './city-service';
 export { CartService } from './cart-service';
+export { ProductService } from './product-service';
+export { ShippingService } from './shipping-service';

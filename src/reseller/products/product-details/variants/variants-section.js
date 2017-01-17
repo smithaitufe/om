@@ -4,5 +4,7 @@ export class VariantsSection {
   }
 }
 export let routes = [
-  { route: "/", name: "variants", moduleId: "./variants", title: "", nav: false}
+  { route: "/", name: "variants", moduleId: "./variants", title: "", nav: false},
+  { route: "/:variant_id", name: "variant", moduleId: "./variant", title: "", nav: false}
+
 ]

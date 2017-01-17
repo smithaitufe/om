@@ -1,0 +1,22 @@
+<template>
+<h2>Product Variants</h2>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Master</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr repeat.for="item of variants">
+      <td>${$index + 1}</td>
+      <td>${item.name}</td>
+      <td>N${item.price | numberFormat:'(0,0.0)'}</td>
+      <td>${item.master ? 'yes' : 'no'}</td>
+    </tr>
+  </tbody>
+</table>
+</template>

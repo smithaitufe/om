@@ -1,7 +1,7 @@
 <template>
   <require from="./app.css"></require>
   <require from="./app-colors.css"></require>
-  <header>
+  <!--<header>
     <nav class="navbar navbar-static-top navbar-first">
       <div class="container">
         <div class="navbar-collapse collapse">
@@ -30,10 +30,8 @@
     <div class="container">
       <div class="row main-navbar">
     <div class="col-sm-2">
-        <button type="button" id="menu-toggle">
-          <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
-        </button>
-        Onitshamarket
+        <span id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></span>
+        <span id="brand">Onitshamarket</span>
       </div>
       <div class="col-xs-12 col-sm-6">
        <div class="form-search-container">
@@ -42,11 +40,7 @@
               <div class="input-group search-input-group">
                 <input type="text" class="form-control search-text" placeholder="I am looking for">                         
                 <div class="input-group-btn">      
-                 <!--<select name="category" id="category" class="form-control search-category">
-                    <option value="">Electronics</option>
-                    <option value="">Computer & Laptop</option>
-                    <option value="">Women Clothings</option>
-                </select>   -->
+                
                 <button type="button" class="btn dropdown-toggle as-is bs-dropdown-to-select" data-toggle="dropdown">
                         <span data-bind="bs-drp-sel-label">Select...</span>
                         <input type="hidden" name="selected_value" data-bind="bs-drp-sel-value" value="">
@@ -82,9 +76,9 @@
       </div>
     </div>
    </div>
-  </header>
+  </header>-->
   <router-view></router-view>
-  <footer class="footer">
+  <!--<footer class="footer">
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
@@ -183,5 +177,5 @@
       </div>
      </div>
     </div>
-  </footer>
+  </footer>-->
 </template>
