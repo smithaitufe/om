@@ -30,7 +30,8 @@ defmodule Store.Router do
       get "/current_user", CurrentUserController, :show
 
       resources "/images", ImageController, only: [:index, :create, :show]
-
+      resources "/option_groups", OptionGroupController, except: [:new, :edit] 
+      resources "/options", OptionController, except: [:new, :edit]
       
       resources "/item_types", ItemTypeController, except: [:new, :edit]
       resources "/invoice_types", InvoiceTypeController, except: [:new, :edit]
