@@ -9,11 +9,13 @@ defmodule Store.Variant do
     field :price, :decimal
     field :compare_price, :decimal
     field :master, :boolean, default: false
+    
     field :quantity_on_hand, :integer
     field :quantity_pending_to_customer, :integer
     field :quantity_pending_from_supplier, :integer
     field :weight, :float, default: 0.0
     field :deleted_at, Ecto.DateTime
+    
     belongs_to :product, Product
     belongs_to :image_group, ImageGroup
 

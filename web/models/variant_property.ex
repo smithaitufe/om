@@ -1,6 +1,5 @@
 defmodule Store.VariantProperty do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Store.Web, :model
   alias Store.{Variant, Property}
 
   schema "variant_properties" do
@@ -12,8 +11,9 @@ defmodule Store.VariantProperty do
     timestamps
   end
 
-  @fields ~w(variant_id property_id description primary)a
-  @required_fields ~w(variant_id property_id description)a
+  @required_fields [:variant_id, :property_id, :description]
+  @optional_fields [:primary]
+
   @doc """
   Creates a changeset based on the `model` and `params`.
 
@@ -22,7 +22,7 @@ defmodule Store.VariantProperty do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, @fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
   end
 end
