@@ -1,0 +1,23 @@
+<template>
+  <h2>Property</h2>
+  <form role="form" class="form" submit.delegate="submit()">    
+    <div class="row">
+      <div class="form-group">
+        <label for="identifying_name" class="control-label">Identifying Name</label>
+        <input type="text" id="identifying_name" class="form-control" value.bind="entity.identifying_name">
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <label for="" class="control-label">Display Name</label>
+        <input type="text" class="form-control" value.bind="entity.display_name">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-default">Save</button>
+    </div>
+
+  </form>
+  
+</template>

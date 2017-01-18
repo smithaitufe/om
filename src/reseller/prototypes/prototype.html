@@ -1,0 +1,36 @@
+<template>
+  <h2>Prototype</h2>
+
+  <div class="row">
+    <div class="form-group">
+      <label for="" class="control-label">Prototype Name</label>
+      <input type="text" class="form-control" value.bind="entity.name">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group">
+      <label for="properties" class="control-label">Property</label>
+      <select id="properties" class="form-control" value.two-way="entity.properties" multiple select2>
+          <option value="">Select property</option>
+          <option repeat.for="item of properties" model.bind="item">${item.name}</option>
+        </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group">
+      <label for="options" class="control-label">Options</label>
+      <select id="options" class="form-control" value.bind="entity.options" multiple select2>
+          <option value="">Select option</option>
+          <option repeat.for="item of options" model.bind="item">${item.name}</option>
+        </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group">
+      <button class="btn btn-default" type="submit">Submit</button>
+    </div>
+  </div>
+</template>

@@ -1,7 +1,7 @@
 import {customAttribute, inject} from 'aurelia-framework';
 //import $ from 'jquery';
-//import select2 from 'select2'; // install the select2 jquery plugin
-//import from 'select2/css/select2.min.css' // ensure the select2 stylesheet has been loaded
+import select2 from 'select2'; // install the select2 jquery plugin
+import 'select2/dist/css/select2.min.css' // ensure the select2 stylesheet has been loaded
 
 @customAttribute('select2')
 @inject(Element)

@@ -1,6 +1,6 @@
 import { get, post, put } from '../utils';
 
-let urls = ['/api/v1/products', '/api/v1/variants']
+let urls = ['/api/v1/products', '/api/v1/variants', '/api/v1/option_groups', '/api/v1/options']
 let url = '';
 
 export class ProductService {
@@ -36,4 +36,31 @@ export class ProductService {
     return get(url);
   }
 
+
+
+  getOptionGroups(params = null) {
+    let url = urls[2]
+    if(params) url += `?${params}`;
+
+    return get(url);
+  }
+  saveOptionGroup(optionGroup) {
+    if(!optionGroup) throw new Error("Option group was not specified");
+    const data = { option_group: optionGroup};
+    const { id } = optionGroup;
+    if(id) return put(`${urls[2]}/${id}`, data)
+    return post(urls[2], data);
+  }
+  getOptions(params = null) {
+    let url = urls[3]
+    if(params) url += `?${params}`;
+    return get(url);
+  }
+  saveOption(option) {
+    if(!option) throw new Error("Option was not specified");
+    const data = { option: option};
+    const { id } = option;
+    if(id) return put(`${urls[3]}/${id}`, data)
+    return post(urls[3], data);
+  }
 }

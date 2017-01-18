@@ -7,7 +7,7 @@ export function configure(aurelia) {
       './value-converters/stringify',
       './value-converters/sort',
       './value-converters/take',
-      './attributes/active-link',
+      './attributes/select2',
       './attributes/markdown-component',
       './attributes/datepicker',
       './elements/markdown',      

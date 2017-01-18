@@ -318,3 +318,17 @@ body {
 
 
 
+/*.select2-container .select2-choice:not(.select2-default) {
+    background-image: none !important;
+    background-color: #D9FFC7;
+}
+.select2-selection__choice {
+  background-color: #D9FFC7 !important;
+  color: #666;
+}*/
+.select2-container--default .select2-selection--multiple {
+    background-color: white;
+    border: 1px solid #008000;
+    border-radius: 2px;
+    cursor: text;
+}

@@ -21,5 +21,7 @@ export class ResellerSection {
 export let routes = [
   { route: "/", redirect: "products"},
   { route: "/products", name: "products-section", moduleId: "./products/products-section", title: "", nav: false, settings: { childRoutes: productsRoutes}},
+  { route: "/prototypes", name: "prototypes", moduleId: "./prototypes/prototypes", title: "Prototypes", nav: false},
+  { route: "/prototypes/:prototype_id", name: "prototype", moduleId: "./prototypes/prototype", title: "Prototype", nav: false}
 ];
 
