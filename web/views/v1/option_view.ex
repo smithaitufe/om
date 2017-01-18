@@ -2,11 +2,11 @@ defmodule Store.V1.OptionView do
   use Store.Web, :view
 
   def render("index.json", %{options: options}) do
-    %{data: render_many(options, Store.V1.OptionView, "option.json")}
+    render_many(options, Store.V1.OptionView, "option.json")
   end
 
   def render("show.json", %{option: option}) do
-    %{data: render_one(option, Store.V1.OptionView, "option.json")}
+    render_one(option, Store.V1.OptionView, "option.json")
   end
 
   def render("option.json", %{option: option}) do

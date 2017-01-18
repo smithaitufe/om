@@ -1,7 +1,7 @@
 rule = "-------------------------------------------------------------------------------------------------";
 
 import Ecto.Query
-alias Store.{Repo, Country, ItemType, TaxRate, OrderStatus, OrderState, ShippingZone, State, LocalGovernmentArea, InvoiceType, InvoiceStatus, ProductCategory, Brand, UserType, User, Shop, Product, Variant, ShippingCategory, City, Cart, CartItem, Address}
+alias Store.{Repo, Country, ItemType, TaxRate, OrderStatus, OrderState, ShippingZone, State, LocalGovernmentArea, InvoiceType, InvoiceStatus, ProductCategory, Brand, UserType, User, Shop, Product, Variant, ShippingCategory, City, Cart, CartItem, Address, OptionGroup, Option}
 
 get_user_type = fn code -> Repo.get_by(UserType, code: code) end
 get_product_category = fn name -> Repo.get_by(ProductCategory, [name: name]) end
@@ -1081,6 +1081,19 @@ end)
 
 shop_params = %{user_id: Repo.get(User, 2).id, name: "Onitsha Market", phone_number: "08050999022"}
 {:ok, shop} = Shop.changeset(%Shop{}, shop_params) |> Repo.insert
+
+[%{name: "Color", shop_id: shop.id}, %{name: "Size", shop_id: shop.id}, %{name: "Condition", shop_id: shop.id}] |> Enum.each(&(OptionGroup.changeset(%OptionGroup{}, &1) |> Repo.insert))
+
+options = [
+  colors: [%{name: "Red"}, %{name: "Blue"}, %{name: "Pink"}, %{name: "Green"}],
+  sizes: [%{name: "SM"}, %{name: "L"}, %{name: "M"}, %{name: "XL"}]
+]
+
+color = Repo.get_by(OptionGroup, [name: "Color"])
+for c <- options[:colors], do: Option.changeset(%Option{}, Map.put(c, :option_group_id, color.id)) |> Repo.insert
+
+size = Repo.get_by(OptionGroup, [name: "Size"])
+for c <- options[:sizes], do: Option.changeset(%Option{}, Map.put(c, :option_group_id, size.id)) |> Repo.insert
 
 
 brand = Repo.get_by(Brand, name: "HP")

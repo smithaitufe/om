@@ -8,12 +8,15 @@ defmodule Store.Option do
     timestamps()
   end
 
+  @required_fields [:option_group_id, :name]
+  @optional_fields []
+
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name])
-    |> validate_required([:name])
+    |> cast(params, @required_fields ++ @optional_fields)
+    |> validate_required(@required_fields)
   end
 end

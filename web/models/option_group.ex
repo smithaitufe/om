@@ -4,7 +4,10 @@ defmodule Store.OptionGroup do
   schema "option_groups" do
     belongs_to :shop, Store.Shop
     field :name, :string
-
+    
+    has_many :options, Store.Option
+    
+    
     timestamps()
   end
 
@@ -18,5 +21,8 @@ defmodule Store.OptionGroup do
     struct
     |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
+  end
+  def associations do
+    [:options]
   end
 end
