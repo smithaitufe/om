@@ -7,8 +7,11 @@ defmodule Store.Repo.Migrations.CreateShop do
       add :phone_number, :string, size: 15, null: false
       add :email, :string, size: 100
       add :user_id, references(:users)
+      add :slogan, :string
+      add :verified, :boolean, default: false
+      add :active, :boolean, default: false
 
-      timestamps
+      timestamps()
     end
     create index(:shops, [:user_id])
 

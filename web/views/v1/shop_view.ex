@@ -12,8 +12,11 @@ defmodule Store.V1.ShopView do
   def render("shop.json", %{shop: shop}) do
     %{id: shop.id,
       name: shop.name,
+      slogan: shop.slogan,
       phone_number: shop.phone_number,
       email: shop.email,
+      verified: shop.verified,
+      active: shop.active,
       user_id: shop.user_id}
   end
 end

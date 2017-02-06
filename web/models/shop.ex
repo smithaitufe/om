@@ -5,15 +5,20 @@ defmodule Store.Shop do
     field :name, :string
     field :phone_number, :string
     field :email, :string
+    field :slogan, :string
+    field :verified, :boolean, default: false
+    field :active, :boolean, default: true
+
     belongs_to :user, Store.User
     has_many :products, Store.Product
-    timestamps
+    
+    timestamps()
 
 
   end
 
   @required_fields [:user_id, :name, :phone_number]
-  @optional_fields [:email]
+  @optional_fields [:email, :slogan, :verified, :active]
 
 
   @doc """

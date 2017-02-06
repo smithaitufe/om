@@ -1115,6 +1115,8 @@ state = Repo.get_by(State, name: "Delta")
   %{ first_name: "Stephen", last_name: "Oboh", email: "stephen.oboh@yahoo.com", password: "password", password_confirmation: "password", user_type_id: get_user_type.("BYR").id, code: "OM/BYR/100010"},
   %{ first_name: "Henry", last_name: "Scott", email: "henryisscott@hotmail.com", password: "password", password_confirmation: "password", user_type_id: get_user_type.("BYR").id, code: "OM/BYR/100011"},
   %{ first_name: "Oluchi", last_name: "Ifeanyi", email: "oluchiifea@hotmail.com", password: "password", password_confirmation: "password", user_type_id: get_user_type.("RSL").id, code: "OM/RSL/100002"},
+  %{ first_name: "Brown", last_name: "Chike", email: "brownchike@yahoo.com", password: "password", password_confirmation: "password", user_type_id: get_user_type.("RSL").id, code: "OM/RSL/100003"},
+  %{ first_name: "Chukwuemeka", last_name: "Chidozie", email: "ccz@yahoo.com", password: "password", password_confirmation: "password", user_type_id: get_user_type.("RSL").id, code: "OM/RSL/100004"},
 ]
 |> Enum.each(fn user_params -> 
     {:ok, user} = User.changeset(%User{}, user_params) |> Repo.insert
@@ -1129,8 +1131,12 @@ state = Repo.get_by(State, name: "Delta")
 
 
 [
-  %{user_id: Repo.get_by(User, email: "goodnewsemek@outlook.com").id, name: "Goodies Stores", phone_number: "08032234567", email: "goodiessales@outlook.com"},
-  %{user_id: Repo.get_by(User, email: "oluchiifea@hotmail.com").id, name: "Ifeanyi & Sons", phone_number: "08089994768", email: "ifeanyssonssupport@hotmail.com"}
+  %{user_id: Repo.get_by(User, email: "goodnewsemek@outlook.com").id, name: "Goodies Stores", phone_number: "08032234567", email: "goodiessales@outlook.com", slogan: "Your babies look is your voice"},
+  %{user_id: Repo.get_by(User, email: "oluchiifea@hotmail.com").id, name: "Ifeanyi & Sons", phone_number: "08089994768", email: "ifeanyssonssupport@hotmail.com", slogan: "We provide spare parts of all automobiles"},
+  %{user_id: Repo.get_by(User, email: "brownchike@yahoo.com").id, name: "M & M Merchants", phone_number: "08045678900", email: "mmmerchants@yahoo.com", slogan: "Dealers of building materials"},
+  %{user_id: Repo.get_by(User, email: "ccz@yahoo.com").id, name: "C C Stores", phone_number: "08045678900", email: "ccstores@yahoo.com", slogan: "Clothing is a need of humanity"},
+  
+
 ]
 |> Enum.each(fn shop_params -> Shop.changeset(%Shop{}, shop_params) |> Repo.insert end)
 
