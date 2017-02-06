@@ -2,11 +2,11 @@ defmodule Store.V1.ShopView do
   use Store.Web, :view
 
   def render("index.json", %{shops: shops}) do
-    %{data: render_many(shops, Store.V1.ShopView, "shop.json")}
+    render_many(shops, Store.V1.ShopView, "shop.json")
   end
 
   def render("show.json", %{shop: shop}) do
-    %{data: render_one(shop, Store.V1.ShopView, "shop.json")}
+    render_one(shop, Store.V1.ShopView, "shop.json")
   end
 
   def render("shop.json", %{shop: shop}) do

@@ -1,7 +1,7 @@
 defmodule Store.ProductImage do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Store.Web, :model
 
+  @primary_key false
   schema "product_images" do
     belongs_to :product, Store.Product
     belongs_to :image, Store.Image
@@ -9,8 +9,8 @@ defmodule Store.ProductImage do
     timestamps
   end
 
-  @fields ~w(product_id image_id)a
-  @required_fields ~w(product_id image_id)a
+  @required_fields [:product_id, :image_id]
+  @optional_fields []
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -20,7 +20,7 @@ defmodule Store.ProductImage do
   """
   def changeset(model, params \\ %{}) do
     model
-    |> cast(params, @fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
   end
 end

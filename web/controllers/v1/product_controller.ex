@@ -5,8 +5,12 @@ defmodule Store.V1.ProductController do
 
   plug :scrub_params, "product" when action in [:create, :update]
 
-  def index(conn, _params) do
-    products = Repo.all(Product)
+  def index(conn, params) do
+    products = Product
+    |> build_query(Map.to_list(params))
+    |> Repo.all
+    |> Repo.preload(Product.associations)
+
     render(conn, "index.json", products: products)
   end
 
@@ -15,6 +19,8 @@ defmodule Store.V1.ProductController do
 
     case Repo.insert(changeset) do
       {:ok, product} ->
+        product = product |> Repo.preload(Product.associations)
+
         conn
         |> put_status(:created)
         |> put_resp_header("location", v1_product_path(conn, :show, product))
@@ -27,7 +33,10 @@ defmodule Store.V1.ProductController do
   end
 
   def show(conn, %{"id" => id}) do
-    product = Repo.get!(Product, id)
+    product = Product
+    |> Repo.get(id)
+    |> Repo.preload(Product.associations)
+
     render(conn, "show.json", product: product)
   end
 
@@ -37,6 +46,8 @@ defmodule Store.V1.ProductController do
 
     case Repo.update(changeset) do
       {:ok, product} ->
+        product= product |> Repo.preload(Product.associations)
+
         render(conn, "show.json", product: product)
       {:error, changeset} ->
         conn
@@ -54,4 +65,20 @@ defmodule Store.V1.ProductController do
 
     send_resp(conn, :no_content, "")
   end
+
+
+  defp build_query(query, []) do
+    query
+  end
+  defp build_query(query, [{"product_category_id", product_category_id} | tail ]) do
+    query
+    |> Ecto.Query.where([sc], sc.product_category_id == ^product_category_id)
+    |> build_query(tail)
+  end
+  defp build_query(query, [{attr, val} | tail ]) do
+    query
+    |> Ecto.Query.where([sc], field(sc, ^String.to_existing_atom(attr)) == ^val)
+    |> build_query(tail)
+  end
+
 end

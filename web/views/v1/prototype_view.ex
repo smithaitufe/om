@@ -10,8 +10,12 @@ defmodule Store.V1.PrototypeView do
   end
 
   def render("prototype.json", %{prototype: prototype}) do
-    %{id: prototype.id,
+    %{
+      id: prototype.id,
+      shop_id: prototype.shop_id,
       name: prototype.name,
-      active: prototype.active}
+      active: prototype.active
+    }
+    |> Map.put(:properties, render_many(prototype.properties, Store.V1.PropertyView, "property.json"))
   end
 end

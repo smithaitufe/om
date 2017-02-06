@@ -2,6 +2,7 @@ rule = "------------------------------------------------------------------------
 
 import Ecto.Query
 alias Store.{Repo, Country, ItemType, TaxRate, OrderStatus, OrderState, ShippingZone, State, LocalGovernmentArea, InvoiceType, InvoiceStatus, ProductCategory, Brand, UserType, User, Shop, Product, Variant, ShippingCategory, City, Cart, CartItem, Address, OptionGroup, Option}
+alias Store.{Property, Prototype, PrototypeProperty, Image, ImageGroup, ProductImage}
 
 get_user_type = fn code -> Repo.get_by(UserType, code: code) end
 get_product_category = fn name -> Repo.get_by(ProductCategory, [name: name]) end
@@ -934,6 +935,33 @@ cities = [
   %{name: "Warri", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
 ]
 Enum.each(cities, fn city -> City.changeset(%City{}, city) |> Repo.insert! end )
+state = Repo.get_by(State, name: "Rivers")
+[
+  %{name: "Abalama", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Abonnema", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Ahoada", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Ataba", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Bane", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Bonny", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Bori", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Buguma", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Elele", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Emohua", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Igrita", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Igwuruta", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Nkoroo", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Odiabidi", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Okobie", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Okrika", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Omoku", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Onne", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Opobo", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Woji - Port Harcourt", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Abuloma - Port Harcourt", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+  %{name: "Rumuokoro", state_id: state.id, shipping_zone_id: state.shipping_zone_id},
+]
+|> Enum.each(fn city -> City.changeset(%City{}, city) |> Repo.insert! end )
+
 
 
 [
@@ -1059,28 +1087,54 @@ end)
 [%{name: "Individual"}, %{name: "Order"}]
 |> Enum.each(&(ShippingCategory.changeset(%ShippingCategory{}, &1) |> Repo.insert!))
 
+state = Repo.get_by(State, name: "Delta")
 
-[%{
-  first_name: "Smith", 
-  last_name: "Samuel", 
-  email: "smithaitufe@live.com", 
-  password: "password", 
-  password_confirmation: "password", 
-  user_type_id: get_user_type.("BYR").id,
-  code: "OM/BYR/100001"
-}, %{
-  first_name: "Smith", 
-  last_name: "Samuel", 
-  email: "ssfejiro@outlook.com", 
-  password: "password", 
-  password_confirmation: "password", 
-  user_type_id: get_user_type.("RSL").id,
-  code: "OM/RSL/100002"
-}]
-|> Enum.each(&(User.changeset(%User{}, &1) |> Repo.insert!))
+[
+  %{ 
+    first_name: "Smith", last_name: "Samuel", email: "smithaitufe@live.com", password: "password", password_confirmation: "password", user_type_id: get_user_type.("BYR").id, code: "OM/BYR/100001",
+    address: %{ address: "8, Black Moore Street, Off Culvet, Woji", landmark: "Welcome U", phone_number: "08050999022", city_id: Repo.get_by(City, [state_id: Repo.get_by(State, name: "Rivers").id, name: "Woji - Port Harcourt"]).id}
+  },
+  %{ first_name: "Goodnews", last_name: "Emeka", email: "goodnewsemek@outlook.com", password: "password", password_confirmation: "password", user_type_id: get_user_type.("RSL").id, code: "OM/RSL/100001"},
+  %{ 
+    first_name: "Charles", last_name: "Omordia", email: "c.omordia@schoolville.com", password: "password", password_confirmation: "password", user_type_id: get_user_type.("BYR").id, code: "OM/BYR/100002",
+    address: %{ address: "102, Okpanam Road, Off Legislator's Quarters, Okpanam", landmark: "Shoprite", phone_number: "08050999022", city_id: Repo.get_by(City, [state_id: state.id, name: "Asaba"]).id}
+  },
+  %{
+    first_name: "Patrick", last_name: "Acha", email: "p.acha@schoolville.com", password: "password", password_confirmation: "password", user_type_id: get_user_type.("BYR").id, code: "OM/BYR/100003",
+    address: %{ address: "102, Okpanam Road, Off Legislator's Quarters, Okpanam", landmark: "Shoprite", phone_number: "08050999022", city_id: Repo.get_by(City, [state_id: state.id, name: "Asaba"]).id}
+  },
+  %{ 
+    first_name: "Stanley", last_name: "Oyibo", email: "s.oyibo@schoolville.com", password: "password", password_confirmation: "password", user_type_id: get_user_type.("BYR").id, code: "OM/BYR/100004",
+    address: %{ address: "102, Okpanam Road, Off Legislator's Quarters, Okpanam", landmark: "Legislator's Quarters", phone_number: "08050999022", city_id: Repo.get_by(City, [state_id: state.id, name: "Asaba"]).id}
+  },
+  %{ first_name: "Omejero", last_name: "Akpotaire", email: "omejakpos@gmail.com", password: "password", password_confirmation: "password", user_type_id: get_user_type.("BYR").id, code: "OM/BYR/100005"},
+  %{ first_name: "Judith", last_name: "Chuku", email: "judith4lifewithchucks@gmail.com", password: "password", password_confirmation: "password", user_type_id: get_user_type.("BYR").id, code: "OM/BYR/100006"},
+  %{ first_name: "Jennifer", last_name: "George", email: "jennygeorge@gmail.com", password: "password", password_confirmation: "password", user_type_id: get_user_type.("BYR").id, code: "OM/BYR/100007"},
+  %{ first_name: "Janet", last_name: "Lee", email: "janet.lee@gmail.com", password: "password", password_confirmation: "password", user_type_id: get_user_type.("BYR").id, code: "OM/BYR/100008"},
+  %{ first_name: "Precious", last_name: "Nwaigwe", email: "missprec@gmail.com", password: "password", password_confirmation: "password", user_type_id: get_user_type.("BYR").id, code: "OM/BYR/100009"},
+  %{ first_name: "Stephen", last_name: "Oboh", email: "stephen.oboh@yahoo.com", password: "password", password_confirmation: "password", user_type_id: get_user_type.("BYR").id, code: "OM/BYR/100010"},
+  %{ first_name: "Henry", last_name: "Scott", email: "henryisscott@hotmail.com", password: "password", password_confirmation: "password", user_type_id: get_user_type.("BYR").id, code: "OM/BYR/100011"},
+  %{ first_name: "Oluchi", last_name: "Ifeanyi", email: "oluchiifea@hotmail.com", password: "password", password_confirmation: "password", user_type_id: get_user_type.("RSL").id, code: "OM/RSL/100002"},
+]
+|> Enum.each(fn user_params -> 
+    {:ok, user} = User.changeset(%User{}, user_params) |> Repo.insert
+    case Map.get(user_params, :address) do
+      nil -> IO.inspect "No address for user #{user.last_name}"
+      address -> address = Map.merge(address, %{user_id: user.id, last_name: user.last_name, first_name: user.first_name})
+      Address.changeset(%Address{}, address) |> Repo.insert
+    end
+  end
+)
 
-shop_params = %{user_id: Repo.get(User, 2).id, name: "Onitsha Market", phone_number: "08050999022"}
-{:ok, shop} = Shop.changeset(%Shop{}, shop_params) |> Repo.insert
+
+
+[
+  %{user_id: Repo.get_by(User, email: "goodnewsemek@outlook.com").id, name: "Goodies Stores", phone_number: "08032234567", email: "goodiessales@outlook.com"},
+  %{user_id: Repo.get_by(User, email: "oluchiifea@hotmail.com").id, name: "Ifeanyi & Sons", phone_number: "08089994768", email: "ifeanyssonssupport@hotmail.com"}
+]
+|> Enum.each(fn shop_params -> Shop.changeset(%Shop{}, shop_params) |> Repo.insert end)
+
+shop = Repo.get_by(Shop, email: "goodiessales@outlook.com")
 
 [%{name: "Color", shop_id: shop.id}, %{name: "Size", shop_id: shop.id}, %{name: "Condition", shop_id: shop.id}] |> Enum.each(&(OptionGroup.changeset(%OptionGroup{}, &1) |> Repo.insert))
 
@@ -1099,27 +1153,37 @@ for c <- options[:sizes], do: Option.changeset(%Option{}, Map.put(c, :option_gro
 brand = Repo.get_by(Brand, name: "HP")
 shipping_category = Repo.all(ShippingCategory |> order_by([desc: :id])) |> List.first
 
-product_params = %{
-  shop_id: shop.id,
+[
+  %{
+  shop_id: Repo.get_by(Shop, email: "ifeanyssonssupport@hotmail.com").id,
+  brand_id: Repo.get_by(Brand, name: "Dell").id, 
+  product_category_id: brand.product_category_id, 
+  shipping_category_id: shipping_category.id,
+  name: ~s(Dell Inspiron 15 i7559-5012GRY Signature Edition Laptop),
+  short_description: "<ul><li>15.6-inch 4K UHD Touchscreen</li><li>Intel i7 6th Gen</li><li>8GB Memory/1TB SSHD</li><li>Nvidia Geforce GTX 960M Graphics</li></ul>",
+  permalink: "dell-inspiron-15-i7559-5012gry-signature-edition-laptop",
+  keywords: "hp, quad core, intel, pentium, 2.16ghz"
+  },
+  %{
+  shop_id: Repo.get_by(Shop, email: "goodiessales@outlook.com").id,
   brand_id: brand.id, 
   product_category_id: brand.product_category_id, 
   shipping_category_id: shipping_category.id,
   name: ~s(2017 NEWEST HP 15-F222WM 15.6" Touch Screen Laptop - Intel Quad Core Pentium N3540 Processor, 4GB Memory, 500GB Hard Drive, DVD±RW/CD-RW, HD Webcam Windows 10),
   short_description: "<ul><li>Intel Pentium Quad Core N3540 processor 2.16GHz (up to 2.66GHz via Turbo boost)</li><li>4GB DDR3L SDRAM/500GB Serial ATA hard drive (5400 rpm)</li><li>15.6-inch high-definition display/1366 x 768 resolution touchscreen</li><li>DVD±RW/CD-RW drive/Built-in webcam and integrated digital microphone</li><li>Windows 10 64-bit /Built-in wireless LAN (802.11b/g/n</li></ul>",
   permalink: "HP-15-f222WM",
-  keywords: "hp, quad core, intel, pentium, 2.16ghz"
+  keywords: "dell, inspiron, 15,ram, quad core, intel"
 }
-Product.changeset(%Product{}, product_params) 
-|> Repo.insert
-|> case do
-  {:ok, product} -> Variant.changeset(%Variant{}, %{product_id: product.id, name: product.name, sku: "32989hn89", price: 150000, weight: 2}) |> Repo.insert
-end
+]
+|> Enum.each(fn product_params -> Product.changeset(%Product{}, product_params) |> Repo.insert! end)
+
+product = Repo.get(Product, 2)
+Variant.changeset(%Variant{}, %{product_id: product.id, name: product.name, sku: "32989hn89", price: 150000, cost: 145000, weight: 2}) |> Repo.insert!
+product = Repo.get(Product, 1)
+Variant.changeset(%Variant{}, %{product_id: product.id, name: product.name, sku: "kk45768390", price: 250000, cost: 195000, weight: 2}) |> Repo.insert!
 
 state = Repo.get_by(State, name: "Delta")
 user = Repo.get_by(User, email: "smithaitufe@live.com")
-
-Address.changeset(%Address{}, %{user_id: user.id, last_name: "Samuel", first_name: "Smith", address: "102, Okpanam Road, Off Legislator's Quarters, Okpanam", landmark: "Shoprite", phone_number: "08050999022", city_id: Repo.get_by(City, [state_id: state.id, name: "Asaba"]).id}) |> Repo.insert
-
 
 case Cart.changeset(%Cart{}, %{user_id: user.id}) |> Repo.insert do
   {:ok, cart} -> CartItem.changeset(%CartItem{}, %{cart_id: cart.id, variant_id: Repo.get(Variant, 1).id, item_type_id: Repo.get_by(ItemType, name: "shopping_cart").id }) |> Repo.insert!
@@ -1127,3 +1191,56 @@ case Cart.changeset(%Cart{}, %{user_id: user.id}) |> Repo.insert do
 end
 
 
+
+[
+  %{identifying_name: "Weight (kg)", display_name: "Weight (kg)", shop_id: shop.id},
+  %{identifying_name: "Resolution", display_name: "Resolution", shop_id: shop.id},
+  %{identifying_name: "Backlit Keyboard", display_name: "Backlit Keyboard", shop_id: shop.id},
+  %{identifying_name: "RAM", display_name: "RAM", shop_id: shop.id},
+  %{identifying_name: "HDD", display_name: "HDD", shop_id: shop.id},
+  %{identifying_name: "Screen Size", display_name: "Screen Size", shop_id: shop.id},
+  %{identifying_name: "Display", display_name: "Display", shop_id: shop.id},
+  %{identifying_name: "Back Camera", display_name: "Back Camera", shop_id: shop.id},
+  %{identifying_name: "Front Camera", display_name: "Front Camera", shop_id: shop.id},
+  %{identifying_name: "Processor", display_name: "Processor", shop_id: shop.id},
+  %{identifying_name: "Color", display_name: "Color", shop_id: shop.id},
+  %{identifying_name: "Manufacturer", display_name: "Manufacturer", shop_id: shop.id},
+  %{identifying_name: "Capacity", display_name: "Capacity", shop_id: shop.id},
+  %{identifying_name: "Volume", display_name: "Volume", shop_id: shop.id},
+  %{identifying_name: "Length", display_name: "Length", shop_id: shop.id},
+  %{identifying_name: "Material", display_name: "Material", shop_id: shop.id},
+  %{identifying_name: "Price", display_name: "Price", shop_id: shop.id},
+  %{identifying_name: "Code", display_name: "Code", shop_id: shop.id},
+]
+|> Enum.each(&(Property.changeset(%Property{}, &1) |> Repo.insert!))
+
+[
+  %{name: "Laptop", shop_id: shop.id},
+  %{name: "Yam", shop_id: shop.id},
+  %{name: "Car", shop_id: shop.id}
+]
+|> Enum.each(&(Prototype.changeset(%Prototype{}, &1) |> Repo.insert!))
+
+prototype = Repo.get!(Prototype, 1)
+properties = Repo.all(Property)
+
+for property <- properties, property.id < 6 do
+  PrototypeProperty.changeset(%PrototypeProperty{}, %{prototype_id: prototype.id, property_id: property.id}) |> Repo.insert!
+end
+product = Product |> Repo.all |> List.first
+[
+  %{name: "Red Shoes", product_id: product.id},
+  %{name: "Black Shoes", product_id: product.id},
+  %{name: "Brown Shoes", product_id: product.id}
+]
+|> Enum.each(&(ImageGroup.changeset(%ImageGroup{}, &1) |> Repo.insert!))
+
+
+[:ex_aws, :hackney, :arc] |> Enum.each(&(Application.ensure_all_started(&1)))
+
+image_path = "/home/smith/Downloads/istock-000057793060-large.jpg"
+Repo.insert!(%Image{name: "istock-000057793060-large.jpg"})
+image = Repo.all(Image) |> List.first
+# Image.store(image_path, image)
+
+ProductImage.changeset(%ProductImage{}, %{product_id: product.id, image_id: image.id}) |> Repo.insert!

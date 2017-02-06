@@ -10,7 +10,9 @@ defmodule Store.V1.PropertyView do
   end
 
   def render("property.json", %{property: property}) do
-    %{id: property.id,
+    %{
+      id: property.id,
+      shop_id: property.shop_id,
       display_name: property.display_name,
       identifying_name: property.identifying_name,
       active: property.active}

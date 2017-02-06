@@ -10,16 +10,14 @@ defmodule Store.V1.VariantView do
   end
 
   def render("variant.json", %{variant: variant}) do
-    %{id: variant.id,
+    %{
+      id: variant.id,
       product_id: variant.product_id,
       sku: variant.sku,
       name: variant.name,
       price: variant.price,
       compare_price: variant.compare_price,
-      master: variant.master,
-      quantity_on_hand: variant.quantity_on_hand,
-      quantity_pending_to_customer: variant.quantity_pending_to_customer,
-      quantity_pending_from_supplier: variant.quantity_pending_from_supplier,
+      master: variant.master,      
       deleted_at: variant.deleted_at,
       weight: variant.weight
     }

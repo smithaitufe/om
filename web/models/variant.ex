@@ -7,12 +7,9 @@ defmodule Store.Variant do
     field :sku, :string
     field :name, :string
     field :price, :decimal
+    field :cost, :decimal
     field :compare_price, :decimal
-    field :master, :boolean, default: false
-    
-    field :quantity_on_hand, :integer
-    field :quantity_pending_to_customer, :integer
-    field :quantity_pending_from_supplier, :integer
+    field :master, :boolean, default: false    
     field :weight, :float, default: 0.0
     field :deleted_at, Ecto.DateTime
     
@@ -26,12 +23,14 @@ defmodule Store.Variant do
     has_many :properties, through: [:variant_properties, :variant]
 
 
-    timestamps
+    timestamps()
   end
 
-  @required_fields [:product_id, :sku, :name, :price, :weight]
-  @optional_fields [:quantity_on_hand, :quantity_pending_to_customer, :quantity_pending_from_supplier, :master, :compare_price, :image_group_id, :deleted_at]
+  @required_fields [:product_id, :sku, :name, :price, :weight, :cost]
+  @optional_fields [:master, :compare_price, :image_group_id, :deleted_at]
 
+#   mix phoenix.gen.model Inventory inventories variant_id:references:variants qty_on_hand:integer
+#  qty_pending_customer:integer qty_pending_from_supplier:integer
 
 
   @doc """

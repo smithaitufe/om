@@ -3,8 +3,12 @@ defmodule Store.V1.UserController do
   plug :scrub_params, "user" when action in [:create]
   alias Store.{Repo, User}
 
-  def index(conn, _) do
-    users = Repo.all(User)
+  def index(conn, params) do
+    users = User
+    |> build_query_filters(Map.to_list(params))
+    |> Repo.all()
+    |> Repo.preload(User.associations)
+
     render(conn, "index.json", users: users)
   end
 
@@ -43,6 +47,13 @@ defmodule Store.V1.UserController do
         |> put_status(:unprocessable_entity)
         |> render(Store.ChangesetView, "error.json", changeset: changeset)
     end
+  end
+
+  defp build_query_filters(query, []), do: query
+  defp build_query_filters(query, [{"user_type_id", user_type_id} |  tail ]) do
+    query
+    |> Ecto.Query.where([q], q.user_type_id == ^user_type_id)
+    |> build_query_filters(tail)
   end
 
 

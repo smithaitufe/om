@@ -1,17 +1,17 @@
 defmodule Store.Property do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Store.Web, :model
 
   schema "properties" do
     field :display_name, :string
     field :identifying_name, :string
-    field :active, :boolean, default: false
+    field :active, :boolean, default: true
+    belongs_to :shop, Store.Shop
 
-    timestamps
+    timestamps()
   end
 
-  @fields ~w(display_name identifying_name active)a
-  @required_fields ~w(display_name identifying_name)a
+  @required_fields [:shop_id, :display_name, :identifying_name]
+  @optional_fields [:active]
 
 
   @doc """
@@ -22,7 +22,7 @@ defmodule Store.Property do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, @fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
   end
 end

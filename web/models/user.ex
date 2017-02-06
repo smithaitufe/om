@@ -55,5 +55,9 @@ defmodule Store.User do
     end
   end
 
+  def associations do
+    [:user_type, :addresses, {:carts, [:cart_items]}]
+  end
+
   
 end

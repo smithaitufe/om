@@ -6,7 +6,10 @@ defmodule Store.V1.PrototypeController do
   plug :scrub_params, "prototype" when action in [:create, :update]
 
   def index(conn, _params) do
-    prototypes = Repo.all(Prototype)
+    prototypes = Prototype
+    |> Repo.preload(Prototype.associations)
+    |> Repo.all
+
     render(conn, "index.json", prototypes: prototypes)
   end
 
@@ -15,6 +18,7 @@ defmodule Store.V1.PrototypeController do
 
     case Repo.insert(changeset) do
       {:ok, prototype} ->
+        prototype = prototype |> Repo.preload(Prototype.associations)
         conn
         |> put_status(:created)
         |> put_resp_header("location", v1_prototype_path(conn, :show, prototype))
@@ -27,7 +31,10 @@ defmodule Store.V1.PrototypeController do
   end
 
   def show(conn, %{"id" => id}) do
-    prototype = Repo.get!(Prototype, id)
+    prototype = Prototype
+    |> Repo.get!(id)
+    |> Repo.preload(Prototype.associations)
+
     render(conn, "show.json", prototype: prototype)
   end
 
@@ -37,6 +44,8 @@ defmodule Store.V1.PrototypeController do
 
     case Repo.update(changeset) do
       {:ok, prototype} ->
+        prototype = prototype |> Repo.preload(Prototype.associations)
+        
         render(conn, "show.json", prototype: prototype)
       {:error, changeset} ->
         conn

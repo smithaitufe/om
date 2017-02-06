@@ -6,7 +6,10 @@ defmodule Store.V1.ImageGroupController do
   plug :scrub_params, "image_group" when action in [:create, :update]
 
   def index(conn, _params) do
-    image_groups = Repo.all(ImageGroup)
+    image_groups = ImageGroup
+    |> Repo.all()
+    |> Repo.preload(ImageGroup.associations)
+    
     render(conn, "index.json", image_groups: image_groups)
   end
 

@@ -3,6 +3,10 @@ defmodule   Store.V1.ImageView do
 
     alias Store.Image
 
+    def render("index.json", %{images: images}) do
+        render_many(images, Store.V1.ImageView, "image.json")
+    end
+
     def render("show.json", %{image: image}) do
         render_one(image, Store.V1.ImageView, "image.json")
     end

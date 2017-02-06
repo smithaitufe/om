@@ -1,15 +1,15 @@
 defmodule Store.PrototypeProperty do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Store.Web, :model
 
+  # @primary_key false
   schema "prototype_properties" do
     belongs_to :prototype, Store.Prototype
     belongs_to :property, Store.Property
 
-    timestamps
+    timestamps()
   end
-  @fields ~w(prototype_id property_id)a
-  @required_fields ~w(prototype_id property_id)a
+  @required_fields [:prototype_id, :property_id]
+  @optional_fields []
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -19,7 +19,7 @@ defmodule Store.PrototypeProperty do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, @fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
   end
 end

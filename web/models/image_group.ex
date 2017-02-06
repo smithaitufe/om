@@ -1,16 +1,15 @@
 defmodule Store.ImageGroup do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Store.Web, :model
 
   schema "image_groups" do
     field :name, :string
     belongs_to :product, Store.Product
 
-    timestamps
+    timestamps()
   end
 
-  @fields ~w(name product_id)a
-  @required_fields ~w(name product_id)a
+  @required_fields [:name, :product_id]
+  @optional_fields []
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -20,7 +19,12 @@ defmodule Store.ImageGroup do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, @fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
   end
+
+  def associations do
+    [{:product, Store.Product.associations}]
+  end
+
 end

@@ -1,16 +1,20 @@
 defmodule Store.Prototype do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Store.Web, :model
 
   schema "prototypes" do
-    field :name, :string
-    field :active, :boolean, default: false
 
-    timestamps
+    field :name, :string
+    field :active, :boolean, default: true
+    belongs_to :shop, Store.Shop
+
+    has_many :prototype_properties, Store.PrototypeProperty
+    has_many :properties, through: [:prototype_properties, :property]
+    
+    timestamps()
   end
 
-  @fields ~w(name active)a
-  @required_fields ~w(name)a
+  @required_fields [:shop_id, :name]
+  @optional_fields [:active]
 
 
   @doc """
@@ -21,7 +25,11 @@ defmodule Store.Prototype do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, @fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
+  end
+
+  def associations do
+    [:properties]
   end
 end

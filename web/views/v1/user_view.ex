@@ -22,5 +22,7 @@ defmodule Store.V1.UserView do
       reset_token: user.reset_token,
       reset_token_created_at: user.reset_token_created_at,
       reset_token_expires_at: user.reset_token_expires_at}
+
+    |> Map.put(:user_type, render_one(user.user_type, Store.V1.UserTypeView, "user_type.json"))
   end
 end

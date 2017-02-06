@@ -10,7 +10,8 @@ defmodule Store.V1.ProductImageView do
   end
 
   def render("product_image.json", %{product_image: product_image}) do
-    %{id: product_image.id,
+    %{
+      # id: product_image.id,
       product_id: product_image.product_id,
       image_id: product_image.image_id}
   end

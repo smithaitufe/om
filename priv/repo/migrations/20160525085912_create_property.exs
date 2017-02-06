@@ -8,7 +8,7 @@ defmodule Store.Repo.Migrations.CreateProperty do
       add :active, :boolean, default: false
       add :shop_id, references(:shops)
 
-      timestamps
+      timestamps()
     end
 
     create index(:properties, [:shop_id])

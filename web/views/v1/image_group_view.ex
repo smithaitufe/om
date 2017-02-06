@@ -13,5 +13,6 @@ defmodule Store.V1.ImageGroupView do
     %{id: image_group.id,
       name: image_group.name,
       product_id: image_group.product_id}
+      |> Map.put(:product, render_one(image_group.product, Store.V1.ProductView, "product_lite.json"))
   end
 end
